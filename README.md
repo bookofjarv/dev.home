@@ -10,7 +10,7 @@
 ### 🚀 Aspiring Network Engineer & Founder of KodeKouncil
 Documenting the journey from Help Desk to Cloud Architect. Building a legacy through technical mastery, faith, and financial independence.
 
-[bookofjarv website](https://bookofjarv.github.io/theandersonportfolio2026/)
+[bookofjarvwebsite]
 
 ---
 
