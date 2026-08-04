@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jarvis Anderson — IT Professional & Cloud Engineer</title>
-    <meta name="description" content="Portfolio of Jarvis Anderson — systems-focused IT, cloud, automation, and digital operations work." />
+    <title>Jarvis Anderson — From Helpdesk to Network Engineering</title>
+    <meta name="description" content="Portfolio of Jarvis Anderson — a systems-focused IT professional building from helpdesk support into network engineering, automation, and digital operations." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -196,6 +196,11 @@
         background: rgba(0, 180, 216, 0.12);
         color: var(--white);
         font-size: 0.92rem;
+        transition: transform var(--transition), background var(--transition);
+      }
+      .hero-chip:hover {
+        transform: translateY(-2px);
+        background: rgba(0, 180, 216, 0.2);
       }
       .luxury-grid {
         display: grid;
@@ -284,6 +289,11 @@
         background: rgba(255, 138, 91, 0.12);
         color: var(--white);
         border: 1px solid rgba(255, 138, 91, 0.24);
+      }
+      .agency-cta {
+        margin-top: 18px;
+        display: inline-flex;
+        width: fit-content;
       }
       section { padding: 72px 0; }
       .section-eyebrow {
@@ -452,6 +462,9 @@
         border: 1px solid rgba(255,255,255,0.09);
         transition: transform var(--transition), background var(--transition), border-color var(--transition);
       }
+      .social-link.instagram { color: #ff5f8f; }
+      .social-link.youtube { color: #ff4d4d; }
+      .social-link.linkedin { color: #4da3ff; }
 
       .social-link:hover {
         background: rgba(0, 180, 216, 0.16);
@@ -540,17 +553,17 @@
         <div class="hero-orb" aria-hidden="true"></div>
         <div class="hero-grid" aria-hidden="true"></div>
         <div class="hero-content reveal">
-          <span class="eyebrow">bookofjarv • systems • cloud • digital operations</span>
-          <h1>Jarvis Anderson designs resilient systems, cloud workflows, and standout digital experiences.</h1>
-          <p class="hero-copy">I blend hands-on IT support, cloud thinking, and calm execution to build practical tools and reliable systems that work in the real world.</p>
+          <span class="eyebrow">bookofjarv • helpdesk • network engineering • operations</span>
+          <h1>My journey started in helpdesk support and grew into network engineering, systems thinking, and dependable operations.</h1>
+          <p class="hero-copy">I’m building a career from real-world IT support into deeper networking, automation, and reliable digital operations — with a focus on solving problems with calm, practical execution.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#featured">View Projects</a>
-            <a class="btn btn-secondary" href="#contact">Contact Me</a>
+            <a class="btn btn-secondary" href="#kodekouncil">Explore KodeKouncil</a>
           </div>
           <div class="hero-highlights">
-            <span class="hero-chip">Cloud & IT Support</span>
-            <span class="hero-chip">Secure Systems Thinking</span>
-            <span class="hero-chip">Hands-on Learning</span>
+            <span class="hero-chip">Helpdesk Foundations</span>
+            <span class="hero-chip">Network Engineering Path</span>
+            <span class="hero-chip">Operations & Automation</span>
           </div>
         </div>
       </section>
@@ -633,29 +646,31 @@
 
       <section id="kodekouncil" aria-labelledby="kodekouncil-heading">
         <div class="container">
-          <span class="section-eyebrow">Fulfillment Agency</span>
+          <span class="section-eyebrow">Agency Fulfillment</span>
           <h2 class="section-title" id="kodekouncil-heading">KodeKouncil</h2>
-          <p class="section-subtitle">KodeKouncil is the fulfillment arm for operational flow, polished systems, and premium support that keeps ambitious work moving.</p>
+          <p class="section-subtitle">KodeKouncil is a Technical Solutions Agency. We bridge the gap between IT infrastructure and business operations by transforming chaotic workflows into automated, high-performance systems.</p>
           <div class="divider" aria-hidden="true"></div>
           <div class="luxury-grid">
             <article class="luxury-panel reveal">
-              <span class="card-tag">Agency • Fulfillment</span>
+              <span class="card-tag">Why teams work with us</span>
               <h3>Built for smooth execution</h3>
-              <p>I help teams organize their digital operations with thoughtful support, dependable infrastructures, and a calm, polished experience from start to finish.</p>
+              <p>My path started in helpdesk support and grew into network engineering, systems thinking, and technical operations. I help teams turn complex workflows into clear, scalable, and dependable processes.</p>
               <div class="stat-row">
-                <div class="stat-pill"><span>Primary focus</span><strong>Operations</strong></div>
-                <div class="stat-pill"><span>Delivery style</span><strong>Refined & reliable</strong></div>
-                <div class="stat-pill"><span>Core strength</span><strong>Systems thinking</strong></div>
+                <div class="stat-pill"><span>Core value</span><strong>Clarity</strong></div>
+                <div class="stat-pill"><span>Delivery style</span><strong>Efficient</strong></div>
+                <div class="stat-pill"><span>Specialty</span><strong>Automation</strong></div>
               </div>
             </article>
             <article class="luxury-panel reveal">
-              <span class="card-tag">Contact</span>
-              <h3>Reach the agency directly</h3>
+              <span class="card-tag">Services Offered</span>
               <ul class="service-list">
-                <li>Email: <a href="mailto:kodekouncil@gmail.com">kodekouncil@gmail.com</a></li>
-                <li>Support: execution, organization, and workflow design</li>
-                <li>Services: documentation, automation, cloud support, and digital presence</li>
+                <li><strong>Email &amp; Calendar Management:</strong> Inbox organization and meeting management.</li>
+                <li><strong>Documentation Architecture:</strong> GitHub README overhauls, internal Wikis, and technical SOPs.</li>
+                <li><strong>Process Automation:</strong> Linking marketing to operations via Zapier, Python, and system architecture tools.</li>
+                <li><strong>Brand Engineering:</strong> High-tier technical portfolios, digital marketing, and web design/development.</li>
+                <li><strong>Executive Management:</strong> File organization, expense tracking, backup recovery, and password architecture.</li>
               </ul>
+              <a class="btn btn-primary agency-cta" href="https://your-tidycal-link.com/" target="_blank" rel="noopener noreferrer">Book a Technical Discovery Call</a>
             </article>
           </div>
         </div>
@@ -684,14 +699,14 @@
               <a href="tel:+18156718166" aria-label="Call 815-671-8166">(815) 671-8166</a>
             </div>
             <div class="contact-card reveal">
+              <div class="icon" aria-hidden="true">�</div>
+              <h4>Socials</h4>
+              <p><a href="https://www.linkedin.com/in/jarvis-anderson/" target="_blank" rel="noopener noreferrer">LinkedIn</a><br><a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener noreferrer">YouTube</a><br><a href="https://www.instagram.com/bookofjarv" target="_blank" rel="noopener noreferrer">Instagram</a></p>
+            </div>
+            <div class="contact-card reveal">
               <div class="icon" aria-hidden="true">🎓</div>
               <h4>Education</h4>
               <p>Governors State University<br><small style="color:rgba(255,255,255,0.4)">B.S. IT · Expected 2027</small></p>
-            </div>
-            <div class="contact-card reveal">
-              <div class="icon" aria-hidden="true">📍</div>
-              <h4>Location</h4>
-              <p>Chicago, IL area</p>
             </div>
           </div>
         </div>
@@ -706,6 +721,15 @@
         View my GitHub
       </a>
       <div class="social-links">
+        <a class="social-link linkedin" href="https://www.linkedin.com/in/jarvis-anderson/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.94 8.5A1.56 1.56 0 1 0 6.94 5.37a1.56 1.56 0 0 0 0 3.13zM5.5 9.5h2.88V18H5.5zM10.2 9.5h2.76v1.16h.04c.38-.72 1.32-1.48 2.72-1.48 2.91 0 3.45 1.91 3.45 4.4V18H16.3v-7.56c0-1.8-.03-4.1-2.5-4.1-2.5 0-2.88 1.95-2.88 3.96V18H10.2z"/></svg>
+        </a>
+        <a class="social-link youtube" href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.38.56A3.02 3.02 0 0 0 .5 6.2C0 7.88 0 12 0 12s0 4.12.5 5.8a3.02 3.02 0 0 0 2.12 2.14C4.3 20.5 12 20.5 12 20.5s7.7 0 9.38-.56a3.02 3.02 0 0 0 2.12-2.14C24 16.12 24 12 24 12s0-4.12-.5-5.8ZM9.75 15.5v-7l6.25 3.5-6.25 3.5Z"/></svg>
+        </a>
+        <a class="social-link instagram" href="https://www.instagram.com/bookofjarv" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.25A4.75 4.75 0 1 1 7.25 12 4.75 4.75 0 0 1 12 7.25Zm0 2A2.75 2.75 0 1 0 14.75 12 2.75 2.75 0 0 0 12 9.25Zm5.5-3.1a1.15 1.15 0 1 1-1.15 1.15 1.15 1.15 0 0 1 1.15-1.15Z"/></svg>
+        </a>
         <a class="social-link" href="https://github.com/acecloudwatcher" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.39-1.333-1.76-1.333-1.76-1.089-.744.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.419-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.29 1.23.958-.267 1.984-.4 3.01-.405 1.026.005 2.052.138 3.01.405 2.285-1.552 3.29-1.23 3.29-1.23.646 1.653.241 2.873.12 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.805 5.625-5.476 5.92.43.37.81 1.098.81 2.216 0 1.606-.015 2.896-.015 3.286 0 .319.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
         </a>
@@ -736,12 +760,16 @@
           const rect = element.getBoundingClientRect();
           const x = event.clientX - rect.left;
           const y = event.clientY - rect.top;
+          const offsetX = (event.clientX - rect.left) / rect.width - 0.5;
+          const offsetY = (event.clientY - rect.top) / rect.height - 0.5;
           element.style.setProperty('--x', `${x}px`);
           element.style.setProperty('--y', `${y}px`);
+          element.style.transform = `translateY(-4px) rotateX(${(-offsetY * 8).toFixed(2)}deg) rotateY(${(offsetX * 8).toFixed(2)}deg)`;
         });
         element.addEventListener('pointerleave', () => {
           element.style.removeProperty('--x');
           element.style.removeProperty('--y');
+          element.style.transform = '';
         });
       });
 
