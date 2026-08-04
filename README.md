@@ -10,7 +10,9 @@
 ### 🚀 Aspiring Network Engineer & Founder of KodeKouncil
 Documenting the journey from Help Desk to Network Engineer. Building a legacy through technical mastery, faith, and financial independence.
 
-[ https://bookofjarv.github.io/dev.home/]
+[Portfolio Site](https://bookofjarv.github.io/dev.home/)
+[GitHub Profile](https://github.com/bookofjarv)
+[Repository](https://github.com/bookofjarv/dev.home)
 
 ---
 
@@ -48,4 +50,5 @@ Documenting the journey from Help Desk to Network Engineer. Building a legacy th
 * **LinkedIn**: [Jarvis Anderson](https://www.linkedin.com/in/jarvis-anderson/)
 * **YouTube**: [BookofJarv - IT & Lifestyle](https://www.youtube.com/@bookofjarv)
 * **Instagram**: [@bookofjarv](https://www.instagram.com/bookofjarv)
-
+* **GitHub Profile**: [bookofjarv](https://github.com/bookofjarv)
+* **GitHub Repository**: [dev.home](https://github.com/bookofjarv/dev.home)
