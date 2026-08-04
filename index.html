@@ -29,9 +29,9 @@
       a:hover { color: #bfe7ff; }
 
       .page {
-        max-width: 1040px;
+        max-width: 1120px;
         margin: 0 auto;
-        padding: 2.2rem 1.2rem 3.5rem;
+        padding: 2.2rem 1.2rem 3.8rem;
       }
 
       header {
@@ -69,9 +69,8 @@
         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
       }
 
-      .hero-card {
-        padding: 1.7rem;
-      }
+      .hero-card { padding: 1.8rem; }
+      .info-card { padding: 1.35rem; }
 
       .eyebrow {
         display: inline-block;
@@ -120,10 +119,6 @@
         color: var(--text);
       }
 
-      .info-card {
-        padding: 1.35rem;
-      }
-
       .info-card h2 {
         margin-top: 0;
         margin-bottom: 0.7rem;
@@ -142,28 +137,56 @@
         color: var(--muted);
       }
 
-      .grid {
+      .section-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1rem;
+        margin-top: 1rem;
       }
 
-      .grid .card {
+      .section-grid .card, .projects-grid .card {
         padding: 1.25rem 1.3rem;
       }
 
-      .grid h3 {
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .project-card {
+        min-height: 180px;
+      }
+
+      .project-card h3 {
         margin-top: 0;
         margin-bottom: 0.4rem;
       }
 
-      .grid p, .grid li {
+      .project-card p, .section-grid p, .section-grid li {
         color: var(--muted);
       }
 
-      ul {
-        padding-left: 1.1rem;
-        margin: 0;
+      ul { padding-left: 1.1rem; margin: 0; }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.8rem;
+        margin-top: 1rem;
+      }
+
+      .stat {
+        background: var(--panel-2);
+        border-radius: 12px;
+        padding: 0.9rem;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.15rem;
+        color: var(--text);
       }
 
       footer {
@@ -172,8 +195,12 @@
         font-size: 0.95rem;
       }
 
+      @media (max-width: 900px) {
+        .projects-grid { grid-template-columns: 1fr 1fr; }
+      }
+
       @media (max-width: 760px) {
-        .hero, .grid { grid-template-columns: 1fr; }
+        .hero, .section-grid, .projects-grid, .stats { grid-template-columns: 1fr; }
       }
     </style>
   </head>
@@ -182,6 +209,8 @@
       <header>
         <div class="brand">BookofJarv</div>
         <nav>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
           <a href="bookofjarv.html">About</a>
           <a href="https://github.com/bookofjarv">GitHub</a>
           <a href="https://www.linkedin.com/in/jarvis-anderson/">LinkedIn</a>
@@ -192,10 +221,10 @@
         <div class="card hero-card">
           <div class="eyebrow">IT professional & cloud-focused builder</div>
           <h1>Technology, operations, and growth — built with purpose.</h1>
-          <p class="lead">I work at the intersection of networking, automation, cloud operations, and thoughtful systems that help people and organizations move forward.</p>
+          <p class="lead">I work at the intersection of networking, automation, cloud operations, and practical systems that help people and organizations move forward.</p>
           <div class="actions">
-            <a class="btn btn-primary" href="bookofjarv.html">Read more</a>
-            <a class="btn btn-secondary" href="https://github.com/bookofjarv">View projects</a>
+            <a class="btn btn-primary" href="#projects">Explore projects</a>
+            <a class="btn btn-secondary" href="bookofjarv.html">Read more</a>
           </div>
         </div>
 
@@ -209,20 +238,52 @@
         </aside>
       </section>
 
-      <div class="grid">
+      <div class="section-grid">
         <section class="card">
           <h3>About the work</h3>
-          <p>I’m building a career around practical technology, strong fundamentals, and the ability to turn ideas into dependable systems.</p>
+          <p>I’m building a career around practical technology, strong fundamentals, and the ability to turn ideas into dependable systems that support long-term growth.</p>
         </section>
         <section class="card">
           <h3>What I focus on</h3>
           <ul>
             <li>Networking and hands-on labs</li>
-            <li>Automation and technical efficiency</li>
+            <li>Automation and operational efficiency</li>
             <li>Cloud readiness and modern infrastructure thinking</li>
           </ul>
         </section>
       </div>
+
+      <div class="stats">
+        <div class="stat"><strong>10+</strong>Years of learning and building</div>
+        <div class="stat"><strong>3</strong>Core focus areas</div>
+        <div class="stat"><strong>100%</strong>Practical, hands-on approach</div>
+      </div>
+
+      <section class="projects-grid" id="projects">
+        <article class="card project-card">
+          <h3>Networking Lab Portfolio</h3>
+          <p>Structured lab work and routing exercises designed to strengthen real-world networking fundamentals.</p>
+        </article>
+        <article class="card project-card">
+          <h3>Automation Toolkit</h3>
+          <p>Scripts and workflow ideas focused on streamlining repetitive tasks and improving reliability.</p>
+        </article>
+        <article class="card project-card">
+          <h3>Cloud Operations Notes</h3>
+          <p>Documentation and concepts centered on cloud readiness, system design, and scalable practices.</p>
+        </article>
+      </section>
+
+      <section class="section-grid" id="experience">
+        <div class="card">
+          <h3>Experience snapshot</h3>
+          <p>Experience across support, technical learning, and building toward roles in infrastructure, automation, and cloud engineering.</p>
+        </div>
+        <div class="card">
+          <h3>Professional direction</h3>
+          <p>Focused on developing practical expertise, clear communication, and long-term value in modern technical environments.</p>
+        </div>
+      </section>
 
       <footer>
         A professional online presence built around clarity, execution, and long-term growth.
