@@ -10,7 +10,7 @@
 ### 🚀 Aspiring Network Engineer & Founder of KodeKouncil
 Documenting the journey from Help Desk to Network Engineer. Building a legacy through technical mastery, faith, and financial independence.
 
-[ https://bookofjarv.github.io/dev.home/]
+🌐 **Live Site**: [bookofjarv.github.io/dev.home](https://bookofjarv.github.io/dev.home/)
 
 ---
 
