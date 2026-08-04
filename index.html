@@ -14,6 +14,7 @@
       --surface:   #161b22;
       --border:    #30363d;
       --accent:    #58a6ff;
+      --github:    #f0f6fc;
       --linkedin:  #0a66c2;
       --youtube:   #ff0000;
       --instagram: #e1306c;
@@ -260,6 +261,19 @@
       box-shadow: 0 8px 28px rgba(225, 48, 108, 0.35);
     }
 
+    /* GitHub */
+    .social-github {
+      background: var(--surface);
+      color: var(--github);
+      border-color: var(--github);
+      box-shadow: 0 4px 16px rgba(240, 246, 252, 0.1);
+    }
+
+    .social-github:hover {
+      background: rgba(240, 246, 252, 0.08);
+      box-shadow: 0 8px 28px rgba(240, 246, 252, 0.25);
+    }
+
     /* ── Footer ─────────────────────────────────────────────────────── */
     footer {
       text-align: center;
@@ -295,6 +309,9 @@
       </a></li>
       <li><a href="https://www.instagram.com/bookofjarv" target="_blank" rel="noopener" title="Instagram" style="color:#e1306c;">
         <i class="fa-brands fa-instagram"></i>
+      </a></li>
+      <li><a href="https://github.com/bookofjarv" target="_blank" rel="noopener" title="GitHub" style="color:#f0f6fc;">
+        <i class="fa-brands fa-github"></i>
       </a></li>
 
       <!-- LinkedIn — highly emphasized button -->
@@ -384,6 +401,13 @@
       <a href="https://www.instagram.com/bookofjarv" target="_blank" rel="noopener" class="social-card social-instagram">
         <i class="fa-brands fa-instagram"></i>
         Instagram
+        <small style="font-weight:400;font-size:0.8rem;opacity:0.75;">@bookofjarv</small>
+      </a>
+
+      <!-- GitHub -->
+      <a href="https://github.com/bookofjarv" target="_blank" rel="noopener" class="social-card social-github">
+        <i class="fa-brands fa-github"></i>
+        GitHub
         <small style="font-weight:400;font-size:0.8rem;opacity:0.75;">@bookofjarv</small>
       </a>
 
