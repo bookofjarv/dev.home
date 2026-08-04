@@ -3,548 +3,486 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BookofJarv | IT Professional & Cloud Engineer</title>
-    <meta name="description" content="BookofJarv is an IT professional and cloud-focused builder sharing mockup projects in networking, beginner tech support, and cloud fundamentals." />
+    <title>Michael Woghiren — IT Professional & Cloud Engineer</title>
+    <meta name="description" content="Portfolio of Michael Woghiren — IT Support, Cloud Engineering, AWS & Google Cloud projects." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
       :root {
-        color-scheme: dark;
-        --bg: #07111f;
-        --panel: #10203a;
-        --panel-2: #132b45;
-        --text: #f3f6ff;
-        --muted: #9eb2d3;
-        --accent: #7dc5ff;
-        --accent-2: #4a8cc3;
+        --white: #ffffff;
+        --off-white: #f5f5f7;
+        --black: #1d1d1f;
+        --grey-mid: #6e6e73;
+        --grey-light: #d2d2d7;
+        --blue: #0071e3;
+        --blue-hover: #0077ed;
+        --glass-bg: rgba(255, 255, 255, 0.72);
+        --glass-border: rgba(0, 0, 0, 0.08);
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+        --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+        --radius: 18px;
+        --radius-sm: 10px;
+        --font-display: 'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        --font-body: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      * { box-sizing: border-box; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
       body {
-        margin: 0;
-        font-family: "Segoe UI", Roboto, Arial, sans-serif;
-        background: linear-gradient(135deg, var(--bg), #0f2036 70%);
-        color: var(--text);
-        line-height: 1.65;
+        font-family: var(--font-body);
+        background: var(--white);
+        color: var(--black);
+        line-height: 1.6;
         overflow-x: hidden;
       }
-
-      body::before {
-        content: "";
+      a { color: var(--blue); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: var(--blue);
+        color: #fff;
+        padding: 8px 16px;
+        z-index: 9999;
+        border-radius: 0 0 8px 0;
+        transition: top 0.2s;
+      }
+      .skip-link:focus { top: 0; }
+      nav {
         position: fixed;
-        inset: 0;
-        background: radial-gradient(circle at top left, rgba(125, 197, 255, 0.08), transparent 35%);
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      a { color: var(--accent); text-decoration: none; }
-      a:hover { color: #bfe7ff; }
-
-      .page {
-        max-width: 1160px;
-        margin: 0 auto;
-        padding: 2.2rem 1.2rem 3.8rem;
-        position: relative;
-        z-index: 1;
-        animation: fadeUp 0.8s ease both;
-      }
-
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(14px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-bottom: 1.7rem;
-      }
-
-      .sticky-nav {
-        position: sticky;
         top: 0;
-        z-index: 5;
-        padding: 0.8rem 1rem;
-        margin-bottom: 1.3rem;
-        backdrop-filter: blur(12px);
-        background: rgba(7, 17, 31, 0.8);
-        border: 1px solid rgba(125, 197, 255, 0.14);
-        border-radius: 999px;
-      }
-
-      .brand {
-        font-size: 0.95rem;
-        font-weight: 700;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--accent);
-      }
-
-      nav { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-      .hero {
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 1rem;
-        margin-bottom: 1rem;
-      }
-
-      .card {
-        background: rgba(16, 32, 58, 0.95);
-        border: 1px solid rgba(125, 197, 255, 0.16);
-        border-radius: 18px;
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
-        transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-      }
-
-      .card:hover {
-        transform: translateY(-4px);
-        border-color: rgba(125, 197, 255, 0.38);
-        box-shadow: 0 20px 42px rgba(0, 0, 0, 0.24);
-      }
-
-      .hero-card {
-        padding: 2rem;
-        min-height: 460px;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: var(--glass-bg);
+        backdrop-filter: saturate(180%) blur(20px);
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        border-bottom: 1px solid var(--glass-border);
+        height: 52px;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
       }
-      .side-card { padding: 1.35rem; }
-
-      .eyebrow {
-        display: inline-block;
-        margin-bottom: 0.9rem;
-        padding: 0.35rem 0.72rem;
-        border-radius: 999px;
-        background: rgba(125, 197, 255, 0.12);
-        color: var(--accent);
-        font-size: 0.78rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-
-      h1 {
-        font-size: clamp(1.9rem, 2.8vw, 2.8rem);
-        margin: 0 0 0.9rem;
-        line-height: 1.05;
-        max-width: 780px;
-      }
-      h2 { font-size: 1.1rem; margin-top: 0; margin-bottom: 0.7rem; }
-      h3 { margin-top: 0; margin-bottom: 0.4rem; }
-
-      .lead {
-        color: var(--muted);
-        font-size: 1.05rem;
-        margin: 0 0 1.2rem;
-        max-width: 700px;
-      }
-
-      .actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-      .btn {
-        display: inline-block;
-        padding: 0.78rem 1rem;
-        border-radius: 999px;
+      .nav-logo {
+        font-family: var(--font-display);
         font-weight: 600;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        font-size: 17px;
+        color: var(--black);
+        letter-spacing: -0.3px;
       }
-
-      .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
-      }
-      .btn-primary { background: var(--accent); color: #04111f; }
-      .btn-secondary { border: 1px solid rgba(125, 197, 255, 0.28); color: var(--text); }
-
-      .pill-list { display: grid; gap: 0.7rem; }
-      .pill {
-        padding: 0.7rem 0.8rem;
-        border-radius: 12px;
-        background: var(--panel-2);
-        color: var(--muted);
-      }
-
-      .section-block {
-        margin-top: 2.2rem;
-      }
-
-      .section-heading {
+      .nav-links {
         display: flex;
-        justify-content: space-between;
-        align-items: end;
-        gap: 1rem;
-        margin-bottom: 0.8rem;
+        gap: 28px;
+        list-style: none;
       }
-
-      .section-heading h2 {
-        margin: 0;
-        font-size: 1.15rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+      .nav-links a {
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--black);
+        opacity: 0.85;
+        transition: opacity var(--transition);
       }
-
-      .section-heading p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 0.95rem;
+      .nav-links a:hover { opacity: 1; text-decoration: none; }
+      main { padding-top: 52px; }
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
       }
-
-      .section-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1rem;
-      }
-
-      .reveal {
-        opacity: 0;
-        transform: translateY(24px);
-        transition: opacity 0.7s ease, transform 0.7s ease;
-      }
-
-      .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .section-grid .card, .projects-grid .card {
-        padding: 1.25rem 1.3rem;
-      }
-
-      .project-carousel {
-        display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: minmax(270px, 1fr);
-        gap: 1rem;
-        overflow-x: auto;
-        padding-bottom: 0.3rem;
-        scroll-snap-type: x proximity;
-      }
-
-      .project-card {
-        min-height: 220px;
+      #hero {
         position: relative;
-        overflow: hidden;
-        cursor: pointer;
+        min-height: 100vh;
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        scroll-snap-align: start;
-        padding: 1.2rem 1.2rem 1.3rem;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 120px 24px 80px;
+        overflow: hidden;
       }
-
-      .project-card::before {
-        content: "";
+      .hero-orb {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -60%);
+        width: 700px;
+        height: 700px;
+        background: radial-gradient(ellipse at center, rgba(0, 113, 227, 0.12) 0%, rgba(100, 180, 255, 0.06) 40%, transparent 70%);
+        border-radius: 50%;
+        animation: pulse 8s ease-in-out infinite alternate;
+        pointer-events: none;
+      }
+      .hero-grid {
         position: absolute;
         inset: 0;
-        background: linear-gradient(135deg, rgba(125, 197, 255, 0.18), transparent 64%);
-        opacity: 0;
-        transition: opacity 0.25s ease;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent 90%);
       }
-
-      .project-card:hover {
-        transform: translateY(-6px) scale(1.01);
+      @keyframes pulse {
+        0% { transform: translate(-50%, -60%) scale(1); opacity: 0.7; }
+        100% { transform: translate(-50%, -60%) scale(1.15); opacity: 1; }
       }
-
-      .project-card:hover::before {
-        opacity: 1;
+      .hero-content {
+        max-width: 760px;
+        position: relative;
+        z-index: 1;
       }
-
-      .project-tag {
-        display: inline-flex;
-        width: fit-content;
-        padding: 0.28rem 0.6rem;
-        border-radius: 999px;
-        background: rgba(125, 197, 255, 0.14);
-        color: var(--accent);
-        font-size: 0.74rem;
-        letter-spacing: 0.1em;
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1.4px;
         text-transform: uppercase;
+        color: var(--blue);
       }
-
-      .project-card p {
-        margin: 0.5rem 0 0;
+      h1, h2, h3, h4 {
+        font-family: var(--font-display);
+        letter-spacing: -0.03em;
       }
-
-      .featured-banner {
-        padding: 1.45rem;
+      h1 {
+        font-size: clamp(2.3rem, 4.5vw, 4.2rem);
+        line-height: 1.05;
+        margin-bottom: 18px;
+      }
+      .hero-copy {
+        font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+        color: var(--grey-mid);
+        margin-bottom: 28px;
+      }
+      .hero-actions {
         display: flex;
-        flex-direction: column;
-        gap: 0.7rem;
-        background: linear-gradient(120deg, rgba(16, 32, 58, 0.98), rgba(36, 68, 99, 0.95));
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
       }
-
-      .featured-banner .eyebrow {
-        margin-bottom: 0;
-      }
-
-      .featured-banner h3 {
-        font-size: 1.25rem;
-        margin: 0;
-      }
-      .project-card p, .section-grid p, .section-grid li { color: var(--muted); }
-      ul { padding-left: 1.1rem; margin: 0; }
-
-      .stats {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.8rem;
-        margin-top: 1rem;
-      }
-
-      .stat {
-        background: var(--panel-2);
-        border-radius: 12px;
-        padding: 0.9rem;
-      }
-
-      .stat strong { display: block; font-size: 1.15rem; color: var(--text); }
-
-      .timeline { display: grid; gap: 0.8rem; margin-top: 1rem; }
-      .timeline-item {
-        padding: 0.9rem 1rem;
-        border-radius: 12px;
-        background: var(--panel-2);
-        color: var(--muted);
-        transition: transform 0.2s ease, background 0.2s ease;
-      }
-
-      .timeline-item:hover {
-        transform: translateX(4px);
-        background: #18324b;
-      }
-
-      .modal {
-        position: fixed;
-        inset: 0;
-        background: rgba(3, 8, 18, 0.82);
-        display: none;
+      .btn {
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 1.2rem;
-        z-index: 20;
+        padding: 12px 20px;
+        border-radius: 999px;
+        font-weight: 500;
+        transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
       }
-
-      .modal.open { display: flex; }
-
-      .modal-card {
-        width: min(760px, 100%);
-        background: #0f2036;
-        border: 1px solid rgba(125, 197, 255, 0.2);
-        border-radius: 20px;
-        padding: 1.4rem;
-        box-shadow: 0 20px 46px rgba(0, 0, 0, 0.28);
+      .btn:hover { transform: translateY(-2px); text-decoration: none; }
+      .btn-primary {
+        background: var(--blue);
+        color: #fff;
+        box-shadow: var(--shadow-sm);
       }
-
-      .modal-close {
-        float: right;
-        border: 0;
-        background: transparent;
-        color: var(--accent);
-        font-size: 1.2rem;
-        cursor: pointer;
+      .btn-primary:hover { background: var(--blue-hover); }
+      .btn-secondary {
+        background: rgba(0, 113, 227, 0.08);
+        color: var(--black);
       }
-
-      footer {
-        margin-top: 2.4rem;
-        padding: 1.4rem;
-        border-radius: 20px;
-        border: 1px solid rgba(125, 197, 255, 0.16);
-        background: rgba(10, 22, 38, 0.92);
+      section { padding: 72px 0; }
+      .section-eyebrow {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        color: var(--blue);
+        margin-bottom: 12px;
       }
-
-      .footer-card {
-        display: flex;
-        justify-content: space-between;
-        align-items: start;
-        gap: 1rem;
-        flex-wrap: wrap;
+      .section-title {
+        font-size: clamp(1.65rem, 2.5vw, 2.1rem);
+        margin-bottom: 10px;
       }
-
-      .footer-card h3 {
-        margin: 0 0 0.35rem;
-        color: var(--text);
+      .section-subtitle {
+        color: var(--grey-mid);
+        max-width: 720px;
+        margin-bottom: 24px;
       }
-
-      .footer-card p {
-        margin: 0;
-        color: var(--muted);
-        max-width: 560px;
+      .divider {
+        width: 80px;
+        height: 2px;
+        background: rgba(0, 0, 0, 0.08);
+        margin-bottom: 28px;
       }
-
-      .contact-links {
-        display: flex;
-        gap: 0.7rem;
-        flex-wrap: wrap;
+      .featured-grid, .work-grid {
+        display: grid;
+        gap: 18px;
       }
-
-      .contact-links a {
+      .featured-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .card {
+        background: var(--off-white);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        border-radius: var(--radius);
+        padding: 24px;
+        box-shadow: var(--shadow-sm);
+        transition: transform var(--transition), box-shadow var(--transition);
+      }
+      .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+      .card-icon {
         display: inline-flex;
         align-items: center;
-        padding: 0.6rem 0.8rem;
+        justify-content: center;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: rgba(0, 113, 227, 0.1);
+        font-size: 20px;
+        margin-bottom: 16px;
+      }
+      .card-tag {
+        display: inline-block;
+        color: var(--blue);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1.3px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .card h3 { font-size: 1.15rem; margin-bottom: 10px; }
+      .card p, .card li { color: var(--grey-mid); }
+      .card-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 16px 0;
+      }
+      .tech-pill {
+        padding: 6px 10px;
         border-radius: 999px;
-        background: rgba(125, 197, 255, 0.1);
-        color: var(--text);
-        border: 1px solid rgba(125, 197, 255, 0.16);
+        background: rgba(0, 0, 0, 0.05);
+        color: var(--grey-mid);
+        font-size: 12px;
       }
-
-      .contact-links a:hover {
-        color: var(--accent);
-        border-color: rgba(125, 197, 255, 0.35);
+      .card-link {
+        font-weight: 600;
+        color: var(--blue);
       }
-
-      @media (max-width: 960px) { .project-carousel { grid-auto-columns: minmax(240px, 80%); } }
-      @media (max-width: 760px) { .hero, .section-grid, .stats { grid-template-columns: 1fr; } .section-heading { align-items: start; flex-direction: column; } }
+      #contact {
+        background: var(--black);
+        padding: 96px 24px;
+      }
+      #contact .section-eyebrow { color: rgba(255, 255, 255, 0.4); }
+      #contact .section-title { color: var(--white); }
+      #contact .section-subtitle { color: rgba(255, 255, 255, 0.5); }
+      #contact .divider { background: rgba(255, 255, 255, 0.1); }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+        max-width: 820px;
+        margin: 0 auto;
+      }
+      .contact-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm);
+        padding: 28px 24px;
+        text-align: center;
+        transition: background var(--transition), transform var(--transition);
+      }
+      .contact-card:hover { background: rgba(255, 255, 255, 0.09); transform: translateY(-3px); }
+      .contact-card .icon { font-size: 28px; margin-bottom: 12px; }
+      .contact-card h4 {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 8px;
+      }
+      .contact-card a, .contact-card p {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.85);
+        font-weight: 400;
+        word-break: break-all;
+      }
+      .contact-card a:hover { color: #fff; text-decoration: none; }
+      footer {
+        background: var(--black);
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        padding: 40px 24px;
+        text-align: center;
+      }
+      .github-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 980px;
+        padding: 14px 28px;
+        color: var(--white);
+        font-size: 15px;
+        font-weight: 500;
+        transition: background var(--transition), transform var(--transition);
+        margin-bottom: 28px;
+      }
+      .github-cta:hover {
+        background: rgba(255, 255, 255, 0.12);
+        transform: translateY(-2px);
+        text-decoration: none;
+        color: var(--white);
+      }
+      .github-icon { width: 18px; height: 18px; fill: currentColor; }
+      .footer-copy { color: rgba(255, 255, 255, 0.55); font-size: 14px; }
+      .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+      .reveal.visible { opacity: 1; transform: translateY(0); }
+      @media (max-width: 900px) {
+        .featured-grid { grid-template-columns: 1fr; }
+        .work-grid { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 640px) {
+        .nav-links { gap: 14px; }
+        .nav-links a { font-size: 12px; }
+        .hero-actions { flex-direction: column; }
+      }
     </style>
   </head>
   <body>
-    <div class="page">
-      <header class="sticky-nav">
-        <div class="brand">BookofJarv</div>
-        <nav>
-          <a href="#projects">Projects</a>
-          <a href="#experience">Experience</a>
-          <a href="#skills">Skills</a>
-          <a href="bookofjarv.html">About</a>
-          <a href="https://github.com/bookofjarv">GitHub</a>
-          <a href="https://www.linkedin.com/in/jarvis-anderson/">LinkedIn</a>
-        </nav>
-      </header>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <nav role="navigation" aria-label="Main navigation">
+      <span class="nav-logo">MW</span>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="#featured">Projects</a></li>
+        <li><a href="#all-projects">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
 
-      <section class="hero reveal">
-        <div class="card hero-card">
-          <div class="eyebrow">IT professional • Network learner • Cloud explorer</div>
-          <h1>Hi, I’m Jarvis Anderson — a hands-on learner building toward a future in networking, IT support, and cloud technology.</h1>
-          <p class="lead">I’m focused on practical experience in IT support, network basics, beginner-friendly projects, and cloud concepts that help turn learning into real-world value. This portfolio reflects the way I think, build, and grow.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="#projects">View mockup projects</a>
-            <a class="btn btn-secondary" href="bookofjarv.html">About me</a>
+    <main id="content">
+      <section id="hero">
+        <div class="hero-orb" aria-hidden="true"></div>
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-content reveal">
+          <span class="eyebrow">IT Professional • Cloud Engineer • Problem Solver</span>
+          <h1>Building practical cloud and IT solutions with a strong focus on security, reliability, and growth.</h1>
+          <p class="hero-copy">I work at the intersection of networking, support, and cloud fundamentals, turning real-world learning into thoughtful project work and dependable systems thinking.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#featured">View Projects</a>
+            <a class="btn btn-secondary" href="#contact">Contact Me</a>
           </div>
-        </div>
-
-        <aside class="card side-card">
-          <h2>Core focus</h2>
-          <div class="pill-list">
-            <div class="pill">Networking fundamentals</div>
-            <div class="pill">IT beginner projects</div>
-            <div class="pill">Cloud learning & documentation</div>
-          </div>
-        </aside>
-      </section>
-
-      <div class="section-grid reveal">
-        <section class="card" id="work">
-          <h3>My work</h3>
-          <p>I create mockup-style projects that reflect how I learn, build, and communicate technical ideas through networking, cloud, and support-focused work.</p>
-        </section>
-        <section class="card" id="skills">
-          <h3>Skills</h3>
-          <ul>
-            <li>Network basics, routing, switching, and troubleshooting</li>
-            <li>Beginner IT support workflows and documentation</li>
-            <li>Cloud concepts including Azure, security, and fundamentals</li>
-          </ul>
-        </section>
-      </div>
-
-      <div class="stats reveal">
-        <div class="stat"><strong>3</strong>Focus areas</div>
-        <div class="stat"><strong>10+</strong>Mockup project ideas</div>
-        <div class="stat"><strong>100%</strong>Hands-on learning style</div>
-      </div>
-
-      <section class="section-block reveal">
-        <div class="card featured-banner">
-          <div class="eyebrow">Featured project</div>
-          <h3>Azure Basics Lab</h3>
-          <p>A structured starter project for exploring virtual machines, resource groups, cloud networking, and beginner-friendly cloud fundamentals.</p>
         </div>
       </section>
 
-      <section class="section-block reveal" id="projects">
-        <div class="section-heading">
-          <h2>Project highlights</h2>
-          <p>Swipe through a curated set of mockup projects and learning builds.</p>
-        </div>
-        <div class="project-carousel">
-          <article class="card project-card" data-title="Home Lab Setup" data-description="A mockup project showing a beginner-friendly home lab for routing, switching, and troubleshooting practice." data-details="Includes network diagrams, device planning, and foundational setup ideas for early IT learners.">
-            <span class="project-tag">Networking</span>
-            <h3>Home Lab Setup</h3>
-            <p>Mockup project showing a beginner-friendly home lab for routing, switching, and basic troubleshooting.</p>
-          </article>
-          <article class="card project-card" data-title="Help Desk Workflow" data-description="A mockup project for ticket handling, SOPs, and support documentation for IT beginners." data-details="Focuses on clear documentation, triage flow, and operational consistency for new support roles.">
-            <span class="project-tag">Support</span>
-            <h3>Help Desk Workflow</h3>
-            <p>Mockup project for ticket handling, basic SOPs, and support documentation for IT beginners.</p>
-          </article>
-          <article class="card project-card" data-title="Azure Basics Lab" data-description="A mockup project highlighting VM setup, resource groups, networking, and foundational cloud concepts." data-details="Designed to introduce cloud services in a structured, learner-friendly format.">
-            <span class="project-tag">Cloud</span>
-            <h3>Azure Basics Lab</h3>
-            <p>Mockup project highlighting VM setup, resource groups, networking, and foundational cloud concepts.</p>
-          </article>
-          <article class="card project-card" data-title="Packet Tracer Practice" data-description="A mockup project covering VLANs, ACLs, and simple network design through lab exercises." data-details="Useful for demonstrating early networking concepts and practical configuration exercises.">
-            <span class="project-tag">Labs</span>
-            <h3>Packet Tracer Practice</h3>
-            <p>Mockup project covering VLANs, ACLs, and simple network design through lab exercises.</p>
-          </article>
-          <article class="card project-card" data-title="Cloud Security Notes" data-description="A mockup project for identity, access control, and secure cloud setup concepts." data-details="Highlights key security principles for beginners learning how cloud systems should be protected.">
-            <span class="project-tag">Security</span>
-            <h3>Cloud Security Notes</h3>
-            <p>Mockup project for identity, access control, and secure cloud setup concepts.</p>
-          </article>
-          <article class="card project-card" data-title="Beginner DevOps Starter" data-description="A mockup project focused on GitHub, automations, and simple deployment concepts for early learners." data-details="Shows how basic automation and DevOps practices can support a growing IT portfolio.">
-            <span class="project-tag">Automation</span>
-            <h3>Beginner DevOps Starter</h3>
-            <p>Mockup project focused on GitHub, automations, and simple deployment concepts for early learners.</p>
-          </article>
+      <section id="featured" aria-labelledby="featured-heading">
+        <div class="container">
+          <span class="section-eyebrow">Featured Work</span>
+          <h2 class="section-title" id="featured-heading">Best Projects</h2>
+          <p class="section-subtitle">Three projects that reflect my hands-on approach to cloud, support workflows, and secure technical learning.</p>
+          <div class="divider" aria-hidden="true"></div>
+          <div class="featured-grid">
+            <article class="card reveal" aria-label="Project: Cloud Fundamentals Lab">
+              <div class="card-icon" aria-hidden="true">☁</div>
+              <span class="card-tag">Cloud · Infrastructure</span>
+              <h3>Cloud Fundamentals Lab</h3>
+              <p>Designed a practical cloud learning lab around virtual machines, networking, and foundational service setup with a strong focus on clarity and repeatability.</p>
+              <div class="card-tech">
+                <span class="tech-pill">Azure</span>
+                <span class="tech-pill">Networking</span>
+                <span class="tech-pill">VMs</span>
+              </div>
+              <a class="card-link" href="https://github.com/bookofjarv">View on GitHub</a>
+            </article>
+
+            <article class="card reveal" aria-label="Project: Support Workflow Design">
+              <div class="card-icon" aria-hidden="true">🔒</div>
+              <span class="card-tag">IT · Support</span>
+              <h3>Support Workflow Design</h3>
+              <p>Built a documentation-first support workflow model emphasizing ticket handling, clear triage steps, and practical operating procedures for beginner-friendly IT environments.</p>
+              <div class="card-tech">
+                <span class="tech-pill">IT Support</span>
+                <span class="tech-pill">SOPs</span>
+                <span class="tech-pill">Documentation</span>
+              </div>
+              <a class="card-link" href="https://github.com/bookofjarv">View on GitHub</a>
+            </article>
+
+            <article class="card reveal" aria-label="Project: Security and Governance Notes">
+              <div class="card-icon" aria-hidden="true">🧠</div>
+              <span class="card-tag">Security · Learning</span>
+              <h3>Security & Governance Notes</h3>
+              <p>Created structured notes and practice concepts around identity, access control, and foundational governance principles for cloud-minded teams.</p>
+              <div class="card-tech">
+                <span class="tech-pill">IAM</span>
+                <span class="tech-pill">Security</span>
+                <span class="tech-pill">Governance</span>
+              </div>
+              <a class="card-link" href="https://github.com/bookofjarv">View on GitHub</a>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section class="section-grid reveal section-block" id="experience">
-        <div class="card">
-          <h3>Experience snapshot</h3>
-          <p>My path is rooted in learning by doing — building practical examples in networking, IT support, and cloud fundamentals to demonstrate growth and readiness.</p>
-        </div>
-        <div class="card">
-          <h3>Professional direction</h3>
-          <p>I’m shaping my portfolio around the kind of work that shows both technical curiosity and a strong foundation for future growth in IT and cloud.</p>
+      <section id="all-projects" aria-labelledby="work-heading">
+        <div class="container">
+          <span class="section-eyebrow">Selected Work</span>
+          <h2 class="section-title" id="work-heading">All Projects</h2>
+          <p class="section-subtitle">A broader look at the kind of portfolio work I’m building around networking, cloud, and support-driven learning.</p>
+          <div class="divider" aria-hidden="true"></div>
+          <div class="work-grid">
+            <article class="card reveal">
+              <h3>Home Lab Setup</h3>
+              <p>Mockup project focused on network design, device planning, and beginner-friendly troubleshooting.</p>
+            </article>
+            <article class="card reveal">
+              <h3>Packet Tracer Practice</h3>
+              <p>Hands-on network exercises covering VLANs, ACLs, and configuration fundamentals.</p>
+            </article>
+            <article class="card reveal">
+              <h3>Azure Basics Lab</h3>
+              <p>Cloud learning project exploring resource groups, virtual machines, and essential concepts.</p>
+            </article>
+            <article class="card reveal">
+              <h3>Cloud Security Notes</h3>
+              <p>Structured notes for access control, protection basics, and secure cloud habits.</p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <div class="timeline reveal section-block">
-        <div class="timeline-item">Networking foundations and beginner labs</div>
-        <div class="timeline-item">IT support workflow and documentation practice</div>
-        <div class="timeline-item">Cloud fundamentals and mockup project development</div>
-      </div>
-
-      <div class="modal" id="projectModal" aria-hidden="true">
-        <div class="modal-card">
-          <button class="modal-close" id="closeModal" aria-label="Close">×</button>
-          <h3 id="modalTitle">Project</h3>
-          <p id="modalDescription"></p>
-          <p id="modalDetails"></p>
-        </div>
-      </div>
-
-      <footer class="reveal">
-        <div class="footer-card">
-          <div>
-            <h3>Let’s connect</h3>
-            <p>A professional online presence built around clarity, execution, and steady growth.</p>
+      <section id="contact" aria-labelledby="contact-heading">
+        <div class="container">
+          <span class="section-eyebrow">Get in Touch</span>
+          <h2 class="section-title" id="contact-heading">Contact</h2>
+          <p class="section-subtitle" style="color:rgba(255,255,255,0.5)">Open to opportunities, collaboration, and conversations about cloud, IT, and security.</p>
+          <div class="divider" aria-hidden="true"></div>
+          <div class="contact-grid">
+            <div class="contact-card reveal">
+              <div class="icon" aria-hidden="true">📧</div>
+              <h4>Email</h4>
+              <a href="mailto:mwoghiren2213@gmail.com" aria-label="Send email to mwoghiren2213@gmail.com">mwoghiren2213@gmail.com</a>
+            </div>
+            <div class="contact-card reveal">
+              <div class="icon" aria-hidden="true">📱</div>
+              <h4>Phone</h4>
+              <a href="tel:+17088977182" aria-label="Call (708) 897-7182">(708) 897-7182</a>
+            </div>
+            <div class="contact-card reveal">
+              <div class="icon" aria-hidden="true">🎓</div>
+              <h4>Education</h4>
+              <p>Governors State University<br><small style="color:rgba(255,255,255,0.4)">B.S. IT · Expected 2027</small></p>
+            </div>
+            <div class="contact-card reveal">
+              <div class="icon" aria-hidden="true">📍</div>
+              <h4>Location</h4>
+              <p>Chicago, IL area</p>
+            </div>
           </div>
-          <div class="contact-links">
-            <a href="https://github.com/bookofjarv" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="https://www.linkedin.com/in/jarvis-anderson/" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="mailto:jarvis@example.com">Email</a>
-          </div>
         </div>
-      </footer>
-    </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="github-cta" href="https://github.com/Acecloudwatcher" target="_blank" rel="noopener noreferrer" aria-label="Visit Michael's GitHub profile (opens in new tab)">
+        <svg class="github-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+        </svg>
+        View my GitHub — Acecloudwatcher
+      </a>
+      <p class="footer-copy">© 2026 Michael Woghiren · Built with HTML, CSS &amp; JS · Hosted as a static site</p>
+    </footer>
+
     <script>
       const revealItems = document.querySelectorAll('.reveal');
       const observer = new IntersectionObserver((entries) => {
@@ -554,35 +492,7 @@
           }
         });
       }, { threshold: 0.16 });
-
       revealItems.forEach((item) => observer.observe(item));
-
-      const modal = document.getElementById('projectModal');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalDescription = document.getElementById('modalDescription');
-      const modalDetails = document.getElementById('modalDetails');
-      const closeModal = document.getElementById('closeModal');
-      const cards = document.querySelectorAll('.project-card');
-
-      cards.forEach((card) => {
-        card.addEventListener('click', () => {
-          modalTitle.textContent = card.dataset.title;
-          modalDescription.textContent = card.dataset.description;
-          modalDetails.textContent = card.dataset.details;
-          modal.classList.add('open');
-          modal.setAttribute('aria-hidden', 'false');
-        });
-      });
-
-      const close = () => {
-        modal.classList.remove('open');
-        modal.setAttribute('aria-hidden', 'true');
-      };
-
-      closeModal.addEventListener('click', close);
-      modal.addEventListener('click', (event) => {
-        if (event.target === modal) close();
-      });
     </script>
   </body>
 </html>
