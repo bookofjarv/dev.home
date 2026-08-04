@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookofJarv | Jarvis Anderson</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* ── Reset & Base ───────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d1117;
+      --surface:   #161b22;
+      --border:    #30363d;
+      --accent:    #58a6ff;
+      --linkedin:  #0a66c2;
+      --youtube:   #ff0000;
+      --instagram: #e1306c;
+      --text:      #e6edf3;
+      --muted:     #8b949e;
+      --radius:    10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Navigation ─────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 64px;
+      background: rgba(13, 17, 23, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      list-style: none;
+    }
+
+    /* Regular nav links */
+    .nav-links a {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: var(--surface);
+    }
+
+    /* ── LinkedIn nav button — highly emphasized ─────────────────────── */
+    .nav-linkedin {
+      display: flex !important;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 1.1rem !important;
+      background: var(--linkedin) !important;
+      color: #fff !important;
+      border-radius: var(--radius) !important;
+      font-weight: 600;
+      font-size: 0.95rem !important;
+      box-shadow: 0 0 16px rgba(10, 102, 194, 0.55);
+      transition: background 0.2s, box-shadow 0.2s, transform 0.15s !important;
+      border: 2px solid rgba(255,255,255,0.15);
+    }
+
+    .nav-linkedin:hover {
+      background: #0958a8 !important;
+      box-shadow: 0 0 26px rgba(10, 102, 194, 0.85) !important;
+      transform: translateY(-1px);
+    }
+
+    .nav-linkedin i { font-size: 1.1rem; }
+
+    /* ── Hero ───────────────────────────────────────────────────────── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 5rem 1.5rem 4rem;
+      gap: 1.5rem;
+    }
+
+    .hero img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 30px rgba(88, 166, 255, 0.25);
+    }
+
+    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { max-width: 560px; color: var(--muted); font-size: 1.05rem; }
+
+    /* ── Section base ───────────────────────────────────────────────── */
+    section { padding: 4rem 1.5rem; max-width: 900px; margin: 0 auto; }
+    section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ── Skills table ───────────────────────────────────────────────── */
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 0.75rem 1rem; text-align: left; border: 1px solid var(--border); }
+    thead th { background: var(--surface); color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    tbody tr:hover { background: var(--surface); }
+
+    /* ── Card grid ──────────────────────────────────────────────────── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(88, 166, 255, 0.1);
+    }
+
+    .card h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--accent); }
+    .card p { font-size: 0.9rem; color: var(--muted); }
+
+    /* ── Contact / Social section ───────────────────────────────────── */
+    #contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 2rem;
+      padding-top: 4rem;
+      padding-bottom: 5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    #contact h2 {
+      justify-content: center;
+      border-bottom: 2px solid var(--border);
+      width: 100%;
+      padding-bottom: 0.5rem;
+    }
+
+    #contact p { color: var(--muted); max-width: 500px; }
+
+    /* Social icon cards */
+    .social-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+
+    .social-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.75rem 2rem;
+      border-radius: var(--radius);
+      border: 2px solid transparent;
+      min-width: 150px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .social-card i {
+      font-size: 2.5rem;
+      transition: transform 0.2s;
+    }
+
+    .social-card:hover { transform: translateY(-4px); }
+    .social-card:hover i { transform: scale(1.1); }
+
+    /* LinkedIn — primary emphasis */
+    .social-linkedin {
+      background: linear-gradient(135deg, #0a66c2 0%, #0958a8 100%);
+      color: #fff;
+      border-color: rgba(255,255,255,0.2);
+      box-shadow: 0 4px 24px rgba(10, 102, 194, 0.5);
+    }
+
+    .social-linkedin:hover {
+      box-shadow: 0 8px 36px rgba(10, 102, 194, 0.75);
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    /* YouTube */
+    .social-youtube {
+      background: var(--surface);
+      color: var(--youtube);
+      border-color: var(--youtube);
+      box-shadow: 0 4px 16px rgba(255, 0, 0, 0.15);
+    }
+
+    .social-youtube:hover {
+      background: rgba(255, 0, 0, 0.1);
+      box-shadow: 0 8px 28px rgba(255, 0, 0, 0.35);
+    }
+
+    /* Instagram */
+    .social-instagram {
+      background: var(--surface);
+      color: var(--instagram);
+      border-color: var(--instagram);
+      box-shadow: 0 4px 16px rgba(225, 48, 108, 0.15);
+    }
+
+    .social-instagram:hover {
+      background: rgba(225, 48, 108, 0.1);
+      box-shadow: 0 8px 28px rgba(225, 48, 108, 0.35);
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Responsive ─────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .nav-links .hide-mobile { display: none; }
+      nav { padding: 0 1rem; }
+      .social-card { min-width: 120px; padding: 1.25rem 1.5rem; }
+      .social-card i { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────────── -->
+  <nav>
+    <span class="nav-brand">📘 BookofJarv</span>
+    <ul class="nav-links">
+      <li class="hide-mobile"><a href="#about"><i class="fa-solid fa-user"></i> About</a></li>
+      <li class="hide-mobile"><a href="#skills"><i class="fa-solid fa-code"></i> Skills</a></li>
+      <li class="hide-mobile"><a href="#services"><i class="fa-solid fa-briefcase"></i> Services</a></li>
+      <li class="hide-mobile"><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+
+      <!-- Social icons in nav -->
+      <li><a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" title="YouTube" style="color:#ff0000;">
+        <i class="fa-brands fa-youtube"></i>
+      </a></li>
+      <li><a href="https://www.instagram.com/bookofjarv" target="_blank" rel="noopener" title="Instagram" style="color:#e1306c;">
+        <i class="fa-brands fa-instagram"></i>
+      </a></li>
+
+      <!-- LinkedIn — highly emphasized button -->
+      <li>
+        <a href="https://www.linkedin.com/in/jarvis-anderson/" target="_blank" rel="noopener" class="nav-linkedin">
+          <i class="fa-brands fa-linkedin"></i> LinkedIn
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ───────────────────────────────────────────────────── -->
+  <div class="hero" id="about">
+    <img
+      src="https://github.com/user-attachments/assets/8a58008e-5388-4cf5-9c1e-bcf1af5212a9"
+      alt="Jarvis Anderson"
+    />
+    <h1>Hello, I'm <span>Jarvis Anderson</span></h1>
+    <p>🚀 Aspiring Network Engineer &amp; Founder of KodeKouncil — Documenting the journey from Help Desk to Network Engineer. Building a legacy through technical mastery, faith, and financial independence.</p>
+  </div>
+
+  <!-- ── Skills ─────────────────────────────────────────────────── -->
+  <section id="skills">
+    <h2><i class="fa-solid fa-microchip"></i> Technical Stack &amp; Focus</h2>
+    <table>
+      <thead>
+        <tr><th>Category</th><th>Tools &amp; Skills</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Networking</strong></td><td>CCNA &amp; Network+ (In-Progress), Cisco IOS, Packet Tracer, Routing &amp; Switching</td></tr>
+        <tr><td><strong>Automation</strong></td><td>Python, PowerShell, Zapier, ChatGPT Prompt Engineering</td></tr>
+        <tr><td><strong>Cloud &amp; Ops</strong></td><td>AWS &amp; Google Cloud Foundations, Microsoft Azure, Google Workspace Admin</td></tr>
+        <tr><td><strong>Management</strong></td><td>Technical Documentation, SOP Architecture, Project Management (Asana/Monday)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── Services ───────────────────────────────────────────────── -->
+  <section id="services">
+    <h2><i class="fa-solid fa-building"></i> KodeKouncil — Services Offered</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>📧 Email &amp; Calendar Management</h3>
+        <p>Inbox organization and meeting management to keep executives focused.</p>
+      </div>
+      <div class="card">
+        <h3>📝 Documentation Architecture</h3>
+        <p>GitHub README overhauls, internal Wikis, and technical SOPs.</p>
+      </div>
+      <div class="card">
+        <h3>⚙️ Process Automation</h3>
+        <p>Linking marketing to operations via Zapier, Python, and system architecture tools.</p>
+      </div>
+      <div class="card">
+        <h3>🎨 Brand Engineering</h3>
+        <p>High-tier technical portfolios, digital marketing, and web design/development.</p>
+      </div>
+      <div class="card">
+        <h3>🗂️ Executive Management</h3>
+        <p>File organization, expense tracking, backup recovery, and password architecture.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ─────────────────────────────────────────────────── -->
+  <section id="contact">
+    <h2><i class="fa-solid fa-satellite-dish"></i> Connect with the Journey</h2>
+    <p>Follow along as I document the road from Help Desk to Network Engineer. Let's connect on your preferred platform.</p>
+
+    <div class="social-grid">
+
+      <!-- LinkedIn — primary / most emphasized -->
+      <a href="https://www.linkedin.com/in/jarvis-anderson/" target="_blank" rel="noopener" class="social-card social-linkedin">
+        <i class="fa-brands fa-linkedin"></i>
+        LinkedIn
+        <small style="font-weight:400;font-size:0.8rem;opacity:0.85;">Jarvis Anderson</small>
+      </a>
+
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" class="social-card social-youtube">
+        <i class="fa-brands fa-youtube"></i>
+        YouTube
+        <small style="font-weight:400;font-size:0.8rem;opacity:0.75;">@bookofjarv</small>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/bookofjarv" target="_blank" rel="noopener" class="social-card social-instagram">
+        <i class="fa-brands fa-instagram"></i>
+        Instagram
+        <small style="font-weight:400;font-size:0.8rem;opacity:0.75;">@bookofjarv</small>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────────── -->
+  <footer>
+    <p>© 2026 Jarvis Anderson · BookofJarv · Built with ❤️ &amp; determination</p>
+  </footer>
+
+</body>
+</html>
