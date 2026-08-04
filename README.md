@@ -8,9 +8,9 @@
  
 
 ### 🚀 Aspiring Network Engineer & Founder of KodeKouncil
-Documenting the journey from Help Desk to Cloud Architect. Building a legacy through technical mastery, faith, and financial independence.
+Documenting the journey from Help Desk to Network Engineer. Building a legacy through technical mastery, faith, and financial independence.
 
-[bookofjarvwebsite] https://bookofjarv.github.io/bookofjarv/
+[ https://bookofjarv.github.io/bookofjarv/ ]
 
 ---
 
@@ -34,22 +34,13 @@ Documenting the journey from Help Desk to Cloud Architect. Building a legacy thr
 * **Brand Engineering**: High-tier technical portfolios, digital marketing, and web design/development.
 * **Executive Management**: File organization, expense tracking, backup recovery, and password architecture.
 
-👉 **[Book a Technical Discovery Call with KodeKouncil](https://your-tidycal-link.com)**
 
 ---
 
 ## 🧪 Featured "Proof of Work"
 * **[Live Portfolio](https://bookofjarv.github.io/theandersonportfolio2026/)**: Central hub for projects, lifestyle vlogs, and services.
 * **[CCNA Networking Labs](https://github.com/bookofjarv/Networking-Labs)**: Time-lapse POV labs, documentation, and Packet Tracer topologies.
-* **[Python Automation Scripts](https://github.com/bookofjarv/Automation-Scripts)**: Custom scripts designed to eliminate repetitive administrative tasks.
-  
 
----
-
-## 📈 My 2026-2030 Roadmap
-- [x] **Phase 1 (Current)**: Secure CCNA/Network+ & scale KodeKouncil to 5 long-term clients.
-- [ ] **Phase 2 (18-30 Months)**: Pivot agency to Cloud Migration Readiness (AWS Certified Solutions Architect).
-- [ ] **Phase 3 (30-48+ Months)**: Achieve Multi-Cloud Architect status & CISSP mastery.
 
 ---
 
@@ -57,4 +48,4 @@ Documenting the journey from Help Desk to Cloud Architect. Building a legacy thr
 * **LinkedIn**: [Jarvis Anderson](https://www.linkedin.com/in/jarvis-anderson/)
 * **YouTube**: [BookofJarv - IT & Lifestyle](https://www.youtube.com/@bookofjarv)
 * **Instagram**: [@bookofjarv](https://www.instagram.com/bookofjarv)
-* **Agency Repo**: [theandersonportfolio2026](https://github.com/bookofjarv/theandersonportfolio2026)
+
