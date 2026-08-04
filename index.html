@@ -17,6 +17,7 @@
         --grey-light: #d2d2d7;
         --accent: #7c5cff;
         --accent-strong: #2dd4bf;
+        --accent-contrast: #ff8a5b;
         --glass-bg: rgba(10, 10, 10, 0.78);
         --glass-border: rgba(255, 255, 255, 0.12);
         --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.18), 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -32,7 +33,7 @@
       html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
       body {
         font-family: var(--font-body);
-        background: radial-gradient(circle at top left, rgba(124, 92, 255, 0.2), transparent 28%), linear-gradient(135deg, var(--black), #13131c 70%);
+        background: radial-gradient(circle at top left, rgba(124, 92, 255, 0.2), transparent 26%), radial-gradient(circle at 85% 12%, rgba(45, 212, 191, 0.16), transparent 24%), linear-gradient(135deg, #05060a, #121521 72%);
         color: var(--white);
         line-height: 1.6;
         overflow-x: hidden;
@@ -91,9 +92,14 @@
       .nav-logo {
         font-family: var(--font-display);
         font-weight: 600;
-        font-size: 17px;
+        font-size: 13px;
         color: var(--white);
-        letter-spacing: -0.3px;
+        letter-spacing: 0.16em;
+        text-transform: lowercase;
+        padding: 7px 10px;
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.04);
       }
       .nav-links {
         display: flex;
@@ -153,7 +159,7 @@
         transform: translate(-50%, -60%);
         width: 700px;
         height: 700px;
-        background: radial-gradient(ellipse at center, rgba(124, 92, 255, 0.16) 0%, rgba(45, 212, 191, 0.08) 40%, transparent 70%);
+        background: radial-gradient(ellipse at center, rgba(124, 92, 255, 0.22) 0%, rgba(255, 138, 91, 0.12) 38%, transparent 72%);
         border-radius: 50%;
         animation: pulse 8s ease-in-out infinite alternate;
         pointer-events: none;
@@ -231,15 +237,15 @@
       }
       .btn:hover { transform: translateY(-2px); text-decoration: none; }
       .btn-primary {
-        background: var(--accent);
-        color: var(--black);
+        background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+        color: #061118;
         box-shadow: var(--shadow-sm);
       }
-      .btn-primary:hover { background: var(--accent-strong); }
+      .btn-primary:hover { filter: brightness(1.06); }
       .btn-secondary {
-        background: rgba(0, 180, 216, 0.12);
+        background: rgba(255, 138, 91, 0.12);
         color: var(--white);
-        border: 1px solid rgba(0, 180, 216, 0.22);
+        border: 1px solid rgba(255, 138, 91, 0.24);
       }
       section { padding: 72px 0; }
       .section-eyebrow {
@@ -273,14 +279,23 @@
       .featured-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .card {
-        background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-        border: 1px solid rgba(255,255,255,0.08);
+        background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
+        border: 1px solid rgba(255,255,255,0.1);
         border-radius: var(--radius);
         padding: 24px;
         box-shadow: var(--shadow-sm);
+        position: relative;
+        overflow: hidden;
         transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
       }
-      .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(0, 180, 216, 0.32); }
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(124, 92, 255, 0.08), transparent 55%, rgba(45, 212, 191, 0.08));
+        pointer-events: none;
+      }
+      .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(124, 92, 255, 0.4); }
       .card-icon {
         display: inline-flex;
         align-items: center;
@@ -453,7 +468,7 @@
   <body>
     <a class="skip-link" href="#content">Skip to content</a>
     <nav role="navigation" aria-label="Main navigation">
-      <span class="nav-logo">JA</span>
+      <span class="nav-logo">bookofjarv</span>
       <div style="display:flex;align-items:center;">
         <ul class="nav-links" id="nav-links" role="list">
           <li><a href="#featured">Projects</a></li>
@@ -477,9 +492,9 @@
         <div class="hero-orb" aria-hidden="true"></div>
         <div class="hero-grid" aria-hidden="true"></div>
         <div class="hero-content reveal">
-          <span class="eyebrow">IT Professional • Cloud Engineer • Problem Solver</span>
-          <h1>Jarvis Anderson builds practical systems, cloud workflows, and dependable digital experiences.</h1>
-          <p class="hero-copy">I’m a hands-on technologist focused on support, cloud fundamentals, automation, and thoughtful execution — turning complex ideas into clear, resilient solutions.</p>
+          <span class="eyebrow">bookofjarv • systems • cloud • digital operations</span>
+          <h1>Jarvis Anderson designs resilient systems, cloud workflows, and standout digital experiences.</h1>
+          <p class="hero-copy">I blend hands-on IT support, cloud thinking, and calm execution to build practical tools and reliable systems that work in the real world.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#featured">View Projects</a>
             <a class="btn btn-secondary" href="#contact">Contact Me</a>
@@ -597,13 +612,13 @@
           <div class="contact-grid">
             <div class="contact-card reveal">
               <div class="icon" aria-hidden="true">📧</div>
-              <h4>Contact</h4>
-              <a href="#contact" aria-label="Contact Jarvis Anderson">Reach out to Jarvis Anderson</a>
+              <h4>Email</h4>
+              <a href="mailto:jarvisanderson76@gmail.com" aria-label="Email Jarvis Anderson">jarvisanderson76@gmail.com</a>
             </div>
             <div class="contact-card reveal">
               <div class="icon" aria-hidden="true">📱</div>
               <h4>Phone</h4>
-              <a href="tel:+17088977182" aria-label="Call (708) 897-7182">(708) 897-7182</a>
+              <a href="tel:+18156718166" aria-label="Call 815-671-8166">(815) 671-8166</a>
             </div>
             <div class="contact-card reveal">
               <div class="icon" aria-hidden="true">🎓</div>
@@ -639,7 +654,7 @@
         <a class="social-link" href="#contact" aria-label="Contact Jarvis Anderson">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.2-8 5.6-8-5.6V6.6l8 5.6 8-5.6Z"/></svg>
         </a>
-        <a class="social-link" href="mailto:jarvis.anderson@example.com" aria-label="Email">
+        <a class="social-link" href="mailto:jarvisanderson76@gmail.com" aria-label="Email">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.2-8 5.6-8-5.6V6.6l8 5.6 8-5.6Z"/></svg>
         </a>
       </div>
