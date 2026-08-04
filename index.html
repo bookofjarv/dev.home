@@ -170,11 +170,35 @@
         color: var(--muted);
       }
 
+      .section-block {
+        margin-top: 2.2rem;
+      }
+
+      .section-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 1rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .section-heading h2 {
+        margin: 0;
+        font-size: 1.15rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .section-heading p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
       .section-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1rem;
-        margin-top: 1rem;
       }
 
       .reveal {
@@ -192,31 +216,76 @@
         padding: 1.25rem 1.3rem;
       }
 
-      .projects-grid {
+      .project-carousel {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(270px, 1fr);
         gap: 1rem;
-        margin-top: 1rem;
+        overflow-x: auto;
+        padding-bottom: 0.3rem;
+        scroll-snap-type: x proximity;
       }
 
       .project-card {
-        min-height: 200px;
+        min-height: 220px;
         position: relative;
         overflow: hidden;
         cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        scroll-snap-align: start;
+        padding: 1.2rem 1.2rem 1.3rem;
       }
 
       .project-card::before {
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(135deg, rgba(125, 197, 255, 0.16), transparent 60%);
+        background: linear-gradient(135deg, rgba(125, 197, 255, 0.18), transparent 64%);
         opacity: 0;
         transition: opacity 0.25s ease;
       }
 
+      .project-card:hover {
+        transform: translateY(-6px) scale(1.01);
+      }
+
       .project-card:hover::before {
         opacity: 1;
+      }
+
+      .project-tag {
+        display: inline-flex;
+        width: fit-content;
+        padding: 0.28rem 0.6rem;
+        border-radius: 999px;
+        background: rgba(125, 197, 255, 0.14);
+        color: var(--accent);
+        font-size: 0.74rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .project-card p {
+        margin: 0.5rem 0 0;
+      }
+
+      .featured-banner {
+        padding: 1.45rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+        background: linear-gradient(120deg, rgba(16, 32, 58, 0.98), rgba(36, 68, 99, 0.95));
+      }
+
+      .featured-banner .eyebrow {
+        margin-bottom: 0;
+      }
+
+      .featured-banner h3 {
+        font-size: 1.25rem;
+        margin: 0;
       }
       .project-card p, .section-grid p, .section-grid li { color: var(--muted); }
       ul { padding-left: 1.1rem; margin: 0; }
@@ -281,10 +350,56 @@
         cursor: pointer;
       }
 
-      footer { padding-top: 1.8rem; color: var(--muted); font-size: 0.95rem; }
+      footer {
+        margin-top: 2.4rem;
+        padding: 1.4rem;
+        border-radius: 20px;
+        border: 1px solid rgba(125, 197, 255, 0.16);
+        background: rgba(10, 22, 38, 0.92);
+      }
 
-      @media (max-width: 960px) { .projects-grid { grid-template-columns: 1fr 1fr; } }
-      @media (max-width: 760px) { .hero, .section-grid, .projects-grid, .stats { grid-template-columns: 1fr; } }
+      .footer-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .footer-card h3 {
+        margin: 0 0 0.35rem;
+        color: var(--text);
+      }
+
+      .footer-card p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 560px;
+      }
+
+      .contact-links {
+        display: flex;
+        gap: 0.7rem;
+        flex-wrap: wrap;
+      }
+
+      .contact-links a {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.6rem 0.8rem;
+        border-radius: 999px;
+        background: rgba(125, 197, 255, 0.1);
+        color: var(--text);
+        border: 1px solid rgba(125, 197, 255, 0.16);
+      }
+
+      .contact-links a:hover {
+        color: var(--accent);
+        border-color: rgba(125, 197, 255, 0.35);
+      }
+
+      @media (max-width: 960px) { .project-carousel { grid-auto-columns: minmax(240px, 80%); } }
+      @media (max-width: 760px) { .hero, .section-grid, .stats { grid-template-columns: 1fr; } .section-heading { align-items: start; flex-direction: column; } }
     </style>
   </head>
   <body>
@@ -323,12 +438,12 @@
       </section>
 
       <div class="section-grid reveal">
-        <section class="card">
-          <h3>About my work</h3>
+        <section class="card" id="work">
+          <h3>My work</h3>
           <p>I create mockup-style projects that reflect how I learn, build, and communicate technical ideas through networking, cloud, and support-focused work.</p>
         </section>
         <section class="card" id="skills">
-          <h3>Skills and interests</h3>
+          <h3>Skills</h3>
           <ul>
             <li>Network basics, routing, switching, and troubleshooting</li>
             <li>Beginner IT support workflows and documentation</li>
@@ -343,34 +458,54 @@
         <div class="stat"><strong>100%</strong>Hands-on learning style</div>
       </div>
 
-      <section class="projects-grid reveal" id="projects">
-        <article class="card project-card" data-title="Home Lab Setup" data-description="A mockup project showing a beginner-friendly home lab for routing, switching, and troubleshooting practice." data-details="Includes network diagrams, device planning, and foundational setup ideas for early IT learners.">
-          <h3>Home Lab Setup</h3>
-          <p>Mockup project showing a beginner-friendly home lab for routing, switching, and basic troubleshooting.</p>
-        </article>
-        <article class="card project-card" data-title="Help Desk Workflow" data-description="A mockup project for ticket handling, SOPs, and support documentation for IT beginners." data-details="Focuses on clear documentation, triage flow, and operational consistency for new support roles.">
-          <h3>Help Desk Workflow</h3>
-          <p>Mockup project for ticket handling, basic SOPs, and support documentation for IT beginners.</p>
-        </article>
-        <article class="card project-card" data-title="Azure Basics Lab" data-description="A mockup project highlighting VM setup, resource groups, networking, and foundational cloud concepts." data-details="Designed to introduce cloud services in a structured, learner-friendly format.">
+      <section class="section-block reveal">
+        <div class="card featured-banner">
+          <div class="eyebrow">Featured project</div>
           <h3>Azure Basics Lab</h3>
-          <p>Mockup project highlighting VM setup, resource groups, networking, and foundational cloud concepts.</p>
-        </article>
-        <article class="card project-card" data-title="Packet Tracer Practice" data-description="A mockup project covering VLANs, ACLs, and simple network design through lab exercises." data-details="Useful for demonstrating early networking concepts and practical configuration exercises.">
-          <h3>Packet Tracer Practice</h3>
-          <p>Mockup project covering VLANs, ACLs, and simple network design through lab exercises.</p>
-        </article>
-        <article class="card project-card" data-title="Cloud Security Notes" data-description="A mockup project for identity, access control, and secure cloud setup concepts." data-details="Highlights key security principles for beginners learning how cloud systems should be protected.">
-          <h3>Cloud Security Notes</h3>
-          <p>Mockup project for identity, access control, and secure cloud setup concepts.</p>
-        </article>
-        <article class="card project-card" data-title="Beginner DevOps Starter" data-description="A mockup project focused on GitHub, automations, and simple deployment concepts for early learners." data-details="Shows how basic automation and DevOps practices can support a growing IT portfolio.">
-          <h3>Beginner DevOps Starter</h3>
-          <p>Mockup project focused on GitHub, automations, and simple deployment concepts for early learners.</p>
-        </article>
+          <p>A structured starter project for exploring virtual machines, resource groups, cloud networking, and beginner-friendly cloud fundamentals.</p>
+        </div>
       </section>
 
-      <section class="section-grid reveal" id="experience">
+      <section class="section-block reveal" id="projects">
+        <div class="section-heading">
+          <h2>Project highlights</h2>
+          <p>Swipe through a curated set of mockup projects and learning builds.</p>
+        </div>
+        <div class="project-carousel">
+          <article class="card project-card" data-title="Home Lab Setup" data-description="A mockup project showing a beginner-friendly home lab for routing, switching, and troubleshooting practice." data-details="Includes network diagrams, device planning, and foundational setup ideas for early IT learners.">
+            <span class="project-tag">Networking</span>
+            <h3>Home Lab Setup</h3>
+            <p>Mockup project showing a beginner-friendly home lab for routing, switching, and basic troubleshooting.</p>
+          </article>
+          <article class="card project-card" data-title="Help Desk Workflow" data-description="A mockup project for ticket handling, SOPs, and support documentation for IT beginners." data-details="Focuses on clear documentation, triage flow, and operational consistency for new support roles.">
+            <span class="project-tag">Support</span>
+            <h3>Help Desk Workflow</h3>
+            <p>Mockup project for ticket handling, basic SOPs, and support documentation for IT beginners.</p>
+          </article>
+          <article class="card project-card" data-title="Azure Basics Lab" data-description="A mockup project highlighting VM setup, resource groups, networking, and foundational cloud concepts." data-details="Designed to introduce cloud services in a structured, learner-friendly format.">
+            <span class="project-tag">Cloud</span>
+            <h3>Azure Basics Lab</h3>
+            <p>Mockup project highlighting VM setup, resource groups, networking, and foundational cloud concepts.</p>
+          </article>
+          <article class="card project-card" data-title="Packet Tracer Practice" data-description="A mockup project covering VLANs, ACLs, and simple network design through lab exercises." data-details="Useful for demonstrating early networking concepts and practical configuration exercises.">
+            <span class="project-tag">Labs</span>
+            <h3>Packet Tracer Practice</h3>
+            <p>Mockup project covering VLANs, ACLs, and simple network design through lab exercises.</p>
+          </article>
+          <article class="card project-card" data-title="Cloud Security Notes" data-description="A mockup project for identity, access control, and secure cloud setup concepts." data-details="Highlights key security principles for beginners learning how cloud systems should be protected.">
+            <span class="project-tag">Security</span>
+            <h3>Cloud Security Notes</h3>
+            <p>Mockup project for identity, access control, and secure cloud setup concepts.</p>
+          </article>
+          <article class="card project-card" data-title="Beginner DevOps Starter" data-description="A mockup project focused on GitHub, automations, and simple deployment concepts for early learners." data-details="Shows how basic automation and DevOps practices can support a growing IT portfolio.">
+            <span class="project-tag">Automation</span>
+            <h3>Beginner DevOps Starter</h3>
+            <p>Mockup project focused on GitHub, automations, and simple deployment concepts for early learners.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-grid reveal section-block" id="experience">
         <div class="card">
           <h3>Experience snapshot</h3>
           <p>My path is rooted in learning by doing — building practical examples in networking, IT support, and cloud fundamentals to demonstrate growth and readiness.</p>
@@ -381,7 +516,7 @@
         </div>
       </section>
 
-      <div class="timeline reveal">
+      <div class="timeline reveal section-block">
         <div class="timeline-item">Networking foundations and beginner labs</div>
         <div class="timeline-item">IT support workflow and documentation practice</div>
         <div class="timeline-item">Cloud fundamentals and mockup project development</div>
@@ -396,8 +531,18 @@
         </div>
       </div>
 
-      <footer>
-        A professional online presence built around clarity, execution, and steady growth.
+      <footer class="reveal">
+        <div class="footer-card">
+          <div>
+            <h3>Let’s connect</h3>
+            <p>A professional online presence built around clarity, execution, and steady growth.</p>
+          </div>
+          <div class="contact-links">
+            <a href="https://github.com/bookofjarv" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/jarvis-anderson/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="mailto:jarvis@example.com">Email</a>
+          </div>
+        </div>
       </footer>
     </div>
     <script>
