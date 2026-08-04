@@ -12,16 +12,16 @@
       :root {
         --white: #ffffff;
         --off-white: #f5f5f7;
-        --black: #0a0a0a;
-        --grey-mid: #3a3a3a;
+        --black: #0A0A0A;
+        --grey-mid: #3A3A3A;
         --grey-light: #d2d2d7;
-        --accent: #7c5cff;
-        --accent-strong: #2dd4bf;
-        --accent-contrast: #ff8a5b;
-        --glass-bg: rgba(10, 10, 10, 0.78);
-        --glass-border: rgba(255, 255, 255, 0.12);
-        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.18), 0 1px 2px rgba(0, 0, 0, 0.1);
-        --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.26), 0 2px 8px rgba(0, 0, 0, 0.14);
+        --accent: #00B4D8;
+        --accent-strong: #3EE7FF;
+        --accent-soft: rgba(0, 180, 216, 0.14);
+        --glass-bg: rgba(7, 10, 14, 0.82);
+        --glass-border: rgba(255, 255, 255, 0.13);
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.22), 0 1px 2px rgba(0, 0, 0, 0.14);
+        --shadow-md: 0 18px 40px rgba(0, 0, 0, 0.28), 0 2px 10px rgba(0, 0, 0, 0.18);
         --radius: 18px;
         --radius-sm: 10px;
         --font-display: 'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -33,7 +33,7 @@
       html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
       body {
         font-family: var(--font-body);
-        background: radial-gradient(circle at top left, rgba(124, 92, 255, 0.2), transparent 26%), radial-gradient(circle at 85% 12%, rgba(45, 212, 191, 0.16), transparent 24%), linear-gradient(135deg, #05060a, #121521 72%);
+        background: radial-gradient(circle at top left, rgba(0, 180, 216, 0.14), transparent 28%), radial-gradient(circle at 85% 12%, rgba(255,255,255,0.05), transparent 20%), linear-gradient(135deg, var(--black), #121318 72%);
         color: var(--white);
         line-height: 1.6;
         overflow-x: hidden;
@@ -54,7 +54,7 @@
         position: absolute;
         top: -40px;
         left: 0;
-        background: var(--blue);
+        background: var(--accent);
         color: #fff;
         padding: 8px 16px;
         z-index: 9999;
@@ -192,10 +192,48 @@
       .hero-chip {
         padding: 8px 12px;
         border-radius: 999px;
-        border: 1px solid rgba(0, 180, 216, 0.28);
-        background: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        background: rgba(0, 180, 216, 0.12);
         color: var(--white);
         font-size: 0.92rem;
+      }
+      .luxury-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 18px;
+        align-items: start;
+      }
+      .luxury-panel {
+        background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: var(--shadow-md);
+        position: relative;
+        overflow: hidden;
+      }
+      .luxury-panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.08), transparent 58%, rgba(255,255,255,0.04));
+        pointer-events: none;
+      }
+      .luxury-panel h3 { margin-bottom: 10px; }
+      .luxury-panel p, .luxury-panel li { color: rgba(255,255,255,0.78); }
+      .stat-row {
+        display: grid;
+        gap: 10px;
+        margin-top: 18px;
+      }
+      .stat-pill {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid rgba(255,255,255,0.09);
+        border-radius: 12px;
+        padding: 12px 14px;
+        background: rgba(255,255,255,0.04);
+        color: rgba(255,255,255,0.82);
       }
       .eyebrow {
         display: inline-block;
@@ -292,10 +330,20 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(135deg, rgba(124, 92, 255, 0.08), transparent 55%, rgba(45, 212, 191, 0.08));
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.08), transparent 55%, rgba(255,255,255,0.04));
         pointer-events: none;
       }
-      .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(124, 92, 255, 0.4); }
+      .card::after, .contact-card::after, .luxury-panel::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(180px circle at var(--x, 50%) var(--y, 50%), rgba(0, 180, 216, 0.14), transparent 60%);
+        opacity: 0;
+        transition: opacity 0.25s ease;
+        pointer-events: none;
+      }
+      .card:hover, .contact-card:hover, .luxury-panel:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(0, 180, 216, 0.4); }
+      .card:hover::after, .contact-card:hover::after, .luxury-panel:hover::after { opacity: 1; }
       .card-icon {
         display: inline-flex;
         align-items: center;
@@ -473,7 +521,7 @@
         <ul class="nav-links" id="nav-links" role="list">
           <li><a href="#featured">Projects</a></li>
           <li><a href="#all-projects">Work</a></li>
-          <li><a href="#agency">About</a></li>
+          <li><a href="#kodekouncil">KodeKouncil</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="nav-social-links" aria-label="Social links">
@@ -583,22 +631,32 @@
         </div>
       </section>
 
-      <section id="agency" aria-labelledby="agency-heading">
+      <section id="kodekouncil" aria-labelledby="kodekouncil-heading">
         <div class="container">
-          <span class="section-eyebrow">Professional Practice</span>
-          <h2 class="section-title" id="agency-heading">Jarvis Anderson</h2>
-          <p class="section-subtitle">Jarvis Anderson builds useful systems, dependable cloud workflows, and polished digital experiences for teams that value clarity and execution.</p>
+          <span class="section-eyebrow">Fulfillment Agency</span>
+          <h2 class="section-title" id="kodekouncil-heading">KodeKouncil</h2>
+          <p class="section-subtitle">KodeKouncil is the fulfillment arm for operational flow, polished systems, and premium support that keeps ambitious work moving.</p>
           <div class="divider" aria-hidden="true"></div>
-          <div class="card agency-card reveal">
-            <p>I build behind-the-scenes infrastructure for modern professionals and small teams, especially around IT workflows, cloud learning, documentation systems, automation, and web presence. The focus is practical support that makes complex technical work easier to manage and easier to grow.</p>
-            <ul class="service-list">
-              <li>Documentation architecture including GitHub READMEs, internal wikis, and technical SOPs.</li>
-              <li>Process automation using tools like Zapier and Python to connect operations and marketing.</li>
-              <li>Cloud and infrastructure support with a focus on reliability, security, and clear documentation.</li>
-              <li>Portfolio and web presence design that communicates technical work with confidence and simplicity.</li>
-              <li>Executive support including file organization, expense tracking, backup recovery, and password architecture.</li>
-            </ul>
-            <a class="card-link" href="#contact">Connect with Jarvis Anderson</a>
+          <div class="luxury-grid">
+            <article class="luxury-panel reveal">
+              <span class="card-tag">Agency • Fulfillment</span>
+              <h3>Built for smooth execution</h3>
+              <p>I help teams organize their digital operations with thoughtful support, dependable infrastructures, and a calm, polished experience from start to finish.</p>
+              <div class="stat-row">
+                <div class="stat-pill"><span>Primary focus</span><strong>Operations</strong></div>
+                <div class="stat-pill"><span>Delivery style</span><strong>Refined & reliable</strong></div>
+                <div class="stat-pill"><span>Core strength</span><strong>Systems thinking</strong></div>
+              </div>
+            </article>
+            <article class="luxury-panel reveal">
+              <span class="card-tag">Contact</span>
+              <h3>Reach the agency directly</h3>
+              <ul class="service-list">
+                <li>Email: <a href="mailto:kodekouncil@gmail.com">kodekouncil@gmail.com</a></li>
+                <li>Support: execution, organization, and workflow design</li>
+                <li>Services: documentation, automation, cloud support, and digital presence</li>
+              </ul>
+            </article>
           </div>
         </div>
       </section>
@@ -607,13 +665,18 @@
         <div class="container">
           <span class="section-eyebrow">Get in Touch</span>
           <h2 class="section-title" id="contact-heading">Contact</h2>
-          <p class="section-subtitle" style="color:rgba(255,255,255,0.5)">Open to opportunities, collaboration, and conversations about cloud, IT, and security.</p>
+          <p class="section-subtitle" style="color:rgba(255,255,255,0.5)">Open to opportunities, collaboration, and conversations around Bookofjarv, KodeKouncil, cloud, IT, security, and agency fulfillment.</p>
           <div class="divider" aria-hidden="true"></div>
           <div class="contact-grid">
             <div class="contact-card reveal">
               <div class="icon" aria-hidden="true">📧</div>
-              <h4>Email</h4>
+              <h4>Bookofjarv</h4>
               <a href="mailto:jarvisanderson76@gmail.com" aria-label="Email Jarvis Anderson">jarvisanderson76@gmail.com</a>
+            </div>
+            <div class="contact-card reveal">
+              <div class="icon" aria-hidden="true">🏛️</div>
+              <h4>KodeKouncil</h4>
+              <a href="mailto:kodekouncil@gmail.com" aria-label="Email KodeKouncil">kodekouncil@gmail.com</a>
             </div>
             <div class="contact-card reveal">
               <div class="icon" aria-hidden="true">📱</div>
@@ -629,11 +692,6 @@
               <div class="icon" aria-hidden="true">📍</div>
               <h4>Location</h4>
               <p>Chicago, IL area</p>
-            </div>
-            <div class="contact-card reveal">
-              <div class="icon" aria-hidden="true">⚙️</div>
-              <h4>Focus</h4>
-              <p>Cloud operations, IT support, automation, and clear technical execution.</p>
             </div>
           </div>
         </div>
@@ -671,6 +729,21 @@
         });
       }, { threshold: 0.16 });
       revealItems.forEach((item) => observer.observe(item));
+
+      const interactiveElements = document.querySelectorAll('.card, .contact-card, .luxury-panel');
+      interactiveElements.forEach((element) => {
+        element.addEventListener('pointermove', (event) => {
+          const rect = element.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+          const y = event.clientY - rect.top;
+          element.style.setProperty('--x', `${x}px`);
+          element.style.setProperty('--y', `${y}px`);
+        });
+        element.addEventListener('pointerleave', () => {
+          element.style.removeProperty('--x');
+          element.style.removeProperty('--y');
+        });
+      });
 
       const progressBar = document.createElement('div');
       progressBar.className = 'progress-bar';
