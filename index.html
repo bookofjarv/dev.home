@@ -24,6 +24,16 @@
         background: linear-gradient(135deg, var(--bg), #0f2036 70%);
         color: var(--text);
         line-height: 1.65;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle at top left, rgba(125, 197, 255, 0.08), transparent 35%);
+        pointer-events: none;
+        z-index: 0;
       }
 
       a { color: var(--accent); text-decoration: none; }
@@ -33,6 +43,20 @@
         max-width: 1160px;
         margin: 0 auto;
         padding: 2.2rem 1.2rem 3.8rem;
+        position: relative;
+        z-index: 1;
+        animation: fadeUp 0.8s ease both;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       header {
@@ -64,6 +88,13 @@
         border: 1px solid rgba(125, 197, 255, 0.16);
         border-radius: 18px;
         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+        transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(125, 197, 255, 0.38);
+        box-shadow: 0 20px 42px rgba(0, 0, 0, 0.24);
       }
 
       .hero-card {
@@ -109,6 +140,12 @@
         padding: 0.78rem 1rem;
         border-radius: 999px;
         font-weight: 600;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
       }
       .btn-primary { background: var(--accent); color: #04111f; }
       .btn-secondary { border: 1px solid rgba(125, 197, 255, 0.28); color: var(--text); }
@@ -139,7 +176,24 @@
         margin-top: 1rem;
       }
 
-      .project-card { min-height: 200px; }
+      .project-card {
+        min-height: 200px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(125, 197, 255, 0.16), transparent 60%);
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+
+      .project-card:hover::before {
+        opacity: 1;
+      }
       .project-card p, .section-grid p, .section-grid li { color: var(--muted); }
       ul { padding-left: 1.1rem; margin: 0; }
 
@@ -164,6 +218,12 @@
         border-radius: 12px;
         background: var(--panel-2);
         color: var(--muted);
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+
+      .timeline-item:hover {
+        transform: translateX(4px);
+        background: #18324b;
       }
 
       footer { padding-top: 1.8rem; color: var(--muted); font-size: 0.95rem; }
