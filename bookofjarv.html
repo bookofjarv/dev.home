@@ -4,38 +4,55 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About BookofJarv</title>
+    <meta name="description" content="The story behind BookofJarv’s work, focus, and direction." />
     <style>
+      :root {
+        color-scheme: dark;
+        --bg: #07111f;
+        --panel: #10203a;
+        --text: #f4f7ff;
+        --muted: #9eb2d3;
+        --accent: #7dc5ff;
+      }
+
+      * { box-sizing: border-box; }
       body {
         margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #f7f9fc;
-        color: #14213d;
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        background: linear-gradient(135deg, var(--bg), #0d1b2f 70%);
+        color: var(--text);
         line-height: 1.7;
       }
+
       main {
-        max-width: 780px;
+        max-width: 760px;
         margin: 0 auto;
-        padding: 3rem 1.5rem 4rem;
+        padding: 3rem 1.2rem 4rem;
       }
+
+      .card {
+        background: rgba(16, 32, 58, 0.95);
+        border: 1px solid rgba(125, 197, 255, 0.16);
+        border-radius: 18px;
+        padding: 1.6rem;
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+      }
+
       h1 {
+        margin-top: 0;
         margin-bottom: 0.4rem;
       }
-      .card {
-        background: white;
-        padding: 1.5rem;
-        border-radius: 14px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-      }
-      a {
-        color: #0b5fff;
-      }
+
+      p { color: var(--muted); }
+      a { color: var(--accent); }
     </style>
   </head>
   <body>
     <main>
       <div class="card">
         <h1>About BookofJarv</h1>
-        <p>This repository now hosts a simple static website that is ready for GitHub Pages deployment.</p>
+        <p>This portfolio reflects a simple philosophy: combine technical depth with clear communication, then present it in a way that feels thoughtful and modern.</p>
+        <p>The focus remains on networking, automation, cloud readiness, and practical systems that support long-term growth.</p>
         <p><a href="index.html">Return to home</a></p>
       </div>
     </main>

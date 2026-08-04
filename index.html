@@ -4,71 +4,231 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BookofJarv</title>
-    <meta name="description" content="BookofJarv personal site and portfolio" />
+    <meta name="description" content="BookofJarv is a technology-focused portfolio for networking, automation, and modern cloud operations." />
     <style>
       :root {
         color-scheme: dark;
+        --bg: #07111f;
+        --panel: #10203a;
+        --panel-2: #12273f;
+        --text: #f4f7ff;
+        --muted: #9eb2d3;
+        --accent: #7dc5ff;
+        --accent-2: #3f7fb5;
       }
+
+      * { box-sizing: border-box; }
       body {
         margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #07111f;
-        color: #f3f6ff;
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        background: linear-gradient(135deg, var(--bg), #0d1b2f 70%);
+        color: var(--text);
         line-height: 1.6;
       }
-      main {
-        max-width: 860px;
+
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { color: #bfe6ff; }
+
+      .page {
+        max-width: 980px;
         margin: 0 auto;
-        padding: 3rem 1.5rem 4rem;
+        padding: 2.2rem 1.2rem 4rem;
       }
-      h1 {
-        font-size: 2.4rem;
-        margin-bottom: 0.5rem;
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding-bottom: 1.7rem;
       }
-      .tagline {
-        font-size: 1.1rem;
-        color: #9eb2d3;
-        margin-bottom: 2rem;
+
+      .brand {
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--accent);
       }
+
       nav {
         display: flex;
         gap: 1rem;
         flex-wrap: wrap;
-        margin-bottom: 2rem;
       }
-      a {
-        color: #7dc5ff;
-      }
-      .card {
-        background: #10203a;
-        border: 1px solid #23415f;
-        border-radius: 16px;
-        padding: 1.25rem 1.4rem;
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 1rem;
         margin-bottom: 1rem;
+      }
+
+      .card {
+        background: rgba(16, 32, 58, 0.95);
+        border: 1px solid rgba(125, 197, 255, 0.16);
+        border-radius: 18px;
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+      }
+
+      .hero-card {
+        padding: 1.7rem;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 0.8rem;
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(125, 197, 255, 0.12);
+        color: var(--accent);
+        font-size: 0.77rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-size: clamp(1.9rem, 3.3vw, 2.7rem);
+        margin: 0 0 0.7rem;
+        line-height: 1.1;
+      }
+
+      .lead {
+        color: var(--muted);
+        margin: 0 0 1.1rem;
+        font-size: 1rem;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.78rem 1rem;
+        border-radius: 999px;
+        font-weight: 600;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: #04111f;
+      }
+
+      .btn-secondary {
+        border: 1px solid rgba(125, 197, 255, 0.28);
+        color: var(--text);
+      }
+
+      .side-card {
+        padding: 1.35rem;
+      }
+
+      .side-card h2 {
+        margin-top: 0;
+        margin-bottom: 0.8rem;
+        font-size: 1.08rem;
+      }
+
+      .pill-list {
+        display: grid;
+        gap: 0.65rem;
+      }
+
+      .pill {
+        padding: 0.7rem 0.8rem;
+        border-radius: 12px;
+        background: var(--panel-2);
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .grid .card {
+        padding: 1.25rem 1.3rem;
+      }
+
+      .grid h3 {
+        margin-top: 0;
+        margin-bottom: 0.4rem;
+      }
+
+      .grid p, .grid li {
+        color: var(--muted);
+      }
+
+      ul {
+        padding-left: 1.1rem;
+        margin: 0;
+      }
+
+      footer {
+        padding-top: 1.8rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 760px) {
+        .hero, .grid { grid-template-columns: 1fr; }
       }
     </style>
   </head>
   <body>
-    <main>
-      <h1>BookofJarv</h1>
-      <p class="tagline">Aspiring network engineer, builder, and founder of KodeKouncil.</p>
-      <nav>
-        <a href="bookofjarv.html">About the site</a>
-        <a href="https://github.com/bookofjarv">GitHub</a>
-        <a href="https://www.linkedin.com/in/jarvis-anderson/">LinkedIn</a>
-      </nav>
-      <section class="card">
-        <h2>Welcome</h2>
-        <p>This landing page is now published through GitHub Pages from the repository’s Pages branch.</p>
+    <div class="page">
+      <header>
+        <div class="brand">BookofJarv</div>
+        <nav>
+          <a href="bookofjarv.html">About</a>
+          <a href="https://github.com/bookofjarv">GitHub</a>
+          <a href="https://www.linkedin.com/in/jarvis-anderson/">LinkedIn</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div class="card hero-card">
+          <div class="eyebrow">IT professional & cloud-minded builder</div>
+          <h1>Creating calm, reliable systems for the future of technology.</h1>
+          <p class="lead">I focus on networking, automation, cloud operations, and practical documentation that helps ideas become dependable solutions.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="bookofjarv.html">View story</a>
+            <a class="btn btn-secondary" href="https://github.com/bookofjarv">Explore work</a>
+          </div>
+        </div>
+
+        <aside class="card side-card">
+          <h2>Current focus</h2>
+          <div class="pill-list">
+            <div class="pill">Networking & infrastructure</div>
+            <div class="pill">Automation & workflow design</div>
+            <div class="pill">Cloud readiness & documentation</div>
+          </div>
+        </aside>
       </section>
-      <section class="card">
-        <h2>Focus areas</h2>
-        <ul>
-          <li>Networking and automation</li>
-          <li>Cloud operations and documentation</li>
-          <li>Building systems that help businesses scale</li>
-        </ul>
-      </section>
-    </main>
+
+      <div class="grid">
+        <section class="card">
+          <h3>About the work</h3>
+          <p>Every project is shaped by a simple goal: bring clarity to complex technology and build systems that can scale with confidence.</p>
+        </section>
+        <section class="card">
+          <h3>What I build</h3>
+          <ul>
+            <li>Networking and lab-based learning</li>
+            <li>Automation and operational efficiency</li>
+            <li>Technical storytelling and modern portfolio design</li>
+          </ul>
+        </section>
+      </div>
+
+      <footer>
+        Built with a focused, minimal approach and a strong sense of purpose.
+      </footer>
+    </div>
   </body>
 </html>
