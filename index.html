@@ -54,7 +54,7 @@
 
       .hero {
         display: grid;
-        grid-template-columns: 1.25fr 0.75fr;
+        grid-template-columns: 1.1fr 0.9fr;
         gap: 1rem;
         margin-bottom: 1rem;
       }
@@ -66,12 +66,18 @@
         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
       }
 
-      .hero-card { padding: 1.8rem; }
+      .hero-card {
+        padding: 2rem;
+        min-height: 460px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
       .side-card { padding: 1.35rem; }
 
       .eyebrow {
         display: inline-block;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.9rem;
         padding: 0.35rem 0.72rem;
         border-radius: 999px;
         background: rgba(125, 197, 255, 0.12);
@@ -81,11 +87,21 @@
         text-transform: uppercase;
       }
 
-      h1 { font-size: clamp(2rem, 3.3vw, 2.9rem); margin: 0 0 0.7rem; line-height: 1.15; }
+      h1 {
+        font-size: clamp(2.2rem, 4vw, 3.6rem);
+        margin: 0 0 0.9rem;
+        line-height: 1.05;
+        max-width: 780px;
+      }
       h2 { font-size: 1.1rem; margin-top: 0; margin-bottom: 0.7rem; }
       h3 { margin-top: 0; margin-bottom: 0.4rem; }
 
-      .lead { color: var(--muted); font-size: 1rem; margin: 0 0 1rem; }
+      .lead {
+        color: var(--muted);
+        font-size: 1.05rem;
+        margin: 0 0 1.2rem;
+        max-width: 700px;
+      }
 
       .actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
       .btn {
@@ -173,8 +189,8 @@
       <section class="hero">
         <div class="card hero-card">
           <div class="eyebrow">IT professional • Network learner • Cloud explorer</div>
-          <h1>Building a career in networking, beginner tech support, and cloud fundamentals.</h1>
-          <p class="lead">I’m focused on practical experience in IT support, network basics, beginner-friendly projects, and cloud concepts that help turn learning into real-world value.</p>
+          <h1>Hi, I’m Jarvis Anderson — a hands-on learner building toward a future in networking, IT support, and cloud technology.</h1>
+          <p class="lead">I’m focused on practical experience in IT support, network basics, beginner-friendly projects, and cloud concepts that help turn learning into real-world value. This portfolio reflects the way I think, build, and grow.</p>
           <div class="actions">
             <a class="btn btn-primary" href="#projects">View mockup projects</a>
             <a class="btn btn-secondary" href="bookofjarv.html">About me</a>
