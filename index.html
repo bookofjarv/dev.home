@@ -12,15 +12,15 @@
       :root {
         --white: #ffffff;
         --off-white: #f5f5f7;
-        --black: #1d1d1f;
-        --grey-mid: #6e6e73;
+        --black: #0a0a0a;
+        --grey-mid: #3a3a3a;
         --grey-light: #d2d2d7;
-        --blue: #0071e3;
-        --blue-hover: #0077ed;
-        --glass-bg: rgba(255, 255, 255, 0.72);
-        --glass-border: rgba(0, 0, 0, 0.08);
-        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
-        --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+        --accent: #00b4d8;
+        --accent-strong: #24d7f2;
+        --glass-bg: rgba(10, 10, 10, 0.78);
+        --glass-border: rgba(255, 255, 255, 0.12);
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.18), 0 1px 2px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.26), 0 2px 8px rgba(0, 0, 0, 0.14);
         --radius: 18px;
         --radius-sm: 10px;
         --font-display: 'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -32,12 +32,22 @@
       html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
       body {
         font-family: var(--font-body);
-        background: var(--white);
-        color: var(--black);
+        background: radial-gradient(circle at top left, rgba(0, 180, 216, 0.16), transparent 28%), linear-gradient(135deg, var(--black), #141414 70%);
+        color: var(--white);
         line-height: 1.6;
         overflow-x: hidden;
       }
-      a { color: var(--blue); text-decoration: none; }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: linear-gradient(rgba(255,255,255,0.024) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.024) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent 90%);
+        pointer-events: none;
+        z-index: 0;
+      }
+      a { color: var(--accent); text-decoration: none; }
       a:hover { text-decoration: underline; }
       .skip-link {
         position: absolute;
@@ -51,6 +61,17 @@
         transition: top 0.2s;
       }
       .skip-link:focus { top: 0; }
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        width: 0;
+        background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+        z-index: 1200;
+        box-shadow: 0 0 24px rgba(0, 180, 216, 0.5);
+      }
+
       nav {
         position: fixed;
         top: 0;
@@ -71,7 +92,7 @@
         font-family: var(--font-display);
         font-weight: 600;
         font-size: 17px;
-        color: var(--black);
+        color: var(--white);
         letter-spacing: -0.3px;
       }
       .nav-links {
@@ -82,7 +103,7 @@
       .nav-links a {
         font-size: 13px;
         font-weight: 400;
-        color: var(--black);
+        color: var(--white);
         opacity: 0.85;
         transition: opacity var(--transition);
       }
@@ -130,6 +151,23 @@
         position: relative;
         z-index: 1;
       }
+
+      .hero-highlights {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 22px;
+      }
+
+      .hero-chip {
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(0, 180, 216, 0.28);
+        background: rgba(0, 180, 216, 0.1);
+        color: var(--white);
+        font-size: 0.92rem;
+      }
       .eyebrow {
         display: inline-block;
         margin-bottom: 20px;
@@ -137,7 +175,7 @@
         font-weight: 600;
         letter-spacing: 1.4px;
         text-transform: uppercase;
-        color: var(--blue);
+        color: var(--accent);
       }
       h1, h2, h3, h4 {
         font-family: var(--font-display);
@@ -150,7 +188,7 @@
       }
       .hero-copy {
         font-size: clamp(1.02rem, 1.6vw, 1.2rem);
-        color: var(--grey-mid);
+        color: rgba(255,255,255,0.75);
         margin-bottom: 28px;
       }
       .hero-actions {
@@ -170,14 +208,15 @@
       }
       .btn:hover { transform: translateY(-2px); text-decoration: none; }
       .btn-primary {
-        background: var(--blue);
-        color: #fff;
+        background: var(--accent);
+        color: var(--black);
         box-shadow: var(--shadow-sm);
       }
-      .btn-primary:hover { background: var(--blue-hover); }
+      .btn-primary:hover { background: var(--accent-strong); }
       .btn-secondary {
-        background: rgba(0, 113, 227, 0.08);
-        color: var(--black);
+        background: rgba(0, 180, 216, 0.12);
+        color: var(--white);
+        border: 1px solid rgba(0, 180, 216, 0.22);
       }
       section { padding: 72px 0; }
       .section-eyebrow {
@@ -186,7 +225,7 @@
         font-weight: 600;
         letter-spacing: 1.4px;
         text-transform: uppercase;
-        color: var(--blue);
+        color: var(--accent);
         margin-bottom: 12px;
       }
       .section-title {
@@ -194,7 +233,7 @@
         margin-bottom: 10px;
       }
       .section-subtitle {
-        color: var(--grey-mid);
+        color: rgba(255,255,255,0.72);
         max-width: 720px;
         margin-bottom: 24px;
       }
@@ -211,14 +250,14 @@
       .featured-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .card {
-        background: var(--off-white);
-        border: 1px solid rgba(0, 0, 0, 0.05);
+        background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+        border: 1px solid rgba(255,255,255,0.08);
         border-radius: var(--radius);
         padding: 24px;
         box-shadow: var(--shadow-sm);
-        transition: transform var(--transition), box-shadow var(--transition);
+        transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
       }
-      .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+      .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(0, 180, 216, 0.32); }
       .card-icon {
         display: inline-flex;
         align-items: center;
@@ -226,13 +265,14 @@
         width: 46px;
         height: 46px;
         border-radius: 50%;
-        background: rgba(0, 113, 227, 0.1);
+        background: rgba(0, 180, 216, 0.14);
         font-size: 20px;
         margin-bottom: 16px;
+        color: var(--accent);
       }
       .card-tag {
         display: inline-block;
-        color: var(--blue);
+        color: var(--accent);
         font-size: 12px;
         font-weight: 600;
         letter-spacing: 1.3px;
@@ -240,7 +280,7 @@
         margin-bottom: 10px;
       }
       .card h3 { font-size: 1.15rem; margin-bottom: 10px; }
-      .card p, .card li { color: var(--grey-mid); }
+      .card p, .card li { color: rgba(255,255,255,0.76); }
       .card-tech {
         display: flex;
         flex-wrap: wrap;
@@ -250,17 +290,18 @@
       .tech-pill {
         padding: 6px 10px;
         border-radius: 999px;
-        background: rgba(0, 0, 0, 0.05);
-        color: var(--grey-mid);
+        background: rgba(0, 180, 216, 0.12);
+        color: rgba(255,255,255,0.82);
         font-size: 12px;
       }
       .card-link {
         font-weight: 600;
-        color: var(--blue);
+        color: var(--accent);
       }
       #contact {
-        background: var(--black);
+        background: linear-gradient(135deg, rgba(0, 180, 216, 0.08), rgba(255,255,255,0.02));
         padding: 96px 24px;
+        border-top: 1px solid rgba(255,255,255,0.08);
       }
       #contact .section-eyebrow { color: rgba(255, 255, 255, 0.4); }
       #contact .section-title { color: var(--white); }
@@ -304,6 +345,36 @@
         padding: 40px 24px;
         text-align: center;
       }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+      }
+
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.07);
+        color: var(--white);
+        border: 1px solid rgba(255,255,255,0.09);
+        transition: transform var(--transition), background var(--transition), border-color var(--transition);
+      }
+
+      .social-link:hover {
+        background: rgba(0, 180, 216, 0.16);
+        border-color: rgba(0, 180, 216, 0.34);
+        transform: translateY(-2px);
+        text-decoration: none;
+      }
+
+      .social-link svg { width: 18px; height: 18px; fill: currentColor; }
       .github-cta {
         display: inline-flex;
         align-items: center;
@@ -325,7 +396,7 @@
         color: var(--white);
       }
       .github-icon { width: 18px; height: 18px; fill: currentColor; }
-      .footer-copy { color: rgba(255, 255, 255, 0.55); font-size: 14px; }
+      .footer-copy { color: rgba(255, 255, 255, 0.55); font-size: 14px; margin-top: 14px; }
       .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
       .reveal.visible { opacity: 1; transform: translateY(0); }
       @media (max-width: 900px) {
@@ -361,6 +432,11 @@
           <div class="hero-actions">
             <a class="btn btn-primary" href="#featured">View Projects</a>
             <a class="btn btn-secondary" href="#contact">Contact Me</a>
+          </div>
+          <div class="hero-highlights">
+            <span class="hero-chip">Cloud & IT Support</span>
+            <span class="hero-chip">Secure Systems Thinking</span>
+            <span class="hero-chip">Hands-on Learning</span>
           </div>
         </div>
       </section>
@@ -468,6 +544,11 @@
               <h4>Location</h4>
               <p>Chicago, IL area</p>
             </div>
+            <div class="contact-card reveal">
+              <div class="icon" aria-hidden="true">⚙️</div>
+              <h4>Systeme.io</h4>
+              <a href="https://systeme.io" target="_blank" rel="noopener noreferrer">Connect with Kodeko Council</a>
+            </div>
           </div>
         </div>
       </section>
@@ -480,19 +561,37 @@
         </svg>
         View my GitHub — Acecloudwatcher
       </a>
-      <p class="footer-copy">© 2026 Michael Woghiren · Built with HTML, CSS &amp; JS · Hosted as a static site</p>
-    </footer>
-
-    <script>
-      const revealItems = document.querySelectorAll('.reveal');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
+      <div class="social-links">
+        <a class="social-link" href="https://github.com/acecloudwatcher" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.39-1.333-1.76-1.333-1.76-1.089-.744.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.419-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.29 1.23.958-.267 1.984-.4 3.01-.405 1.026.005 2.052.138 3.01.405 2.285-1.552 3.29-1.23 3.29-1.23.646 1.653.241 2.873.12 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.805 5.625-5.476 5.92.43.37.81 1.098.81 2.216 0 1.606-.015 2.896-.015 3.286 0 .319.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a class="social-link" href="https://www.linkedin.com/in/michael-woghiren-4b8747162/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.94 8.5A1.56 1.56 0 1 0 6.94 5.37a1.56 1.56 0 0 0 0 3.13zM5.5 9.5h2.88V18H5.5zM10.2 9.5h2.76v1.16h.04c.38-.72 1.32-1.48 2.72-1.48 2.91 0 3.45 1.91 3.45 4.4V18H16.3v-7.56c0-1.8-.03-4.1-2.5-4.1-2.5 0-2.88 1.95-2.88 3.96V18H10.2z"/></svg>
+        </a>
+        <a class="social-link" href="mailto:mwoghiren2213@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.2-8 5.6-8-5.6V6.6l8 5.6 8-5.6Z"/></svg>
+        </a>
+      </div>
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
           }
         });
       }, { threshold: 0.16 });
       revealItems.forEach((item) => observer.observe(item));
+
+      const progressBar = document.createElement('div');
+      progressBar.className = 'progress-bar';
+      document.body.prepend(progressBar);
+
+      const updateProgress = () => {
+        const scrollTop = window.scrollY;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
+        progressBar.style.width = `${Math.min(progress, 100)}%`;
+      };
+
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
     </script>
   </body>
 </html>
