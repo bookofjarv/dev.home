@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BookofJarv | IT Professional & Cloud Engineer</title>
-    <meta name="description" content="BookofJarv is an IT professional and cloud-focused builder sharing work in networking, automation, and technology leadership." />
+    <meta name="description" content="BookofJarv is an IT professional and cloud-focused builder sharing mockup projects in networking, beginner tech support, and cloud fundamentals." />
     <style>
       :root {
         color-scheme: dark;
@@ -14,6 +14,7 @@
         --text: #f3f6ff;
         --muted: #9eb2d3;
         --accent: #7dc5ff;
+        --accent-2: #4a8cc3;
       }
 
       * { box-sizing: border-box; }
@@ -29,7 +30,7 @@
       a:hover { color: #bfe7ff; }
 
       .page {
-        max-width: 1120px;
+        max-width: 1160px;
         margin: 0 auto;
         padding: 2.2rem 1.2rem 3.8rem;
       }
@@ -38,7 +39,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-bottom: 1.8rem;
+        padding-bottom: 1.7rem;
       }
 
       .brand {
@@ -49,11 +50,7 @@
         color: var(--accent);
       }
 
-      nav {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-      }
+      nav { display: flex; gap: 1rem; flex-wrap: wrap; }
 
       .hero {
         display: grid;
@@ -70,7 +67,7 @@
       }
 
       .hero-card { padding: 1.8rem; }
-      .info-card { padding: 1.35rem; }
+      .side-card { padding: 1.35rem; }
 
       .eyebrow {
         display: inline-block;
@@ -84,52 +81,23 @@
         text-transform: uppercase;
       }
 
-      h1 {
-        font-size: clamp(2rem, 3.4vw, 2.9rem);
-        margin: 0 0 0.7rem;
-        line-height: 1.15;
-      }
+      h1 { font-size: clamp(2rem, 3.3vw, 2.9rem); margin: 0 0 0.7rem; line-height: 1.15; }
+      h2 { font-size: 1.1rem; margin-top: 0; margin-bottom: 0.7rem; }
+      h3 { margin-top: 0; margin-bottom: 0.4rem; }
 
-      .lead {
-        color: var(--muted);
-        font-size: 1rem;
-        margin: 0 0 1rem;
-      }
+      .lead { color: var(--muted); font-size: 1rem; margin: 0 0 1rem; }
 
-      .actions {
-        display: flex;
-        gap: 0.8rem;
-        flex-wrap: wrap;
-      }
-
+      .actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
       .btn {
         display: inline-block;
         padding: 0.78rem 1rem;
         border-radius: 999px;
         font-weight: 600;
       }
+      .btn-primary { background: var(--accent); color: #04111f; }
+      .btn-secondary { border: 1px solid rgba(125, 197, 255, 0.28); color: var(--text); }
 
-      .btn-primary {
-        background: var(--accent);
-        color: #04111f;
-      }
-
-      .btn-secondary {
-        border: 1px solid rgba(125, 197, 255, 0.28);
-        color: var(--text);
-      }
-
-      .info-card h2 {
-        margin-top: 0;
-        margin-bottom: 0.7rem;
-        font-size: 1.08rem;
-      }
-
-      .pill-list {
-        display: grid;
-        gap: 0.7rem;
-      }
-
+      .pill-list { display: grid; gap: 0.7rem; }
       .pill {
         padding: 0.7rem 0.8rem;
         border-radius: 12px;
@@ -155,19 +123,8 @@
         margin-top: 1rem;
       }
 
-      .project-card {
-        min-height: 180px;
-      }
-
-      .project-card h3 {
-        margin-top: 0;
-        margin-bottom: 0.4rem;
-      }
-
-      .project-card p, .section-grid p, .section-grid li {
-        color: var(--muted);
-      }
-
+      .project-card { min-height: 200px; }
+      .project-card p, .section-grid p, .section-grid li { color: var(--muted); }
       ul { padding-left: 1.1rem; margin: 0; }
 
       .stats {
@@ -183,25 +140,20 @@
         padding: 0.9rem;
       }
 
-      .stat strong {
-        display: block;
-        font-size: 1.15rem;
-        color: var(--text);
-      }
+      .stat strong { display: block; font-size: 1.15rem; color: var(--text); }
 
-      footer {
-        padding-top: 1.8rem;
+      .timeline { display: grid; gap: 0.8rem; margin-top: 1rem; }
+      .timeline-item {
+        padding: 0.9rem 1rem;
+        border-radius: 12px;
+        background: var(--panel-2);
         color: var(--muted);
-        font-size: 0.95rem;
       }
 
-      @media (max-width: 900px) {
-        .projects-grid { grid-template-columns: 1fr 1fr; }
-      }
+      footer { padding-top: 1.8rem; color: var(--muted); font-size: 0.95rem; }
 
-      @media (max-width: 760px) {
-        .hero, .section-grid, .projects-grid, .stats { grid-template-columns: 1fr; }
-      }
+      @media (max-width: 960px) { .projects-grid { grid-template-columns: 1fr 1fr; } }
+      @media (max-width: 760px) { .hero, .section-grid, .projects-grid, .stats { grid-template-columns: 1fr; } }
     </style>
   </head>
   <body>
@@ -211,6 +163,7 @@
         <nav>
           <a href="#projects">Projects</a>
           <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
           <a href="bookofjarv.html">About</a>
           <a href="https://github.com/bookofjarv">GitHub</a>
           <a href="https://www.linkedin.com/in/jarvis-anderson/">LinkedIn</a>
@@ -219,74 +172,92 @@
 
       <section class="hero">
         <div class="card hero-card">
-          <div class="eyebrow">IT professional & cloud-focused builder</div>
-          <h1>Technology, operations, and growth — built with purpose.</h1>
-          <p class="lead">I work at the intersection of networking, automation, cloud operations, and practical systems that help people and organizations move forward.</p>
+          <div class="eyebrow">IT professional • Network learner • Cloud explorer</div>
+          <h1>Building a career in networking, beginner tech support, and cloud fundamentals.</h1>
+          <p class="lead">I’m focused on practical experience in IT support, network basics, beginner-friendly projects, and cloud concepts that help turn learning into real-world value.</p>
           <div class="actions">
-            <a class="btn btn-primary" href="#projects">Explore projects</a>
-            <a class="btn btn-secondary" href="bookofjarv.html">Read more</a>
+            <a class="btn btn-primary" href="#projects">View mockup projects</a>
+            <a class="btn btn-secondary" href="bookofjarv.html">About me</a>
           </div>
         </div>
 
-        <aside class="card info-card">
-          <h2>Current focus</h2>
+        <aside class="card side-card">
+          <h2>Core focus</h2>
           <div class="pill-list">
-            <div class="pill">Network engineering</div>
-            <div class="pill">Automation & workflows</div>
-            <div class="pill">Cloud operations & documentation</div>
+            <div class="pill">Networking fundamentals</div>
+            <div class="pill">IT beginner projects</div>
+            <div class="pill">Cloud learning & documentation</div>
           </div>
         </aside>
       </section>
 
       <div class="section-grid">
         <section class="card">
-          <h3>About the work</h3>
-          <p>I’m building a career around practical technology, strong fundamentals, and the ability to turn ideas into dependable systems that support long-term growth.</p>
+          <h3>About my work</h3>
+          <p>I create mockup-style projects that reflect how I learn, build, and communicate technical ideas through networking, cloud, and support-focused work.</p>
         </section>
-        <section class="card">
-          <h3>What I focus on</h3>
+        <section class="card" id="skills">
+          <h3>Skills and interests</h3>
           <ul>
-            <li>Networking and hands-on labs</li>
-            <li>Automation and operational efficiency</li>
-            <li>Cloud readiness and modern infrastructure thinking</li>
+            <li>Network basics, routing, switching, and troubleshooting</li>
+            <li>Beginner IT support workflows and documentation</li>
+            <li>Cloud concepts including Azure, security, and fundamentals</li>
           </ul>
         </section>
       </div>
 
       <div class="stats">
-        <div class="stat"><strong>10+</strong>Years of learning and building</div>
-        <div class="stat"><strong>3</strong>Core focus areas</div>
-        <div class="stat"><strong>100%</strong>Practical, hands-on approach</div>
+        <div class="stat"><strong>3</strong>Focus areas</div>
+        <div class="stat"><strong>10+</strong>Mockup project ideas</div>
+        <div class="stat"><strong>100%</strong>Hands-on learning style</div>
       </div>
 
       <section class="projects-grid" id="projects">
         <article class="card project-card">
-          <h3>Networking Lab Portfolio</h3>
-          <p>Structured lab work and routing exercises designed to strengthen real-world networking fundamentals.</p>
+          <h3>Home Lab Setup</h3>
+          <p>Mockup project showing a beginner-friendly home lab for routing, switching, and basic troubleshooting.</p>
         </article>
         <article class="card project-card">
-          <h3>Automation Toolkit</h3>
-          <p>Scripts and workflow ideas focused on streamlining repetitive tasks and improving reliability.</p>
+          <h3>Help Desk Workflow</h3>
+          <p>Mockup project for ticket handling, basic SOPs, and support documentation for IT beginners.</p>
         </article>
         <article class="card project-card">
-          <h3>Cloud Operations Notes</h3>
-          <p>Documentation and concepts centered on cloud readiness, system design, and scalable practices.</p>
+          <h3>Azure Basics Lab</h3>
+          <p>Mockup project highlighting VM setup, resource groups, networking, and foundational cloud concepts.</p>
+        </article>
+        <article class="card project-card">
+          <h3>Packet Tracer Practice</h3>
+          <p>Mockup project covering VLANs, ACLs, and simple network design through lab exercises.</p>
+        </article>
+        <article class="card project-card">
+          <h3>Cloud Security Notes</h3>
+          <p>Mockup project for identity, access control, and secure cloud setup concepts.</p>
+        </article>
+        <article class="card project-card">
+          <h3>Beginner DevOps Starter</h3>
+          <p>Mockup project focused on GitHub, automations, and simple deployment concepts for early learners.</p>
         </article>
       </section>
 
       <section class="section-grid" id="experience">
         <div class="card">
           <h3>Experience snapshot</h3>
-          <p>Experience across support, technical learning, and building toward roles in infrastructure, automation, and cloud engineering.</p>
+          <p>My path is rooted in learning by doing — building practical examples in networking, IT support, and cloud fundamentals to demonstrate growth and readiness.</p>
         </div>
         <div class="card">
           <h3>Professional direction</h3>
-          <p>Focused on developing practical expertise, clear communication, and long-term value in modern technical environments.</p>
+          <p>I’m shaping my portfolio around the kind of work that shows both technical curiosity and a strong foundation for future growth in IT and cloud.</p>
         </div>
       </section>
 
+      <div class="timeline">
+        <div class="timeline-item">Networking foundations and beginner labs</div>
+        <div class="timeline-item">IT support workflow and documentation practice</div>
+        <div class="timeline-item">Cloud fundamentals and mockup project development</div>
+      </div>
+
       <footer>
-        A professional online presence built around clarity, execution, and long-term growth.
+        A professional online presence built around clarity, execution, and steady growth.
       </footer>
     </div>
   </body>

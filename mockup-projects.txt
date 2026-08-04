@@ -1,0 +1,9 @@
+Network Projects
+- Home Lab Build: Cisco Packet Tracer + virtualization setup
+- Routing & Switching Practice: VLANs, ACLs, OSPF fundamentals
+- Beginner Help Desk Toolkit: SOP templates and ticket workflows
+
+Cloud Projects
+- Azure Cloud Basics: resource groups, virtual machines, networking
+- Cloud Security Notes: IAM, backups, least privilege concepts
+- DevOps Starter Lab: GitHub Actions and simple deployment flow
