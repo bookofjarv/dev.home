@@ -66,6 +66,18 @@
         padding-bottom: 1.7rem;
       }
 
+      .sticky-nav {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        padding: 0.8rem 1rem;
+        margin-bottom: 1.3rem;
+        backdrop-filter: blur(12px);
+        background: rgba(7, 17, 31, 0.8);
+        border: 1px solid rgba(125, 197, 255, 0.14);
+        border-radius: 999px;
+      }
+
       .brand {
         font-size: 0.95rem;
         font-weight: 700;
@@ -119,7 +131,7 @@
       }
 
       h1 {
-        font-size: clamp(2.2rem, 4vw, 3.6rem);
+        font-size: clamp(1.9rem, 2.8vw, 2.8rem);
         margin: 0 0 0.9rem;
         line-height: 1.05;
         max-width: 780px;
@@ -165,6 +177,17 @@
         margin-top: 1rem;
       }
 
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       .section-grid .card, .projects-grid .card {
         padding: 1.25rem 1.3rem;
       }
@@ -180,6 +203,7 @@
         min-height: 200px;
         position: relative;
         overflow: hidden;
+        cursor: pointer;
       }
 
       .project-card::before {
@@ -226,6 +250,37 @@
         background: #18324b;
       }
 
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(3, 8, 18, 0.82);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 1.2rem;
+        z-index: 20;
+      }
+
+      .modal.open { display: flex; }
+
+      .modal-card {
+        width: min(760px, 100%);
+        background: #0f2036;
+        border: 1px solid rgba(125, 197, 255, 0.2);
+        border-radius: 20px;
+        padding: 1.4rem;
+        box-shadow: 0 20px 46px rgba(0, 0, 0, 0.28);
+      }
+
+      .modal-close {
+        float: right;
+        border: 0;
+        background: transparent;
+        color: var(--accent);
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+
       footer { padding-top: 1.8rem; color: var(--muted); font-size: 0.95rem; }
 
       @media (max-width: 960px) { .projects-grid { grid-template-columns: 1fr 1fr; } }
@@ -234,7 +289,7 @@
   </head>
   <body>
     <div class="page">
-      <header>
+      <header class="sticky-nav">
         <div class="brand">BookofJarv</div>
         <nav>
           <a href="#projects">Projects</a>
@@ -246,7 +301,7 @@
         </nav>
       </header>
 
-      <section class="hero">
+      <section class="hero reveal">
         <div class="card hero-card">
           <div class="eyebrow">IT professional • Network learner • Cloud explorer</div>
           <h1>Hi, I’m Jarvis Anderson — a hands-on learner building toward a future in networking, IT support, and cloud technology.</h1>
@@ -267,7 +322,7 @@
         </aside>
       </section>
 
-      <div class="section-grid">
+      <div class="section-grid reveal">
         <section class="card">
           <h3>About my work</h3>
           <p>I create mockup-style projects that reflect how I learn, build, and communicate technical ideas through networking, cloud, and support-focused work.</p>
@@ -282,40 +337,40 @@
         </section>
       </div>
 
-      <div class="stats">
+      <div class="stats reveal">
         <div class="stat"><strong>3</strong>Focus areas</div>
         <div class="stat"><strong>10+</strong>Mockup project ideas</div>
         <div class="stat"><strong>100%</strong>Hands-on learning style</div>
       </div>
 
-      <section class="projects-grid" id="projects">
-        <article class="card project-card">
+      <section class="projects-grid reveal" id="projects">
+        <article class="card project-card" data-title="Home Lab Setup" data-description="A mockup project showing a beginner-friendly home lab for routing, switching, and troubleshooting practice." data-details="Includes network diagrams, device planning, and foundational setup ideas for early IT learners.">
           <h3>Home Lab Setup</h3>
           <p>Mockup project showing a beginner-friendly home lab for routing, switching, and basic troubleshooting.</p>
         </article>
-        <article class="card project-card">
+        <article class="card project-card" data-title="Help Desk Workflow" data-description="A mockup project for ticket handling, SOPs, and support documentation for IT beginners." data-details="Focuses on clear documentation, triage flow, and operational consistency for new support roles.">
           <h3>Help Desk Workflow</h3>
           <p>Mockup project for ticket handling, basic SOPs, and support documentation for IT beginners.</p>
         </article>
-        <article class="card project-card">
+        <article class="card project-card" data-title="Azure Basics Lab" data-description="A mockup project highlighting VM setup, resource groups, networking, and foundational cloud concepts." data-details="Designed to introduce cloud services in a structured, learner-friendly format.">
           <h3>Azure Basics Lab</h3>
           <p>Mockup project highlighting VM setup, resource groups, networking, and foundational cloud concepts.</p>
         </article>
-        <article class="card project-card">
+        <article class="card project-card" data-title="Packet Tracer Practice" data-description="A mockup project covering VLANs, ACLs, and simple network design through lab exercises." data-details="Useful for demonstrating early networking concepts and practical configuration exercises.">
           <h3>Packet Tracer Practice</h3>
           <p>Mockup project covering VLANs, ACLs, and simple network design through lab exercises.</p>
         </article>
-        <article class="card project-card">
+        <article class="card project-card" data-title="Cloud Security Notes" data-description="A mockup project for identity, access control, and secure cloud setup concepts." data-details="Highlights key security principles for beginners learning how cloud systems should be protected.">
           <h3>Cloud Security Notes</h3>
           <p>Mockup project for identity, access control, and secure cloud setup concepts.</p>
         </article>
-        <article class="card project-card">
+        <article class="card project-card" data-title="Beginner DevOps Starter" data-description="A mockup project focused on GitHub, automations, and simple deployment concepts for early learners." data-details="Shows how basic automation and DevOps practices can support a growing IT portfolio.">
           <h3>Beginner DevOps Starter</h3>
           <p>Mockup project focused on GitHub, automations, and simple deployment concepts for early learners.</p>
         </article>
       </section>
 
-      <section class="section-grid" id="experience">
+      <section class="section-grid reveal" id="experience">
         <div class="card">
           <h3>Experience snapshot</h3>
           <p>My path is rooted in learning by doing — building practical examples in networking, IT support, and cloud fundamentals to demonstrate growth and readiness.</p>
@@ -326,15 +381,63 @@
         </div>
       </section>
 
-      <div class="timeline">
+      <div class="timeline reveal">
         <div class="timeline-item">Networking foundations and beginner labs</div>
         <div class="timeline-item">IT support workflow and documentation practice</div>
         <div class="timeline-item">Cloud fundamentals and mockup project development</div>
+      </div>
+
+      <div class="modal" id="projectModal" aria-hidden="true">
+        <div class="modal-card">
+          <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+          <h3 id="modalTitle">Project</h3>
+          <p id="modalDescription"></p>
+          <p id="modalDetails"></p>
+        </div>
       </div>
 
       <footer>
         A professional online presence built around clarity, execution, and steady growth.
       </footer>
     </div>
+    <script>
+      const revealItems = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.16 });
+
+      revealItems.forEach((item) => observer.observe(item));
+
+      const modal = document.getElementById('projectModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDescription = document.getElementById('modalDescription');
+      const modalDetails = document.getElementById('modalDetails');
+      const closeModal = document.getElementById('closeModal');
+      const cards = document.querySelectorAll('.project-card');
+
+      cards.forEach((card) => {
+        card.addEventListener('click', () => {
+          modalTitle.textContent = card.dataset.title;
+          modalDescription.textContent = card.dataset.description;
+          modalDetails.textContent = card.dataset.details;
+          modal.classList.add('open');
+          modal.setAttribute('aria-hidden', 'false');
+        });
+      });
+
+      const close = () => {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+      };
+
+      closeModal.addEventListener('click', close);
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) close();
+      });
+    </script>
   </body>
 </html>
