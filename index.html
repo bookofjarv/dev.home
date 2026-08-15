@@ -879,7 +879,7 @@
 
       .spotlight-grid { grid-template-columns: 1fr; }
 
-      .carousel-slide { flex: 0 0 calc(100% - 0px); }
+      .carousel-slide { flex: 0 0 100%; }
 
       .cta-block { flex-direction: column; text-align: center; }
       .cta-block .btn-primary { margin-left: 0; }
@@ -922,7 +922,7 @@
   </nav>
 
   <!-- ── Mobile menu ─────────────────────────────────────────────── -->
-  <nav class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
     <a href="#bookofjarv"><i class="fa-solid fa-book-open"></i> Journey (BookofJarv)</a>
     <a href="#kodekouncil"><i class="fa-solid fa-building"></i> KodeKouncil</a>
     <a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
@@ -1474,7 +1474,7 @@
       // Keyboard navigation
       document.addEventListener('keydown', (e) => {
         const active = document.activeElement;
-        if (active && (prevBtn.contains(active) || nextBtn.contains(active) || dotsWrap.contains(active) || track.contains(active))) {
+        if (active && (active === prevBtn || active === nextBtn || dotsWrap.contains(active) || track.contains(active))) {
           if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(current - 1); }
           if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
         }
