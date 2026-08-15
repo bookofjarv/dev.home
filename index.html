@@ -894,6 +894,174 @@
     @media (min-width: 769px) and (max-width: 980px) {
       .carousel-slide { flex: 0 0 calc(50% - 0.625rem); }
     }
+
+    /* ── Project Cards & Badges ───────────────────────────────────── */
+    .project-header {
+      margin-bottom: 0.75rem;
+    }
+    
+    .project-category {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0 1.25rem 0;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(88, 166, 255, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(88, 166, 255, 0.15);
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+    }
+
+    .btn-github {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .btn-github:hover {
+      background: var(--border);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── Agency / KodeKouncil section styling ──────────────────────── */
+    .agency-intro {
+      margin-bottom: 2.5rem;
+      max-width: 850px;
+    }
+    
+    .agency-tagline {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: var(--text);
+      border-left: 3px solid var(--accent);
+      padding-left: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .agency-columns {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .why-us h3 {
+      font-size: 1.2rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .why-us p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .value-pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .value-pill span.label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+
+    .value-pill span.value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* ── Book a Call CTA ───────────────────────────────────────────── */
+    .cta-container {
+      text-align: center;
+      margin-top: 3.5rem;
+      padding: 3rem 2rem;
+      background: radial-gradient(circle at top right, rgba(88, 166, 255, 0.1), transparent 60%), var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .cta-container h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .cta-container p {
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto 1.5rem auto;
+      font-size: 0.95rem;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.75rem;
+      background: linear-gradient(135deg, var(--accent) 0%, #388bfd 100%);
+      color: #0d1117 !important;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 4px 20px rgba(88, 166, 255, 0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 26px rgba(88, 166, 255, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      .agency-columns {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -902,6 +1070,24 @@
   <nav>
     <span class="nav-brand">📘 BookofJarv</span>
     <ul class="nav-links">
+      <li class="hide-mobile"><a href="#about"><i class="fa-solid fa-user"></i> About</a></li>
+      <li class="hide-mobile"><a href="#skills"><i class="fa-solid fa-code"></i> Skills</a></li>
+      <li class="hide-mobile"><a href="#projects"><i class="fa-solid fa-folder-open"></i> Projects</a></li>
+      <li class="hide-mobile"><a href="#services"><i class="fa-solid fa-briefcase"></i> Services</a></li>
+      <li class="hide-mobile"><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+
+      <!-- Social icons in nav -->
+      <li><a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" title="YouTube" style="color:#ff0000;">
+        <i class="fa-brands fa-youtube"></i>
+      </a></li>
+      <li><a href="https://www.instagram.com/bookofjarv" target="_blank" rel="noopener" title="Instagram" style="color:#e1306c;">
+        <i class="fa-brands fa-instagram"></i>
+      </a></li>
+      <li><a href="https://github.com/bookofjarv/dev.home" target="_blank" rel="noopener" title="GitHub" style="color:#f0f6fc;">
+        <i class="fa-brands fa-github"></i>
+      </a></li>
+
+      <!-- LinkedIn — highly emphasized button -->
       <li><a href="#bookofjarv"><i class="fa-solid fa-book-open"></i> Journey</a></li>
       <li><a href="#kodekouncil"><i class="fa-solid fa-building"></i> KodeKouncil</a></li>
       <li><a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a></li>
@@ -956,6 +1142,136 @@
     <a href="#bookofjarv" class="hero-scroll" aria-label="Scroll down"><i class="fa-solid fa-chevron-down"></i></a>
   </section>
 
+  <!-- ── Featured Work (Best Projects) ──────────────────────────────── -->
+  <section id="projects">
+    <h2><i class="fa-solid fa-star"></i> Featured Work</h2>
+    <p style="color: var(--muted); margin-bottom: 2rem;">A curated set of projects that reflect a systems-first approach to cloud, support workflows, and clear technical execution.</p>
+    
+    <div class="card-grid">
+      <!-- Project 1 -->
+      <div class="card project-card">
+        <div class="project-header">
+          <span class="project-category"><i class="fa-solid fa-cloud"></i> Cloud · Infrastructure</span>
+        </div>
+        <h3>Cloud Fundamentals Lab</h3>
+        <p>Designed a practical cloud learning lab around virtual machines, networking, and foundational service setup with a strong focus on clarity and repeatability.</p>
+        <div class="project-tags">
+          <span class="tag">Azure</span>
+          <span class="tag">Networking</span>
+          <span class="tag">VMs</span>
+        </div>
+        <a href="https://github.com/bookofjarv/Cloud-Fundamentals-Lab" class="btn-github" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i> View on GitHub
+        </a>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="card project-card">
+        <div class="project-header">
+          <span class="project-category"><i class="fa-solid fa-lock"></i> IT · Support</span>
+        </div>
+        <h3>Support Workflow Design</h3>
+        <p>Built a documentation-first support workflow model emphasizing ticket handling, clear triage steps, and practical operating procedures for beginner-friendly IT environments.</p>
+        <div class="project-tags">
+          <span class="tag">IT Support</span>
+          <span class="tag">SOPs</span>
+          <span class="tag">Documentation</span>
+        </div>
+        <a href="https://github.com/bookofjarv/Support-Workflow-Design" class="btn-github" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i> View on GitHub
+        </a>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="card project-card">
+        <div class="project-header">
+          <span class="project-category"><i class="fa-solid fa-brain"></i> Security · Learning</span>
+        </div>
+        <h3>Security &amp; Governance Notes</h3>
+        <p>Created structured notes and practice concepts around identity, access control, and foundational governance principles for cloud-minded teams.</p>
+        <div class="project-tags">
+          <span class="tag">IAM</span>
+          <span class="tag">Security</span>
+          <span class="tag">Governance</span>
+        </div>
+        <a href="https://github.com/bookofjarv/Security-Governance-Notes" class="btn-github" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i> View on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Selected Work (All Projects) ──────────────────────────────── -->
+  <section id="selected-work">
+    <h2><i class="fa-solid fa-list-check"></i> Selected Work</h2>
+    <p style="color: var(--muted); margin-bottom: 2rem;">A broader look at the kind of portfolio work I’m building around networking, cloud operations, and practical support-driven learning.</p>
+    
+    <div class="card-grid">
+      <!-- Project 1 -->
+      <div class="card">
+        <h3>Home Lab Setup</h3>
+        <p>Mockup project focused on network design, device planning, and beginner-friendly troubleshooting.</p>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="card">
+        <h3>Packet Tracer Practice</h3>
+        <p>Hands-on network exercises covering VLANs, ACLs, and configuration fundamentals.</p>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="card">
+        <h3>Azure Basics Lab</h3>
+        <p>Cloud learning project exploring resource groups, virtual machines, and essential concepts.</p>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="card">
+        <h3>Cloud Security Notes</h3>
+        <p>Structured notes for access control, protection basics, and secure cloud habits.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Services (KodeKouncil Agency Fulfillment) ──────────────── -->
+  <section id="services">
+    <h2><i class="fa-solid fa-building"></i> Agency Fulfillment: KodeKouncil</h2>
+    
+    <div class="agency-intro">
+      <p class="agency-tagline"><strong>KodeKouncil</strong> is a Technical Solutions Agency. We bridge the gap between IT infrastructure and business operations by transforming chaotic workflows into automated, high-performance systems.</p>
+    </div>
+
+    <div class="agency-columns">
+      <div class="why-us">
+        <h3><i class="fa-solid fa-circle-check" style="color: var(--accent);"></i> Why teams work with us</h3>
+        <p><strong>Built for smooth execution</strong></p>
+        <p style="margin-top: 0.5rem;">My path started in helpdesk support and grew into network engineering, systems thinking, and technical operations. I help teams turn complex workflows into clear, scalable, and dependable processes.</p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-pill">
+          <span class="label">Core Value</span>
+          <span class="value">Clarity</span>
+        </div>
+        <div class="value-pill">
+          <span class="label">Delivery Style</span>
+          <span class="value">Efficient</span>
+        </div>
+        <div class="value-pill">
+          <span class="label">Specialty</span>
+          <span class="value">Automation</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size: 1.25rem; margin: 2rem 0 1.25rem 0; color: var(--text); border-bottom: 1px dashed var(--border); padding-bottom: 0.5rem;">
+      <i class="fa-solid fa-hand-holding-hand" style="color: var(--accent);"></i> Services Offered
+    </h3>
+    
+    <div class="card-grid">
+      <div class="card">
+        <h3>📧 Email &amp; Calendar Management</h3>
+        <p>Inbox organization and meeting management to keep executives focused.</p>
   <!-- ── BookofJarv spotlight ─────────────────────────────────────── -->
   <section id="bookofjarv" aria-label="BookofJarv spotlight">
     <div class="section-wrap">
@@ -1314,6 +1630,15 @@
           <i class="fa-brands fa-youtube"></i> Subscribe on YouTube
         </a>
       </div>
+    </div>
+
+    <!-- ── Call to Action ───────────────────────────────────────── -->
+    <div class="cta-container">
+      <h3>Ready to optimize your technical operations?</h3>
+      <p>Let's map out your workflows, automate manual tasks, and build solid, repeatable technical infrastructure.</p>
+      <a href="https://www.linkedin.com/in/jarvis-anderson/" target="_blank" rel="noopener" class="btn-cta">
+        <i class="fa-regular fa-calendar-check"></i> Book a Technical Discovery Call
+      </a>
     </div>
   </section>
 
