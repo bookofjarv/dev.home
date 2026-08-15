@@ -4,17 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BookofJarv | Jarvis Anderson</title>
+  <meta name="description" content="BookofJarv — Jarvis Anderson's documented IT journey from helpdesk to network engineering. Homelabs, learning paths, and KodeKouncil, a technical boutique fulfillment agency." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    /* ── Reset & Base ───────────────────────────────────────────────── */
+    /* ── Reset & Base ───────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --bg:        #0d1117;
       --surface:   #161b22;
+      --surface2:  #1c2330;
       --border:    #30363d;
       --accent:    #58a6ff;
-      --github:    #f0f6fc;
+      --accent2:   #3fb950;
+      --gold:      #e3b341;
       --linkedin:  #0a66c2;
       --youtube:   #ff0000;
       --instagram: #e1306c;
@@ -22,6 +25,8 @@
       --text:      #e6edf3;
       --muted:     #8b949e;
       --radius:    10px;
+      --radius-lg: 16px;
+      --transition: 0.25s ease;
     }
 
     html { scroll-behavior: smooth; }
@@ -31,22 +36,47 @@
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
 
-    /* ── Navigation ─────────────────────────────────────────────────── */
+    /* ── Scroll-reveal ──────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ── Navigation ─────────────────────────────────────────────── */
     nav {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 200;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 2rem;
       height: 64px;
       background: rgba(13, 17, 23, 0.92);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
 
@@ -60,236 +90,809 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
       list-style: none;
     }
 
-    /* Regular nav links */
     .nav-links a {
       display: flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.45rem 0.9rem;
+      padding: 0.45rem 0.85rem;
       border-radius: var(--radius);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--muted);
-      transition: color 0.2s, background 0.2s;
+      transition: color var(--transition), background var(--transition);
     }
 
-    .nav-links a:hover {
-      color: var(--text);
-      background: var(--surface);
-    }
+    .nav-links a:hover { color: var(--text); background: var(--surface); }
 
-    /* ── LinkedIn nav button — highly emphasized ─────────────────────── */
     .nav-linkedin {
       display: flex !important;
       align-items: center;
       gap: 0.45rem;
-      padding: 0.5rem 1.1rem !important;
+      padding: 0.5rem 1rem !important;
       background: var(--linkedin) !important;
       color: #fff !important;
       border-radius: var(--radius) !important;
       font-weight: 600;
-      font-size: 0.95rem !important;
-      box-shadow: 0 0 16px rgba(10, 102, 194, 0.55);
-      transition: background 0.2s, box-shadow 0.2s, transform 0.15s !important;
+      font-size: 0.9rem !important;
+      box-shadow: 0 0 16px rgba(10, 102, 194, 0.5);
+      transition: background var(--transition), box-shadow var(--transition), transform 0.15s !important;
       border: 2px solid rgba(255,255,255,0.15);
     }
 
     .nav-linkedin:hover {
       background: #0958a8 !important;
-      box-shadow: 0 0 26px rgba(10, 102, 194, 0.85) !important;
+      box-shadow: 0 0 26px rgba(10, 102, 194, 0.8) !important;
       transform: translateY(-1px);
     }
 
-    .nav-linkedin i { font-size: 1.1rem; }
+    /* ── Hamburger ──────────────────────────────────────────────── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 0.4rem;
+      border: none;
+      background: none;
+      color: var(--text);
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* ── Hero ───────────────────────────────────────────────────────── */
-    .hero {
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(13, 17, 23, 0.97);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      z-index: 190;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.65rem 0.75rem;
+      border-radius: var(--radius);
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color var(--transition), background var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--text); background: var(--surface); }
+
+    /* ── Section base ───────────────────────────────────────────── */
+    .section-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 640px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── Hero ───────────────────────────────────────────────────── */
+    #hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 4rem 1.5rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(88,166,255,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(63,185,80,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 5rem 1.5rem 4rem;
       gap: 1.5rem;
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
     }
 
-    .hero img {
-      width: 160px;
-      height: 160px;
+    .hero-avatar {
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid var(--accent);
-      box-shadow: 0 0 30px rgba(88, 166, 255, 0.25);
+      box-shadow: 0 0 40px rgba(88, 166, 255, 0.3);
     }
 
-    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; }
-    .hero h1 span { color: var(--accent); }
-    .hero p { max-width: 560px; color: var(--muted); font-size: 1.05rem; }
-
-    /* ── Section base ───────────────────────────────────────────────── */
-    section { padding: 4rem 1.5rem; max-width: 900px; margin: 0 auto; }
-    section h2 {
-      font-size: 1.5rem;
+    .hero-eyebrow {
+      font-size: 0.85rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--border);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+    }
+
+    .hero-title span { color: var(--accent); }
+
+    .hero-desc {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 580px;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
       display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      padding: 0.65rem 1.4rem;
+      background: var(--accent);
+      color: #0d1117;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: background var(--transition), transform 0.15s, box-shadow var(--transition);
+      box-shadow: 0 0 20px rgba(88,166,255,0.3);
+    }
+    .btn-primary:hover {
+      background: #79b8ff;
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(88,166,255,0.55);
     }
 
-    /* ── Skills table ───────────────────────────────────────────────── */
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 0.75rem 1rem; text-align: left; border: 1px solid var(--border); }
-    thead th { background: var(--surface); color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    tbody tr:hover { background: var(--surface); }
-
-    /* ── Card grid ──────────────────────────────────────────────────── */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .card {
-      background: var(--surface);
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.4rem;
+      background: transparent;
+      color: var(--text);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.5rem;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: border-color var(--transition), background var(--transition), transform 0.15s;
     }
-
-    .card:hover {
+    .btn-secondary:hover {
       border-color: var(--accent);
-      box-shadow: 0 0 20px rgba(88, 166, 255, 0.1);
+      background: rgba(88,166,255,0.08);
+      transform: translateY(-2px);
     }
 
-    .card h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--accent); }
-    .card p { font-size: 0.9rem; color: var(--muted); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--muted);
+      font-size: 1.3rem;
+      animation: bounce 2s infinite;
+    }
 
-    /* ── Contact / Social section ───────────────────────────────────── */
-    #contact {
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ── Spotlight cards (bookofjarv / kodekouncil) ─────────────── */
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .spotlight-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+
+    .spotlight-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+
+    .spotlight-card.jarv::before  { background: linear-gradient(90deg, #58a6ff, #3fb950); }
+    .spotlight-card.kouncil::before { background: linear-gradient(90deg, #e3b341, #f78166); }
+
+    .spotlight-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 40px rgba(88,166,255,0.12);
+      transform: translateY(-4px);
+    }
+    .spotlight-card.kouncil:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 40px rgba(227,179,65,0.12);
+    }
+
+    .spotlight-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .spotlight-card h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+    .spotlight-card.kouncil h3 { color: var(--gold); }
+
+    .spotlight-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .spotlight-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      background: rgba(88,166,255,0.12);
+      color: var(--accent);
+      border: 1px solid rgba(88,166,255,0.25);
+    }
+    .tag.gold {
+      background: rgba(227,179,65,0.12);
+      color: var(--gold);
+      border-color: rgba(227,179,65,0.25);
+    }
+    .tag.green {
+      background: rgba(63,185,80,0.12);
+      color: var(--accent2);
+      border-color: rgba(63,185,80,0.25);
+    }
+
+    .spotlight-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--accent);
+      transition: gap var(--transition);
+    }
+    .spotlight-link:hover { gap: 0.7rem; }
+    .spotlight-card.kouncil .spotlight-link { color: var(--gold); }
+
+    /* ── Journey timeline strip ─────────────────────────────────── */
+    .timeline-strip {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      padding: 1.5rem 0 0.5rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .timeline-step {
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
-      gap: 2rem;
-      padding-top: 4rem;
-      padding-bottom: 5rem;
-      max-width: 900px;
-      margin: 0 auto;
+      min-width: 160px;
+      position: relative;
     }
 
-    #contact h2 {
+    .timeline-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 22px;
+      left: calc(50% + 22px);
+      width: calc(100% - 44px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--border));
+    }
+
+    .timeline-dot {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
       justify-content: center;
-      border-bottom: 2px solid var(--border);
-      width: 100%;
-      padding-bottom: 0.5rem;
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      position: relative;
+      z-index: 1;
     }
 
-    #contact p { color: var(--muted); max-width: 500px; }
+    .timeline-step.active .timeline-dot {
+      background: var(--accent);
+      color: #0d1117;
+      box-shadow: 0 0 16px rgba(88,166,255,0.5);
+    }
 
-    /* Social icon cards */
+    .timeline-step span {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-align: center;
+    }
+    .timeline-step.active span { color: var(--accent); }
+
+    /* ── Best Projects ──────────────────────────────────────────── */
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .filter-tab {
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .filter-tab:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #0d1117;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* Project card with hover reveal */
+    .project-card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+      border-color: var(--accent);
+    }
+
+    .project-card-inner {
+      padding: 1.5rem;
+    }
+
+    .project-card-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .project-card-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-card-tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      background: rgba(88,166,255,0.1);
+      color: var(--accent);
+      border: 1px solid rgba(88,166,255,0.2);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Overlay reveal on hover */
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(22,27,34,0.97) 0%, rgba(13,17,23,0.97) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 1.75rem;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+    }
+
+    .project-card:hover .project-overlay,
+    .project-card:focus-within .project-overlay {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .project-overlay h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-overlay p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .project-overlay-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .overlay-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius);
+      font-size: 0.82rem;
+      font-weight: 700;
+      background: var(--accent);
+      color: #0d1117;
+      transition: background var(--transition);
+    }
+    .overlay-btn:hover { background: #79b8ff; }
+    .overlay-btn.ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .overlay-btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Featured badge */
+    .card-featured {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: var(--gold);
+      color: #0d1117;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+    }
+
+    /* Hidden state for filter */
+    .project-card[data-hidden="true"] {
+      display: none;
+    }
+
+    /* ── Carousel ───────────────────────────────────────────────── */
+    .carousel-wrap {
+      position: relative;
+    }
+
+    .carousel-track-outer {
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 1.25rem;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+
+    .carousel-slide {
+      flex: 0 0 calc(33.333% - 0.84rem);
+      min-width: 0;
+    }
+
+    .carousel-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      cursor: pointer;
+    }
+
+    .carousel-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+      border-color: var(--accent);
+    }
+
+    .carousel-card-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .carousel-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .carousel-card p  { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.75rem; }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .carousel-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color var(--transition), background var(--transition), transform 0.15s;
+    }
+    .carousel-btn:hover:not(:disabled) {
+      border-color: var(--accent);
+      background: rgba(88,166,255,0.1);
+      transform: scale(1.08);
+    }
+    .carousel-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .carousel-dots {
+      display: flex;
+      gap: 0.45rem;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      padding: 0;
+    }
+    .carousel-dot.active {
+      background: var(--accent);
+      transform: scale(1.3);
+    }
+
+    /* ── Resources CTA ──────────────────────────────────────────── */
+    #resources {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .resource-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .resource-card:hover {
+      border-color: var(--accent2);
+      transform: translateY(-3px);
+    }
+    .resource-card i { font-size: 1.4rem; color: var(--accent2); }
+    .resource-card h4 { font-size: 0.95rem; font-weight: 700; }
+    .resource-card p  { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+    .cta-block {
+      margin-top: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(88,166,255,0.06), rgba(63,185,80,0.04));
+      border: 1px solid rgba(88,166,255,0.2);
+      border-radius: var(--radius-lg);
+      flex-wrap: wrap;
+    }
+
+    .cta-block-text h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .cta-block-text p  { font-size: 0.9rem; color: var(--muted); }
+
+    .cta-block .btn-primary { margin-left: auto; flex-shrink: 0; }
+
+    /* ── Contact ─────────────────────────────────────────────────── */
+    #contact .section-wrap {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     .social-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1.25rem;
+      gap: 1rem;
+      margin-top: 2rem;
     }
 
     .social-card {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.75rem;
-      padding: 1.75rem 2rem;
-      border-radius: var(--radius);
+      gap: 0.65rem;
+      padding: 1.5rem 1.75rem;
+      border-radius: var(--radius-lg);
       border: 2px solid transparent;
-      min-width: 150px;
+      min-width: 140px;
       font-weight: 600;
-      font-size: 0.95rem;
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      font-size: 0.9rem;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
       cursor: pointer;
     }
 
-    .social-card i {
-      font-size: 2.5rem;
-      transition: transform 0.2s;
-    }
+    .social-card i { font-size: 2.2rem; transition: transform 0.2s; }
+    .social-card:hover { transform: translateY(-5px); }
+    .social-card:hover i { transform: scale(1.12); }
 
-    .social-card:hover { transform: translateY(-4px); }
-    .social-card:hover i { transform: scale(1.1); }
-
-    /* LinkedIn — primary emphasis */
     .social-linkedin {
-      background: linear-gradient(135deg, #0a66c2 0%, #0958a8 100%);
+      background: linear-gradient(135deg, #0a66c2, #0958a8);
       color: #fff;
       border-color: rgba(255,255,255,0.2);
-      box-shadow: 0 4px 24px rgba(10, 102, 194, 0.5);
+      box-shadow: 0 4px 24px rgba(10,102,194,0.4);
     }
+    .social-linkedin:hover { box-shadow: 0 8px 36px rgba(10,102,194,0.7); }
 
-    .social-linkedin:hover {
-      box-shadow: 0 8px 36px rgba(10, 102, 194, 0.75);
-      border-color: rgba(255,255,255,0.4);
-    }
-
-    /* YouTube */
     .social-youtube {
       background: var(--surface);
       color: var(--youtube);
       border-color: var(--youtube);
-      box-shadow: 0 4px 16px rgba(255, 0, 0, 0.15);
+      box-shadow: 0 4px 16px rgba(255,0,0,0.12);
     }
+    .social-youtube:hover { background: rgba(255,0,0,0.08); box-shadow: 0 8px 28px rgba(255,0,0,0.3); }
 
-    .social-youtube:hover {
-      background: rgba(255, 0, 0, 0.1);
-      box-shadow: 0 8px 28px rgba(255, 0, 0, 0.35);
-    }
-
-    /* Instagram */
     .social-instagram {
       background: var(--surface);
       color: var(--instagram);
       border-color: var(--instagram);
-      box-shadow: 0 4px 16px rgba(225, 48, 108, 0.15);
+      box-shadow: 0 4px 16px rgba(225,48,108,0.12);
     }
+    .social-instagram:hover { background: rgba(225,48,108,0.08); box-shadow: 0 8px 28px rgba(225,48,108,0.3); }
 
-    .social-instagram:hover {
-      background: rgba(225, 48, 108, 0.1);
-      box-shadow: 0 8px 28px rgba(225, 48, 108, 0.35);
-    }
-
-    /* GitHub */
     .social-github {
       background: var(--surface);
       color: var(--github);
       border-color: var(--github);
-      box-shadow: 0 4px 16px rgba(240, 246, 252, 0.1);
+      box-shadow: 0 4px 16px rgba(240,246,252,0.08);
     }
+    .social-github:hover { background: rgba(240,246,252,0.06); box-shadow: 0 8px 28px rgba(240,246,252,0.2); }
 
-    .social-github:hover {
-      background: rgba(240, 246, 252, 0.08);
-      box-shadow: 0 8px 28px rgba(240, 246, 252, 0.25);
-    }
-
-    /* ── Footer ─────────────────────────────────────────────────────── */
+    /* ── Footer ─────────────────────────────────────────────────── */
     footer {
       text-align: center;
       padding: 2rem 1rem;
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: 0.83rem;
       border-top: 1px solid var(--border);
     }
 
-    /* ── Responsive ─────────────────────────────────────────────────── */
-    @media (max-width: 600px) {
-      .nav-links .hide-mobile { display: none; }
-      nav { padding: 0 1rem; }
-      .social-card { min-width: 120px; padding: 1.25rem 1.5rem; }
-      .social-card i { font-size: 2rem; }
+    /* ── Responsive ─────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .spotlight-grid { grid-template-columns: 1fr; }
+
+      .carousel-slide { flex: 0 0 100%; }
+
+      .cta-block { flex-direction: column; text-align: center; }
+      .cta-block .btn-primary { margin-left: 0; }
+    }
+
+    @media (max-width: 540px) {
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .social-card { min-width: 110px; padding: 1.1rem 1.25rem; }
+    }
+
+    @media (min-width: 769px) and (max-width: 980px) {
+      .carousel-slide { flex: 0 0 calc(50% - 0.625rem); }
     }
 
     /* ── Project Cards & Badges ───────────────────────────────────── */
@@ -463,7 +1066,7 @@
 </head>
 <body>
 
-  <!-- ── Navigation ─────────────────────────────────────────────── -->
+  <!-- ── Navigation ──────────────────────────────────────────────── -->
   <nav>
     <span class="nav-brand">📘 BookofJarv</span>
     <ul class="nav-links">
@@ -485,38 +1088,58 @@
       </a></li>
 
       <!-- LinkedIn — highly emphasized button -->
+      <li><a href="#bookofjarv"><i class="fa-solid fa-book-open"></i> Journey</a></li>
+      <li><a href="#kodekouncil"><i class="fa-solid fa-building"></i> KodeKouncil</a></li>
+      <li><a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a></li>
+      <li><a href="#resources"><i class="fa-solid fa-server"></i> Homelab</a></li>
+      <li><a href="#contact"><i class="fa-solid fa-satellite-dish"></i> Connect</a></li>
+      <li><a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" title="YouTube" style="color:#ff0000;"><i class="fa-brands fa-youtube"></i></a></li>
+      <li><a href="https://www.instagram.com/bookofjarv" target="_blank" rel="noopener" title="Instagram" style="color:#e1306c;"><i class="fa-brands fa-instagram"></i></a></li>
+      <li><a href="https://github.com/bookofjarv/dev.home" target="_blank" rel="noopener" title="GitHub" style="color:#f0f6fc;"><i class="fa-brands fa-github"></i></a></li>
       <li>
         <a href="https://www.linkedin.com/in/jarvis-anderson/" target="_blank" rel="noopener" class="nav-linkedin">
           <i class="fa-brands fa-linkedin"></i> LinkedIn
         </a>
       </li>
     </ul>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" id="hamburger-btn">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
-  <!-- ── Hero ───────────────────────────────────────────────────── -->
-  <div class="hero" id="about">
-    <img
-      src="https://github.com/user-attachments/assets/8a58008e-5388-4cf5-9c1e-bcf1af5212a9"
-      alt="Jarvis Anderson"
-    />
-    <h1>Hello, I'm <span>Jarvis Anderson</span></h1>
-    <p>🚀 Aspiring Network Engineer &amp; Founder of KodeKouncil — Documenting the journey from Help Desk to Network Engineer. Building a legacy through technical mastery, faith, and financial independence.</p>
-  </div>
+  <!-- ── Mobile menu ─────────────────────────────────────────────── -->
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+    <a href="#bookofjarv"><i class="fa-solid fa-book-open"></i> Journey (BookofJarv)</a>
+    <a href="#kodekouncil"><i class="fa-solid fa-building"></i> KodeKouncil</a>
+    <a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+    <a href="#resources"><i class="fa-solid fa-server"></i> Homelab &amp; Resources</a>
+    <a href="#contact"><i class="fa-solid fa-satellite-dish"></i> Connect</a>
+    <a href="https://www.linkedin.com/in/jarvis-anderson/" target="_blank" rel="noopener" style="color:#fff;background:var(--linkedin);border-radius:var(--radius);margin-top:0.25rem;"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+  </nav>
 
-  <!-- ── Skills ─────────────────────────────────────────────────── -->
-  <section id="skills">
-    <h2><i class="fa-solid fa-microchip"></i> Technical Stack &amp; Focus</h2>
-    <table>
-      <thead>
-        <tr><th>Category</th><th>Tools &amp; Skills</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>Networking</strong></td><td>CCNA &amp; Network+ (In-Progress), Cisco IOS, Packet Tracer, Routing &amp; Switching</td></tr>
-        <tr><td><strong>Automation</strong></td><td>Python, PowerShell, Zapier, ChatGPT Prompt Engineering</td></tr>
-        <tr><td><strong>Cloud &amp; Ops</strong></td><td>AWS &amp; Google Cloud Foundations, Microsoft Azure, Google Workspace Admin</td></tr>
-        <tr><td><strong>Management</strong></td><td>Technical Documentation, SOP Architecture, Project Management (Asana/Monday)</td></tr>
-      </tbody>
-    </table>
+  <!-- ── Hero ────────────────────────────────────────────────────── -->
+  <section id="hero" aria-label="Introduction">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <img
+        class="hero-avatar reveal"
+        src="https://github.com/user-attachments/assets/8a58008e-5388-4cf5-9c1e-bcf1af5212a9"
+        alt="Jarvis Anderson"
+        loading="eager"
+      />
+      <p class="hero-eyebrow reveal" style="transition-delay:0.1s">Helpdesk → Network Engineer</p>
+      <h1 class="hero-title reveal" style="transition-delay:0.2s">
+        I'm <span>Jarvis Anderson</span>.<br />Documenting the climb.
+      </h1>
+      <p class="hero-desc reveal" style="transition-delay:0.3s">
+        Building in public through <strong>BookofJarv</strong> — an open documentation of my IT journey — and scaling technical excellence through <strong>KodeKouncil</strong>, a boutique fulfillment agency for growing tech businesses.
+      </p>
+      <div class="hero-ctas reveal" style="transition-delay:0.4s">
+        <a href="#bookofjarv" class="btn-primary"><i class="fa-solid fa-book-open"></i> Follow the Journey</a>
+        <a href="#kodekouncil" class="btn-secondary"><i class="fa-solid fa-building"></i> KodeKouncil</a>
+      </div>
+    </div>
+    <a href="#bookofjarv" class="hero-scroll" aria-label="Scroll down"><i class="fa-solid fa-chevron-down"></i></a>
   </section>
 
   <!-- ── Featured Work (Best Projects) ──────────────────────────────── -->
@@ -649,22 +1272,363 @@
       <div class="card">
         <h3>📧 Email &amp; Calendar Management</h3>
         <p>Inbox organization and meeting management to keep executives focused.</p>
+  <!-- ── BookofJarv spotlight ─────────────────────────────────────── -->
+  <section id="bookofjarv" aria-label="BookofJarv spotlight">
+    <div class="section-wrap">
+      <p class="section-label reveal"><i class="fa-solid fa-book-open"></i> The Journey</p>
+      <h2 class="section-title reveal" style="transition-delay:0.1s">📘 BookofJarv</h2>
+      <p class="section-sub reveal" style="transition-delay:0.2s">
+        A living record of one IT professional's path from Help Desk to Network Engineering — featuring homelab experiments, study notes, certifications, and real-world lessons learned the hard way.
+      </p>
+
+      <!-- Journey timeline -->
+      <div class="timeline-strip reveal" style="transition-delay:0.3s" role="list" aria-label="Career timeline">
+        <div class="timeline-step" role="listitem">
+          <div class="timeline-dot">🖥️</div>
+          <span>Help Desk<br /><em style="color:var(--muted);font-style:normal;font-weight:400;font-size:0.72rem;">Where it started</em></span>
+        </div>
+        <div class="timeline-step" role="listitem">
+          <div class="timeline-dot">🔧</div>
+          <span>Desktop Support<br /><em style="color:var(--muted);font-style:normal;font-weight:400;font-size:0.72rem;">Systems & endpoints</em></span>
+        </div>
+        <div class="timeline-step active" role="listitem">
+          <div class="timeline-dot">📡</div>
+          <span>Network Engineer<br /><em style="font-style:normal;font-weight:400;font-size:0.72rem;">In progress</em></span>
+        </div>
+        <div class="timeline-step" role="listitem">
+          <div class="timeline-dot">☁️</div>
+          <span>Cloud &amp; Automation<br /><em style="color:var(--muted);font-style:normal;font-weight:400;font-size:0.72rem;">On the horizon</em></span>
+        </div>
+        <div class="timeline-step" role="listitem">
+          <div class="timeline-dot">🏗️</div>
+          <span>Architect<br /><em style="color:var(--muted);font-style:normal;font-weight:400;font-size:0.72rem;">The endgame</em></span>
+        </div>
       </div>
-      <div class="card">
-        <h3>📝 Documentation Architecture</h3>
-        <p>GitHub README overhauls, internal Wikis, and technical SOPs.</p>
+
+      <div class="spotlight-grid" style="margin-top:2rem;">
+        <div class="spotlight-card jarv reveal reveal-left" style="transition-delay:0.15s">
+          <div class="spotlight-icon">🧠</div>
+          <h3>Learning in Public</h3>
+          <p>Every certification, every homelab failure, every breakthrough — documented openly so others can shortcut the trial and error.</p>
+          <div class="spotlight-tags">
+            <span class="tag">CCNA</span>
+            <span class="tag">Network+</span>
+            <span class="tag green">Homelabs</span>
+            <span class="tag">Cisco IOS</span>
+          </div>
+          <a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" class="spotlight-link">
+            Watch on YouTube <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="spotlight-card jarv reveal reveal-right" style="transition-delay:0.25s">
+          <div class="spotlight-icon">🏠</div>
+          <h3>Homelab Resources</h3>
+          <p>Practical lab setups, network diagrams, toolkits, and step-by-step walkthroughs for building your own hands-on learning environment at home.</p>
+          <div class="spotlight-tags">
+            <span class="tag green">Proxmox</span>
+            <span class="tag green">pfSense</span>
+            <span class="tag">VLANs</span>
+            <span class="tag">Packet Tracer</span>
+          </div>
+          <a href="#resources" class="spotlight-link">
+            Explore resources <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
-      <div class="card">
-        <h3>⚙️ Process Automation</h3>
-        <p>Linking marketing to operations via Zapier, Python, and system architecture tools.</p>
+    </div>
+  </section>
+
+  <!-- ── KodeKouncil spotlight ────────────────────────────────────── -->
+  <section id="kodekouncil" style="background:linear-gradient(180deg,var(--surface) 0%, var(--bg) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);" aria-label="KodeKouncil">
+    <div class="section-wrap">
+      <p class="section-label reveal" style="color:var(--gold);"><i class="fa-solid fa-building"></i> Technical Agency</p>
+      <h2 class="section-title reveal" style="transition-delay:0.1s">⚡ KodeKouncil</h2>
+      <p class="section-sub reveal" style="transition-delay:0.2s">
+        A boutique fulfillment agency that embeds technical horsepower into growing businesses — handling the execution so founders can stay focused on vision.
+      </p>
+
+      <div class="spotlight-grid">
+        <div class="spotlight-card kouncil reveal reveal-left" style="transition-delay:0.15s">
+          <div class="spotlight-icon">⚙️</div>
+          <h3>What We Do</h3>
+          <p>KodeKouncil bridges the gap between strategy and execution. We deliver white-glove technical services — from documentation overhauls to full-stack automation pipelines.</p>
+          <div class="spotlight-tags">
+            <span class="tag gold">Process Automation</span>
+            <span class="tag gold">Brand Engineering</span>
+            <span class="tag gold">Technical Docs</span>
+          </div>
+          <span class="spotlight-link" style="cursor:default;">Fulfillment-focused <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+        <div class="spotlight-card kouncil reveal reveal-right" style="transition-delay:0.25s">
+          <div class="spotlight-icon">🎯</div>
+          <h3>Our Services</h3>
+          <p>Tailored engagements across executive operations, technical content, automation architecture, and digital presence — built for businesses that move fast.</p>
+          <div class="spotlight-tags">
+            <span class="tag gold">Executive Ops</span>
+            <span class="tag gold">Workflow Design</span>
+            <span class="tag gold">Web &amp; Portfolio</span>
+            <span class="tag gold">SOP Architecture</span>
+          </div>
+          <a href="#contact" class="spotlight-link" style="color:var(--gold);">
+            Work with us <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
-      <div class="card">
-        <h3>🎨 Brand Engineering</h3>
-        <p>High-tier technical portfolios, digital marketing, and web design/development.</p>
+    </div>
+  </section>
+
+  <!-- ── Best Projects ─────────────────────────────────────────────── -->
+  <section id="projects" aria-label="Projects">
+    <div class="section-wrap">
+      <p class="section-label reveal"><i class="fa-solid fa-star"></i> Featured Work</p>
+      <h2 class="section-title reveal" style="transition-delay:0.1s">Best Projects</h2>
+      <p class="section-sub reveal" style="transition-delay:0.2s">Selected builds, labs, and deliverables. Hover a card to see details.</p>
+
+      <div class="filter-tabs reveal" style="transition-delay:0.3s" role="tablist" aria-label="Filter projects by category">
+        <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-tab" data-filter="networking" role="tab" aria-selected="false">Networking</button>
+        <button class="filter-tab" data-filter="automation" role="tab" aria-selected="false">Automation</button>
+        <button class="filter-tab" data-filter="agency" role="tab" aria-selected="false">Agency</button>
+        <button class="filter-tab" data-filter="homelab" role="tab" aria-selected="false">Homelab</button>
       </div>
-      <div class="card">
-        <h3>🗂️ Executive Management</h3>
-        <p>File organization, expense tracking, backup recovery, and password architecture.</p>
+
+      <div class="projects-grid" id="projects-grid">
+
+        <div class="project-card reveal" data-category="homelab" tabindex="0" aria-label="Home Network Rebuild project">
+          <span class="card-featured">Featured</span>
+          <div class="project-card-inner">
+            <div class="project-card-icon">🏠</div>
+            <h3>Home Network Rebuild</h3>
+            <span class="project-card-tag">Homelab</span>
+            <p class="project-card-desc">Full network redesign with VLANs, pfSense firewall, and documented topology for reproducibility.</p>
+          </div>
+          <div class="project-overlay">
+            <h4>Home Network Rebuild</h4>
+            <p>Segmented network with IoT, work, and homelab VLANs. Includes pfSense routing, DNS filtering, and a documented recovery procedure.</p>
+            <div class="project-overlay-links">
+              <a href="https://github.com/bookofjarv/dev.home" target="_blank" rel="noopener" class="overlay-btn"><i class="fa-brands fa-github"></i> View Repo</a>
+              <span class="overlay-btn ghost">Homelab</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal" style="transition-delay:0.08s" data-category="networking" tabindex="0" aria-label="CCNA Lab Packet Tracer project">
+          <div class="project-card-inner">
+            <div class="project-card-icon">📡</div>
+            <h3>CCNA Lab — Packet Tracer</h3>
+            <span class="project-card-tag">Networking</span>
+            <p class="project-card-desc">OSPF, EIGRP, and ACL configurations in Cisco Packet Tracer, mapped to CCNA exam objectives.</p>
+          </div>
+          <div class="project-overlay">
+            <h4>CCNA Lab Pack</h4>
+            <p>Structured labs covering routing protocols, switching, and security policies — each mapped to a specific CCNA exam objective.</p>
+            <div class="project-overlay-links">
+              <a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" class="overlay-btn"><i class="fa-brands fa-youtube"></i> Watch</a>
+              <span class="overlay-btn ghost">Networking</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal" style="transition-delay:0.16s" data-category="automation" tabindex="0" aria-label="Automation Pipeline project">
+          <span class="card-featured" style="background:var(--accent2);color:#0d1117;">New</span>
+          <div class="project-card-inner">
+            <div class="project-card-icon">⚡</div>
+            <h3>Automation Pipeline</h3>
+            <span class="project-card-tag" style="color:var(--accent2);border-color:rgba(63,185,80,0.3);background:rgba(63,185,80,0.1);">Automation</span>
+            <p class="project-card-desc">Zapier + Python integration that auto-routes client intake forms to project boards with Slack alerts.</p>
+          </div>
+          <div class="project-overlay">
+            <h4>Client Intake Automation</h4>
+            <p>Reduces manual handoff time by 80%. Integrates with Airtable, Slack, and email. Built for KodeKouncil's internal ops.</p>
+            <div class="project-overlay-links">
+              <a href="#contact" class="overlay-btn">Request Demo</a>
+              <span class="overlay-btn ghost">Automation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal" style="transition-delay:0.08s" data-category="agency" tabindex="0" aria-label="Technical Portfolio System project">
+          <div class="project-card-inner">
+            <div class="project-card-icon">🎨</div>
+            <h3>Technical Portfolio System</h3>
+            <span class="project-card-tag" style="color:var(--gold);border-color:rgba(227,179,65,0.3);background:rgba(227,179,65,0.1);">Agency</span>
+            <p class="project-card-desc">KodeKouncil's client-facing portfolio template: responsive HTML/CSS with a GitHub Pages deploy workflow.</p>
+          </div>
+          <div class="project-overlay">
+            <h4>Portfolio Template</h4>
+            <p>Delivered to multiple clients as a branded deliverable. Fully responsive, accessible, no-framework, and deployed via GitHub Actions.</p>
+            <div class="project-overlay-links">
+              <a href="https://github.com/bookofjarv/dev.home" target="_blank" rel="noopener" class="overlay-btn"><i class="fa-brands fa-github"></i> View Source</a>
+              <span class="overlay-btn ghost">Agency</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal" style="transition-delay:0.16s" data-category="homelab" tabindex="0" aria-label="Proxmox Homelab Server project">
+          <div class="project-card-inner">
+            <div class="project-card-icon">🖥️</div>
+            <h3>Proxmox Homelab Server</h3>
+            <span class="project-card-tag">Homelab</span>
+            <p class="project-card-desc">Virtualized lab environment with Proxmox VE — running multiple Linux VMs for network practice and self-hosting.</p>
+          </div>
+          <div class="project-overlay">
+            <h4>Proxmox Build</h4>
+            <p>Hosts pfSense, Ubuntu servers, and a Windows VM. Includes backup strategy, ZFS storage, and a full setup guide.</p>
+            <div class="project-overlay-links">
+              <a href="#resources" class="overlay-btn">See Docs</a>
+              <span class="overlay-btn ghost">Homelab</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal" style="transition-delay:0.24s" data-category="agency" tabindex="0" aria-label="SOP Documentation System project">
+          <div class="project-card-inner">
+            <div class="project-card-icon">📝</div>
+            <h3>SOP Documentation System</h3>
+            <span class="project-card-tag" style="color:var(--gold);border-color:rgba(227,179,65,0.3);background:rgba(227,179,65,0.1);">Agency</span>
+            <p class="project-card-desc">Internal SOP architecture for a tech client — structured in GitHub Wiki with version-controlled Markdown.</p>
+          </div>
+          <div class="project-overlay">
+            <h4>SOP Architecture</h4>
+            <p>Created a full onboarding, incident response, and runbook library using structured Markdown templates and GitHub workflows.</p>
+            <div class="project-overlay-links">
+              <a href="#contact" class="overlay-btn">Inquire</a>
+              <span class="overlay-btn ghost">Agency</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Projects Carousel ─────────────────────────────────────────── -->
+  <section id="carousel" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);" aria-label="Explore more projects">
+    <div class="section-wrap">
+      <p class="section-label reveal"><i class="fa-solid fa-rotate"></i> Explore More</p>
+      <h2 class="section-title reveal" style="transition-delay:0.1s">Projects Carousel</h2>
+      <p class="section-sub reveal" style="transition-delay:0.2s">Scroll through ongoing and upcoming builds.</p>
+
+      <div class="carousel-wrap reveal" style="transition-delay:0.3s">
+        <div class="carousel-track-outer">
+          <div class="carousel-track" id="carousel-track" role="list">
+
+            <div class="carousel-slide" role="listitem">
+              <div class="carousel-card" tabindex="0">
+                <div class="carousel-card-icon">🔐</div>
+                <h3>Network Security Lab</h3>
+                <span class="project-card-tag" style="display:inline-flex;margin-bottom:0.5rem;">Networking</span>
+                <p>Firewall rules, IDS/IPS configs, and security policy documentation for homelab and study environments.</p>
+                <a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" class="spotlight-link" style="font-size:0.82rem;">Follow on YouTube <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+
+            <div class="carousel-slide" role="listitem">
+              <div class="carousel-card" tabindex="0">
+                <div class="carousel-card-icon">📊</div>
+                <h3>IT Journey Dashboard</h3>
+                <span class="project-card-tag" style="display:inline-flex;margin-bottom:0.5rem;">Automation</span>
+                <p>A personal metrics dashboard tracking certification progress, study hours, and lab milestones in real-time.</p>
+                <span class="spotlight-link" style="font-size:0.82rem;cursor:default;">In Development <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+
+            <div class="carousel-slide" role="listitem">
+              <div class="carousel-card" tabindex="0">
+                <div class="carousel-card-icon">🌐</div>
+                <h3>DNS &amp; DHCP Deep Dive</h3>
+                <span class="project-card-tag" style="display:inline-flex;margin-bottom:0.5rem;">Homelab</span>
+                <p>Written guide and video walkthrough on setting up Pi-hole, local DNS resolution, and DHCP reservations.</p>
+                <a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" class="spotlight-link" style="font-size:0.82rem;">Watch <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+
+            <div class="carousel-slide" role="listitem">
+              <div class="carousel-card" tabindex="0">
+                <div class="carousel-card-icon">🤖</div>
+                <h3>ChatGPT Prompt Engineering Kit</h3>
+                <span class="project-card-tag" style="display:inline-flex;margin-bottom:0.5rem;color:var(--accent2);border-color:rgba(63,185,80,0.3);background:rgba(63,185,80,0.1);">Automation</span>
+                <p>A prompt library and framework for IT professionals to use AI in documentation, troubleshooting, and SOPs.</p>
+                <a href="#contact" class="spotlight-link" style="font-size:0.82rem;">Get access <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+
+            <div class="carousel-slide" role="listitem">
+              <div class="carousel-card" tabindex="0">
+                <div class="carousel-card-icon">🏢</div>
+                <h3>KodeKouncil Client Playbook</h3>
+                <span class="project-card-tag" style="display:inline-flex;margin-bottom:0.5rem;color:var(--gold);border-color:rgba(227,179,65,0.3);background:rgba(227,179,65,0.1);">Agency</span>
+                <p>Onboarding guide and service delivery templates used internally by KodeKouncil for new engagements.</p>
+                <a href="#contact" class="spotlight-link" style="font-size:0.82rem;color:var(--gold);">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+
+            <div class="carousel-slide" role="listitem">
+              <div class="carousel-card" tabindex="0">
+                <div class="carousel-card-icon">📹</div>
+                <h3>YouTube Content Pipeline</h3>
+                <span class="project-card-tag" style="display:inline-flex;margin-bottom:0.5rem;">Agency</span>
+                <p>End-to-end content workflow for @bookofjarv — from script outline to thumbnail to publish, semi-automated.</p>
+                <a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" class="spotlight-link" style="font-size:0.82rem;">Subscribe <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="carousel-prev" aria-label="Previous slide" disabled>
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Slide indicators"></div>
+          <button class="carousel-btn" id="carousel-next" aria-label="Next slide">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Resources / Homelab CTA ──────────────────────────────────── -->
+  <section id="resources" aria-label="Homelab resources">
+    <div class="section-wrap">
+      <p class="section-label reveal"><i class="fa-solid fa-server"></i> Homelab &amp; Docs</p>
+      <h2 class="section-title reveal" style="transition-delay:0.1s">Resources &amp; Learning Paths</h2>
+      <p class="section-sub reveal" style="transition-delay:0.2s">
+        Practical materials for anyone building their own path in IT — from first homelab to enterprise-level network engineering.
+      </p>
+
+      <div class="resources-grid">
+        <div class="resource-card reveal" style="transition-delay:0.1s">
+          <i class="fa-solid fa-network-wired"></i>
+          <h4>Networking Fundamentals</h4>
+          <p>OSI model, subnetting, routing protocols — the core concepts every network engineer must know.</p>
+        </div>
+        <div class="resource-card reveal" style="transition-delay:0.15s">
+          <i class="fa-solid fa-server"></i>
+          <h4>Homelab Setup Guide</h4>
+          <p>Step-by-step: hardware choices, Proxmox install, network topology, and first VMs.</p>
+        </div>
+        <div class="resource-card reveal" style="transition-delay:0.2s">
+          <i class="fa-solid fa-shield-halved"></i>
+          <h4>Firewall &amp; DNS</h4>
+          <p>pfSense configuration, Pi-hole DNS filtering, and security best practices for home networks.</p>
+        </div>
+        <div class="resource-card reveal" style="transition-delay:0.25s">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h4>Cert Study Paths</h4>
+          <p>Curated resources for CompTIA Network+, CCNA, and beyond — with study schedules and lab objectives.</p>
+        </div>
+      </div>
+
+      <div class="cta-block reveal" style="transition-delay:0.3s">
+        <div class="cta-block-text">
+          <h3>📺 New content drops regularly</h3>
+          <p>Labs, walkthroughs, and study sessions — subscribe to <strong>@bookofjarv</strong> on YouTube to follow in real time.</p>
+        </div>
+        <a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" class="btn-primary">
+          <i class="fa-brands fa-youtube"></i> Subscribe on YouTube
+        </a>
       </div>
     </div>
 
@@ -678,48 +1642,195 @@
     </div>
   </section>
 
-  <!-- ── Contact ─────────────────────────────────────────────────── -->
-  <section id="contact">
-    <h2><i class="fa-solid fa-satellite-dish"></i> Connect with the Journey</h2>
-    <p>Follow along as I document the road from Help Desk to Network Engineer. Let's connect on your preferred platform.</p>
+  <!-- ── Contact ──────────────────────────────────────────────────── -->
+  <section id="contact" aria-label="Contact and social links">
+    <div class="section-wrap">
+      <p class="section-label reveal"><i class="fa-solid fa-satellite-dish"></i> Get in Touch</p>
+      <h2 class="section-title reveal" style="transition-delay:0.1s">Connect with the Journey</h2>
+      <p class="section-sub reveal" style="transition-delay:0.2s">
+        Follow along on your preferred platform. Whether you want to collaborate, hire KodeKouncil, or just learn together — reach out.
+      </p>
 
-    <div class="social-grid">
-
-      <!-- LinkedIn — primary / most emphasized -->
-      <a href="https://www.linkedin.com/in/jarvis-anderson/" target="_blank" rel="noopener" class="social-card social-linkedin">
-        <i class="fa-brands fa-linkedin"></i>
-        LinkedIn
-        <small style="font-weight:400;font-size:0.8rem;opacity:0.85;">Jarvis Anderson</small>
-      </a>
-
-      <!-- YouTube -->
-      <a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" class="social-card social-youtube">
-        <i class="fa-brands fa-youtube"></i>
-        YouTube
-        <small style="font-weight:400;font-size:0.8rem;opacity:0.75;">@bookofjarv</small>
-      </a>
-
-      <!-- Instagram -->
-      <a href="https://www.instagram.com/bookofjarv" target="_blank" rel="noopener" class="social-card social-instagram">
-        <i class="fa-brands fa-instagram"></i>
-        Instagram
-        <small style="font-weight:400;font-size:0.8rem;opacity:0.75;">@bookofjarv</small>
-      </a>
-
-      <!-- GitHub -->
-      <a href="https://github.com/bookofjarv/dev.home" target="_blank" rel="noopener" class="social-card social-github">
-        <i class="fa-brands fa-github"></i>
-        GitHub
-        <small style="font-weight:400;font-size:0.8rem;opacity:0.75;">bookofjarv/dev.home</small>
-      </a>
-
+      <div class="social-grid reveal" style="transition-delay:0.3s">
+        <a href="https://www.linkedin.com/in/jarvis-anderson/" target="_blank" rel="noopener" class="social-card social-linkedin">
+          <i class="fa-brands fa-linkedin"></i>
+          LinkedIn
+          <small style="font-weight:400;font-size:0.78rem;opacity:0.85;">Jarvis Anderson</small>
+        </a>
+        <a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" class="social-card social-youtube">
+          <i class="fa-brands fa-youtube"></i>
+          YouTube
+          <small style="font-weight:400;font-size:0.78rem;opacity:0.75;">@bookofjarv</small>
+        </a>
+        <a href="https://www.instagram.com/bookofjarv" target="_blank" rel="noopener" class="social-card social-instagram">
+          <i class="fa-brands fa-instagram"></i>
+          Instagram
+          <small style="font-weight:400;font-size:0.78rem;opacity:0.75;">@bookofjarv</small>
+        </a>
+        <a href="https://github.com/bookofjarv/dev.home" target="_blank" rel="noopener" class="social-card social-github">
+          <i class="fa-brands fa-github"></i>
+          GitHub
+          <small style="font-weight:400;font-size:0.78rem;opacity:0.75;">bookofjarv/dev.home</small>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- ── Footer ─────────────────────────────────────────────────── -->
+  <!-- ── Footer ──────────────────────────────────────────────────── -->
   <footer>
-    <p>© 2026 Jarvis Anderson · BookofJarv · Built with ❤️ &amp; determination</p>
+    <p>© 2026 Jarvis Anderson · BookofJarv · KodeKouncil · Built with ❤️ &amp; determination</p>
   </footer>
 
+  <!-- ── JavaScript ──────────────────────────────────────────────── -->
+  <script>
+    /* ── Scroll-reveal ─────────────────────────────────────────── */
+    (function () {
+      const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(el => observer.observe(el));
+    })();
+
+    /* ── Mobile hamburger ──────────────────────────────────────── */
+    (function () {
+      const btn   = document.getElementById('hamburger-btn');
+      const menu  = document.getElementById('mobile-menu');
+      btn.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        btn.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', String(open));
+      });
+      menu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          menu.classList.remove('open');
+          btn.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+
+    /* ── Project filter tabs ───────────────────────────────────── */
+    (function () {
+      const tabs  = document.querySelectorAll('.filter-tab');
+      const cards = document.querySelectorAll('#projects-grid .project-card');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+
+          const filter = tab.dataset.filter;
+          cards.forEach(card => {
+            const show = filter === 'all' || card.dataset.category === filter;
+            card.setAttribute('data-hidden', show ? 'false' : 'true');
+          });
+        });
+      });
+    })();
+
+    /* ── Carousel ──────────────────────────────────────────────── */
+    (function () {
+      const track     = document.getElementById('carousel-track');
+      const slides    = track.querySelectorAll('.carousel-slide');
+      const prevBtn   = document.getElementById('carousel-prev');
+      const nextBtn   = document.getElementById('carousel-next');
+      const dotsWrap  = document.getElementById('carousel-dots');
+
+      let current     = 0;
+      let slidesPerView = getSlidesPerView();
+
+      function getSlidesPerView() {
+        if (window.innerWidth < 769)  return 1;
+        if (window.innerWidth < 980)  return 2;
+        return 3;
+      }
+
+      function totalPositions() {
+        return Math.max(0, slides.length - slidesPerView);
+      }
+
+      function buildDots() {
+        dotsWrap.innerHTML = '';
+        const count = totalPositions() + 1;
+        for (let i = 0; i < count; i++) {
+          const d = document.createElement('button');
+          d.className = 'carousel-dot' + (i === current ? ' active' : '');
+          d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+          d.setAttribute('role', 'tab');
+          d.setAttribute('aria-selected', String(i === current));
+          d.addEventListener('click', () => goTo(i));
+          dotsWrap.appendChild(d);
+        }
+      }
+
+      function updateDots() {
+        dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+          d.setAttribute('aria-selected', String(i === current));
+        });
+      }
+
+      function getSlideWidth() {
+        const firstSlide = slides[0];
+        const trackStyle = window.getComputedStyle(track);
+        const gap = parseFloat(trackStyle.gap) || 20;
+        return firstSlide.offsetWidth + gap;
+      }
+
+      function goTo(index) {
+        const max = totalPositions();
+        current = Math.max(0, Math.min(index, max));
+        track.style.transform = `translateX(-${current * getSlideWidth()}px)`;
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current >= max;
+        updateDots();
+      }
+
+      prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn.addEventListener('click', () => goTo(current + 1));
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        const active = document.activeElement;
+        if (active && (active === prevBtn || active === nextBtn || dotsWrap.contains(active) || track.contains(active))) {
+          if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(current - 1); }
+          if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+        }
+      });
+
+      // Touch/swipe support
+      let touchStartX = 0;
+      track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+      });
+
+      // Resize handler
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          const newSpv = getSlidesPerView();
+          if (newSpv !== slidesPerView) {
+            slidesPerView = newSpv;
+            current = Math.min(current, totalPositions());
+            buildDots();
+            goTo(current);
+          }
+        }, 120);
+      });
+
+      buildDots();
+      goTo(0);
+    })();
+  </script>
 </body>
 </html>
