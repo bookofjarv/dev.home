@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BookofJarv | Jarvis Anderson</title>
-  <meta name="description" content="BookofJarv — Jarvis Anderson's documented IT journey from helpdesk to network engineering. Homelabs, learning paths, and KodeKouncil, a technical boutique fulfillment agency." />
+  <meta name="description" content="BookofJarv — Jarvis Anderson's documented IT journey from helpdesk to network engineering. Homelabs, learning paths, and KodeKouncil, a technical boutique fulf[...]
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     /* ── Reset & Base ───────────────────────────────────────────── */
@@ -998,691 +998,337 @@
       padding: 1rem;
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
     }
 
-    .value-pill span.label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--muted);
+    .value-pill-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
     }
 
-    .value-pill span.value {
-      font-size: 1.1rem;
+    .value-pill-title {
+      font-size: 0.85rem;
       font-weight: 700;
-      color: var(--accent);
-    }
-
-    /* ── Book a Call CTA ───────────────────────────────────────────── */
-    .cta-container {
-      text-align: center;
-      margin-top: 3.5rem;
-      padding: 3rem 2rem;
-      background: radial-gradient(circle at top right, rgba(88, 166, 255, 0.1), transparent 60%), var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-    }
-
-    .cta-container h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.75rem;
       color: var(--text);
     }
 
-    .cta-container p {
+    .value-pill-text {
+      font-size: 0.75rem;
       color: var(--muted);
-      max-width: 500px;
-      margin: 0 auto 1.5rem auto;
-      font-size: 0.95rem;
-    }
-
-    .btn-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.85rem 1.75rem;
-      background: linear-gradient(135deg, var(--accent) 0%, #388bfd 100%);
-      color: #0d1117 !important;
-      border-radius: var(--radius);
-      font-weight: 700;
-      font-size: 1rem;
-      box-shadow: 0 4px 20px rgba(88, 166, 255, 0.35);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .btn-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 26px rgba(88, 166, 255, 0.5);
+      margin-top: 0.25rem;
     }
 
     @media (max-width: 768px) {
-      .agency-columns {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
+      .agency-columns { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-<body>
 
-  <!-- ── Navigation ──────────────────────────────────────────────── -->
+<body>
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- NAV                                                            -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
   <nav>
-    <span class="nav-brand">📘 BookofJarv</span>
+    <div class="nav-brand">BookofJarv</div>
     <ul class="nav-links">
-      <li><a href="#bookofjarv"><i class="fa-solid fa-book-open"></i> Journey</a></li>
-      <li><a href="#kodekouncil"><i class="fa-solid fa-building"></i> KodeKouncil</a></li>
-      <li><a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a></li>
-      <li><a href="#resources"><i class="fa-solid fa-server"></i> Homelab</a></li>
-      <li><a href="#contact"><i class="fa-solid fa-satellite-dish"></i> Connect</a></li>
-      <li><a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" title="YouTube" style="color:#ff0000;"><i class="fa-brands fa-youtube"></i></a></li>
-      <li><a href="https://www.instagram.com/bookofjarv" target="_blank" rel="noopener" title="Instagram" style="color:#e1306c;"><i class="fa-brands fa-instagram"></i></a></li>
-      <li><a href="https://github.com/bookofjarv/dev.home" target="_blank" rel="noopener" title="GitHub" style="color:#f0f6fc;"><i class="fa-brands fa-github"></i></a></li>
-      <li>
-        <a href="https://www.linkedin.com/in/jarvis-anderson/" target="_blank" rel="noopener" class="nav-linkedin">
-          <i class="fa-brands fa-linkedin"></i> LinkedIn
-        </a>
-      </li>
+      <li><a href="#projects" data-nav><i class="fas fa-briefcase"></i> Projects</a></li>
+      <li><a href="#journey" data-nav><i class="fas fa-road"></i> Journey</a></li>
+      <li><a href="#resources" data-nav><i class="fas fa-book"></i> Resources</a></li>
+      <li><a href="#contact" data-nav><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="https://linkedin.com/in/jarvis-anderson" target="_blank" class="nav-linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
     </ul>
-    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" id="hamburger-btn">
-      <span></span><span></span><span></span>
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
   </nav>
 
-  <!-- ── Mobile menu ─────────────────────────────────────────────── -->
-  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-    <a href="#bookofjarv"><i class="fa-solid fa-book-open"></i> Journey (BookofJarv)</a>
-    <a href="#kodekouncil"><i class="fa-solid fa-building"></i> KodeKouncil</a>
-    <a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
-    <a href="#resources"><i class="fa-solid fa-server"></i> Homelab &amp; Resources</a>
-    <a href="#contact"><i class="fa-solid fa-satellite-dish"></i> Connect</a>
-    <a href="https://www.linkedin.com/in/jarvis-anderson/" target="_blank" rel="noopener" style="color:#fff;background:var(--linkedin);border-radius:var(--radius);margin-top:0.25rem;"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#projects" data-nav><i class="fas fa-briefcase"></i> Projects</a>
+    <a href="#journey" data-nav><i class="fas fa-road"></i> Journey</a>
+    <a href="#resources" data-nav><i class="fas fa-book"></i> Resources</a>
+    <a href="#contact" data-nav><i class="fas fa-envelope"></i> Contact</a>
+    <a href="https://linkedin.com/in/jarvis-anderson" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+  </div>
 
-  <!-- ── Hero ────────────────────────────────────────────────────── -->
-  <section id="hero" aria-label="Introduction">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="hero-inner">
-      <img
-        class="hero-avatar reveal"
-        src="https://github.com/user-attachments/assets/8a58008e-5388-4cf5-9c1e-bcf1af5212a9"
-        alt="Jarvis Anderson"
-        loading="eager"
-      />
-      <p class="hero-eyebrow reveal" style="transition-delay:0.1s">Helpdesk → Network Engineer</p>
-      <h1 class="hero-title reveal" style="transition-delay:0.2s">
-        I'm <span>Jarvis Anderson</span>.<br />Documenting the climb.
-      </h1>
-      <p class="hero-desc reveal" style="transition-delay:0.3s">
-        Building in public through <strong>BookofJarv</strong> — an open documentation of my IT journey — and scaling technical excellence through <strong>KodeKouncil</strong>, a boutique fulfillment agency for growing tech businesses.
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- HERO                                                           -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner reveal">
+      <img src="https://avatars.githubusercontent.com/u/87783504?v=4" alt="Jarvis Anderson" class="hero-avatar" />
+      <div class="hero-eyebrow">Welcome to my digital space</div>
+      <h1 class="hero-title">Hi, I'm <span>Jarvis</span></h1>
+      <p class="hero-desc">
+        An IT professional documenting the journey from helpdesk to network engineering. 
+        Explore my homelabs, projects, and technical deep dives.
       </p>
-      <div class="hero-ctas reveal" style="transition-delay:0.4s">
-        <a href="#bookofjarv" class="btn-primary"><i class="fa-solid fa-book-open"></i> Follow the Journey</a>
-        <a href="#kodekouncil" class="btn-secondary"><i class="fa-solid fa-building"></i> KodeKouncil</a>
-      </div>
-    </div>
-    <a href="#bookofjarv" class="hero-scroll" aria-label="Scroll down"><i class="fa-solid fa-chevron-down"></i></a>
-  </section>
-
-  <!-- ── BookofJarv spotlight ─────────────────────────────────────── -->
-  <section id="bookofjarv" aria-label="BookofJarv spotlight">
-    <div class="section-wrap">
-      <p class="section-label reveal"><i class="fa-solid fa-book-open"></i> The Journey</p>
-      <h2 class="section-title reveal" style="transition-delay:0.1s">📘 BookofJarv</h2>
-      <p class="section-sub reveal" style="transition-delay:0.2s">
-        A living record of one IT professional's path from Help Desk to Network Engineering — featuring homelab experiments, study notes, certifications, and real-world lessons learned the hard way.
-      </p>
-
-      <!-- Journey timeline -->
-      <div class="timeline-strip reveal" style="transition-delay:0.3s" role="list" aria-label="Career timeline">
-        <div class="timeline-step" role="listitem">
-          <div class="timeline-dot">🖥️</div>
-          <span>Help Desk<br /><em style="color:var(--muted);font-style:normal;font-weight:400;font-size:0.72rem;">Where it started</em></span>
-        </div>
-        <div class="timeline-step" role="listitem">
-          <div class="timeline-dot">🔧</div>
-          <span>Desktop Support<br /><em style="color:var(--muted);font-style:normal;font-weight:400;font-size:0.72rem;">Systems & endpoints</em></span>
-        </div>
-        <div class="timeline-step active" role="listitem">
-          <div class="timeline-dot">📡</div>
-          <span>Network Engineer<br /><em style="font-style:normal;font-weight:400;font-size:0.72rem;">In progress</em></span>
-        </div>
-        <div class="timeline-step" role="listitem">
-          <div class="timeline-dot">☁️</div>
-          <span>Cloud &amp; Automation<br /><em style="color:var(--muted);font-style:normal;font-weight:400;font-size:0.72rem;">On the horizon</em></span>
-        </div>
-        <div class="timeline-step" role="listitem">
-          <div class="timeline-dot">🏗️</div>
-          <span>Architect<br /><em style="color:var(--muted);font-style:normal;font-weight:400;font-size:0.72rem;">The endgame</em></span>
-        </div>
-      </div>
-
-      <div class="spotlight-grid" style="margin-top:2rem;">
-        <div class="spotlight-card jarv reveal reveal-left" style="transition-delay:0.15s">
-          <div class="spotlight-icon">🧠</div>
-          <h3>Learning in Public</h3>
-          <p>Every certification, every homelab failure, every breakthrough — documented openly so others can shortcut the trial and error.</p>
-          <div class="spotlight-tags">
-            <span class="tag">CCNA</span>
-            <span class="tag">Network+</span>
-            <span class="tag green">Homelabs</span>
-            <span class="tag">Cisco IOS</span>
-          </div>
-          <a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" class="spotlight-link">
-            Watch on YouTube <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-        <div class="spotlight-card jarv reveal reveal-right" style="transition-delay:0.25s">
-          <div class="spotlight-icon">🏠</div>
-          <h3>Homelab Resources</h3>
-          <p>Practical lab setups, network diagrams, toolkits, and step-by-step walkthroughs for building your own hands-on learning environment at home.</p>
-          <div class="spotlight-tags">
-            <span class="tag green">Proxmox</span>
-            <span class="tag green">pfSense</span>
-            <span class="tag">VLANs</span>
-            <span class="tag">Packet Tracer</span>
-          </div>
-          <a href="#resources" class="spotlight-link">
-            Explore resources <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── KodeKouncil spotlight ────────────────────────────────────── -->
-  <section id="kodekouncil" style="background:linear-gradient(180deg,var(--surface) 0%, var(--bg) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);" aria-label="KodeKouncil">
-    <div class="section-wrap">
-      <p class="section-label reveal" style="color:var(--gold);"><i class="fa-solid fa-building"></i> Technical Agency</p>
-      <h2 class="section-title reveal" style="transition-delay:0.1s">⚡ KodeKouncil</h2>
-      <p class="section-sub reveal" style="transition-delay:0.2s">
-        A boutique fulfillment agency that embeds technical horsepower into growing businesses — handling the execution so founders can stay focused on vision.
-      </p>
-
-      <div class="spotlight-grid">
-        <div class="spotlight-card kouncil reveal reveal-left" style="transition-delay:0.15s">
-          <div class="spotlight-icon">⚙️</div>
-          <h3>What We Do</h3>
-          <p>KodeKouncil bridges the gap between strategy and execution. We deliver white-glove technical services — from documentation overhauls to full-stack automation pipelines.</p>
-          <div class="spotlight-tags">
-            <span class="tag gold">Process Automation</span>
-            <span class="tag gold">Brand Engineering</span>
-            <span class="tag gold">Technical Docs</span>
-          </div>
-          <span class="spotlight-link" style="cursor:default;">Fulfillment-focused <i class="fa-solid fa-arrow-right"></i></span>
-        </div>
-        <div class="spotlight-card kouncil reveal reveal-right" style="transition-delay:0.25s">
-          <div class="spotlight-icon">🎯</div>
-          <h3>Our Services</h3>
-          <p>Tailored engagements across executive operations, technical content, automation architecture, and digital presence — built for businesses that move fast.</p>
-          <div class="spotlight-tags">
-            <span class="tag gold">Executive Ops</span>
-            <span class="tag gold">Workflow Design</span>
-            <span class="tag gold">Web &amp; Portfolio</span>
-            <span class="tag gold">SOP Architecture</span>
-          </div>
-          <a href="#contact" class="spotlight-link" style="color:var(--gold);">
-            Work with us <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Best Projects ─────────────────────────────────────────────── -->
-  <section id="projects" aria-label="Projects">
-    <div class="section-wrap">
-      <p class="section-label reveal"><i class="fa-solid fa-star"></i> Featured Work</p>
-      <h2 class="section-title reveal" style="transition-delay:0.1s">Best Projects</h2>
-      <p class="section-sub reveal" style="transition-delay:0.2s">Selected builds, labs, and deliverables. Hover a card to see details.</p>
-
-      <div class="filter-tabs reveal" style="transition-delay:0.3s" role="tablist" aria-label="Filter projects by category">
-        <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
-        <button class="filter-tab" data-filter="networking" role="tab" aria-selected="false">Networking</button>
-        <button class="filter-tab" data-filter="automation" role="tab" aria-selected="false">Automation</button>
-        <button class="filter-tab" data-filter="agency" role="tab" aria-selected="false">Agency</button>
-        <button class="filter-tab" data-filter="homelab" role="tab" aria-selected="false">Homelab</button>
-      </div>
-
-      <div class="projects-grid" id="projects-grid">
-
-        <div class="project-card reveal" data-category="homelab" tabindex="0" aria-label="Home Network Rebuild project">
-          <span class="card-featured">Featured</span>
-          <div class="project-card-inner">
-            <div class="project-card-icon">🏠</div>
-            <h3>Home Network Rebuild</h3>
-            <span class="project-card-tag">Homelab</span>
-            <p class="project-card-desc">Full network redesign with VLANs, pfSense firewall, and documented topology for reproducibility.</p>
-          </div>
-          <div class="project-overlay">
-            <h4>Home Network Rebuild</h4>
-            <p>Segmented network with IoT, work, and homelab VLANs. Includes pfSense routing, DNS filtering, and a documented recovery procedure.</p>
-            <div class="project-overlay-links">
-              <a href="https://github.com/bookofjarv/dev.home" target="_blank" rel="noopener" class="overlay-btn"><i class="fa-brands fa-github"></i> View Repo</a>
-              <span class="overlay-btn ghost">Homelab</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card reveal" style="transition-delay:0.08s" data-category="networking" tabindex="0" aria-label="CCNA Lab Packet Tracer project">
-          <div class="project-card-inner">
-            <div class="project-card-icon">📡</div>
-            <h3>CCNA Lab — Packet Tracer</h3>
-            <span class="project-card-tag">Networking</span>
-            <p class="project-card-desc">OSPF, EIGRP, and ACL configurations in Cisco Packet Tracer, mapped to CCNA exam objectives.</p>
-          </div>
-          <div class="project-overlay">
-            <h4>CCNA Lab Pack</h4>
-            <p>Structured labs covering routing protocols, switching, and security policies — each mapped to a specific CCNA exam objective.</p>
-            <div class="project-overlay-links">
-              <a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" class="overlay-btn"><i class="fa-brands fa-youtube"></i> Watch</a>
-              <span class="overlay-btn ghost">Networking</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card reveal" style="transition-delay:0.16s" data-category="automation" tabindex="0" aria-label="Automation Pipeline project">
-          <span class="card-featured" style="background:var(--accent2);color:#0d1117;">New</span>
-          <div class="project-card-inner">
-            <div class="project-card-icon">⚡</div>
-            <h3>Automation Pipeline</h3>
-            <span class="project-card-tag" style="color:var(--accent2);border-color:rgba(63,185,80,0.3);background:rgba(63,185,80,0.1);">Automation</span>
-            <p class="project-card-desc">Zapier + Python integration that auto-routes client intake forms to project boards with Slack alerts.</p>
-          </div>
-          <div class="project-overlay">
-            <h4>Client Intake Automation</h4>
-            <p>Reduces manual handoff time by 80%. Integrates with Airtable, Slack, and email. Built for KodeKouncil's internal ops.</p>
-            <div class="project-overlay-links">
-              <a href="#contact" class="overlay-btn">Request Demo</a>
-              <span class="overlay-btn ghost">Automation</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card reveal" style="transition-delay:0.08s" data-category="agency" tabindex="0" aria-label="Technical Portfolio System project">
-          <div class="project-card-inner">
-            <div class="project-card-icon">🎨</div>
-            <h3>Technical Portfolio System</h3>
-            <span class="project-card-tag" style="color:var(--gold);border-color:rgba(227,179,65,0.3);background:rgba(227,179,65,0.1);">Agency</span>
-            <p class="project-card-desc">KodeKouncil's client-facing portfolio template: responsive HTML/CSS with a GitHub Pages deploy workflow.</p>
-          </div>
-          <div class="project-overlay">
-            <h4>Portfolio Template</h4>
-            <p>Delivered to multiple clients as a branded deliverable. Fully responsive, accessible, no-framework, and deployed via GitHub Actions.</p>
-            <div class="project-overlay-links">
-              <a href="https://github.com/bookofjarv/dev.home" target="_blank" rel="noopener" class="overlay-btn"><i class="fa-brands fa-github"></i> View Source</a>
-              <span class="overlay-btn ghost">Agency</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card reveal" style="transition-delay:0.16s" data-category="homelab" tabindex="0" aria-label="Proxmox Homelab Server project">
-          <div class="project-card-inner">
-            <div class="project-card-icon">🖥️</div>
-            <h3>Proxmox Homelab Server</h3>
-            <span class="project-card-tag">Homelab</span>
-            <p class="project-card-desc">Virtualized lab environment with Proxmox VE — running multiple Linux VMs for network practice and self-hosting.</p>
-          </div>
-          <div class="project-overlay">
-            <h4>Proxmox Build</h4>
-            <p>Hosts pfSense, Ubuntu servers, and a Windows VM. Includes backup strategy, ZFS storage, and a full setup guide.</p>
-            <div class="project-overlay-links">
-              <a href="#resources" class="overlay-btn">See Docs</a>
-              <span class="overlay-btn ghost">Homelab</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card reveal" style="transition-delay:0.24s" data-category="agency" tabindex="0" aria-label="SOP Documentation System project">
-          <div class="project-card-inner">
-            <div class="project-card-icon">📝</div>
-            <h3>SOP Documentation System</h3>
-            <span class="project-card-tag" style="color:var(--gold);border-color:rgba(227,179,65,0.3);background:rgba(227,179,65,0.1);">Agency</span>
-            <p class="project-card-desc">Internal SOP architecture for a tech client — structured in GitHub Wiki with version-controlled Markdown.</p>
-          </div>
-          <div class="project-overlay">
-            <h4>SOP Architecture</h4>
-            <p>Created a full onboarding, incident response, and runbook library using structured Markdown templates and GitHub workflows.</p>
-            <div class="project-overlay-links">
-              <a href="#contact" class="overlay-btn">Inquire</a>
-              <span class="overlay-btn ghost">Agency</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Projects Carousel ─────────────────────────────────────────── -->
-  <section id="carousel" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);" aria-label="Explore more projects">
-    <div class="section-wrap">
-      <p class="section-label reveal"><i class="fa-solid fa-rotate"></i> Explore More</p>
-      <h2 class="section-title reveal" style="transition-delay:0.1s">Projects Carousel</h2>
-      <p class="section-sub reveal" style="transition-delay:0.2s">Scroll through ongoing and upcoming builds.</p>
-
-      <div class="carousel-wrap reveal" style="transition-delay:0.3s">
-        <div class="carousel-track-outer">
-          <div class="carousel-track" id="carousel-track" role="list">
-
-            <div class="carousel-slide" role="listitem">
-              <div class="carousel-card" tabindex="0">
-                <div class="carousel-card-icon">🔐</div>
-                <h3>Network Security Lab</h3>
-                <span class="project-card-tag" style="display:inline-flex;margin-bottom:0.5rem;">Networking</span>
-                <p>Firewall rules, IDS/IPS configs, and security policy documentation for homelab and study environments.</p>
-                <a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" class="spotlight-link" style="font-size:0.82rem;">Follow on YouTube <i class="fa-solid fa-arrow-right"></i></a>
-              </div>
-            </div>
-
-            <div class="carousel-slide" role="listitem">
-              <div class="carousel-card" tabindex="0">
-                <div class="carousel-card-icon">📊</div>
-                <h3>IT Journey Dashboard</h3>
-                <span class="project-card-tag" style="display:inline-flex;margin-bottom:0.5rem;">Automation</span>
-                <p>A personal metrics dashboard tracking certification progress, study hours, and lab milestones in real-time.</p>
-                <span class="spotlight-link" style="font-size:0.82rem;cursor:default;">In Development <i class="fa-solid fa-arrow-right"></i></span>
-              </div>
-            </div>
-
-            <div class="carousel-slide" role="listitem">
-              <div class="carousel-card" tabindex="0">
-                <div class="carousel-card-icon">🌐</div>
-                <h3>DNS &amp; DHCP Deep Dive</h3>
-                <span class="project-card-tag" style="display:inline-flex;margin-bottom:0.5rem;">Homelab</span>
-                <p>Written guide and video walkthrough on setting up Pi-hole, local DNS resolution, and DHCP reservations.</p>
-                <a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" class="spotlight-link" style="font-size:0.82rem;">Watch <i class="fa-solid fa-arrow-right"></i></a>
-              </div>
-            </div>
-
-            <div class="carousel-slide" role="listitem">
-              <div class="carousel-card" tabindex="0">
-                <div class="carousel-card-icon">🤖</div>
-                <h3>ChatGPT Prompt Engineering Kit</h3>
-                <span class="project-card-tag" style="display:inline-flex;margin-bottom:0.5rem;color:var(--accent2);border-color:rgba(63,185,80,0.3);background:rgba(63,185,80,0.1);">Automation</span>
-                <p>A prompt library and framework for IT professionals to use AI in documentation, troubleshooting, and SOPs.</p>
-                <a href="#contact" class="spotlight-link" style="font-size:0.82rem;">Get access <i class="fa-solid fa-arrow-right"></i></a>
-              </div>
-            </div>
-
-            <div class="carousel-slide" role="listitem">
-              <div class="carousel-card" tabindex="0">
-                <div class="carousel-card-icon">🏢</div>
-                <h3>KodeKouncil Client Playbook</h3>
-                <span class="project-card-tag" style="display:inline-flex;margin-bottom:0.5rem;color:var(--gold);border-color:rgba(227,179,65,0.3);background:rgba(227,179,65,0.1);">Agency</span>
-                <p>Onboarding guide and service delivery templates used internally by KodeKouncil for new engagements.</p>
-                <a href="#contact" class="spotlight-link" style="font-size:0.82rem;color:var(--gold);">Inquire <i class="fa-solid fa-arrow-right"></i></a>
-              </div>
-            </div>
-
-            <div class="carousel-slide" role="listitem">
-              <div class="carousel-card" tabindex="0">
-                <div class="carousel-card-icon">📹</div>
-                <h3>YouTube Content Pipeline</h3>
-                <span class="project-card-tag" style="display:inline-flex;margin-bottom:0.5rem;">Agency</span>
-                <p>End-to-end content workflow for @bookofjarv — from script outline to thumbnail to publish, semi-automated.</p>
-                <a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" class="spotlight-link" style="font-size:0.82rem;">Subscribe <i class="fa-solid fa-arrow-right"></i></a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="carousel-controls">
-          <button class="carousel-btn" id="carousel-prev" aria-label="Previous slide" disabled>
-            <i class="fa-solid fa-chevron-left"></i>
-          </button>
-          <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Slide indicators"></div>
-          <button class="carousel-btn" id="carousel-next" aria-label="Next slide">
-            <i class="fa-solid fa-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Resources / Homelab CTA ──────────────────────────────────── -->
-  <section id="resources" aria-label="Homelab resources">
-    <div class="section-wrap">
-      <p class="section-label reveal"><i class="fa-solid fa-server"></i> Homelab &amp; Docs</p>
-      <h2 class="section-title reveal" style="transition-delay:0.1s">Resources &amp; Learning Paths</h2>
-      <p class="section-sub reveal" style="transition-delay:0.2s">
-        Practical materials for anyone building their own path in IT — from first homelab to enterprise-level network engineering.
-      </p>
-
-      <div class="resources-grid">
-        <div class="resource-card reveal" style="transition-delay:0.1s">
-          <i class="fa-solid fa-network-wired"></i>
-          <h4>Networking Fundamentals</h4>
-          <p>OSI model, subnetting, routing protocols — the core concepts every network engineer must know.</p>
-        </div>
-        <div class="resource-card reveal" style="transition-delay:0.15s">
-          <i class="fa-solid fa-server"></i>
-          <h4>Homelab Setup Guide</h4>
-          <p>Step-by-step: hardware choices, Proxmox install, network topology, and first VMs.</p>
-        </div>
-        <div class="resource-card reveal" style="transition-delay:0.2s">
-          <i class="fa-solid fa-shield-halved"></i>
-          <h4>Firewall &amp; DNS</h4>
-          <p>pfSense configuration, Pi-hole DNS filtering, and security best practices for home networks.</p>
-        </div>
-        <div class="resource-card reveal" style="transition-delay:0.25s">
-          <i class="fa-solid fa-graduation-cap"></i>
-          <h4>Cert Study Paths</h4>
-          <p>Curated resources for CompTIA Network+, CCNA, and beyond — with study schedules and lab objectives.</p>
-        </div>
-      </div>
-
-      <div class="cta-block reveal" style="transition-delay:0.3s">
-        <div class="cta-block-text">
-          <h3>📺 New content drops regularly</h3>
-          <p>Labs, walkthroughs, and study sessions — subscribe to <strong>@bookofjarv</strong> on YouTube to follow in real time.</p>
-        </div>
-        <a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" class="btn-primary">
-          <i class="fa-brands fa-youtube"></i> Subscribe on YouTube
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">
+          <i class="fas fa-arrow-down"></i> Explore Projects
+        </a>
+        <a href="https://github.com/bookofjarv" target="_blank" class="btn-secondary">
+          <i class="fab fa-github"></i> GitHub Profile
         </a>
       </div>
     </div>
+    <div class="hero-scroll">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
 
-    <!-- ── Call to Action ───────────────────────────────────────── -->
-    <div class="cta-container">
-      <h3>Ready to optimize your technical operations?</h3>
-      <p>Let's map out your workflows, automate manual tasks, and build solid, repeatable technical infrastructure.</p>
-      <a href="https://www.linkedin.com/in/jarvis-anderson/" target="_blank" rel="noopener" class="btn-cta">
-        <i class="fa-regular fa-calendar-check"></i> Book a Technical Discovery Call
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SPOTLIGHT SECTION                                              -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <section class="section-wrap">
+    <div class="spotlight-grid">
+      <!-- BookofJarv -->
+      <div class="spotlight-card jarv reveal-left">
+        <div class="spotlight-icon">
+          <i class="fas fa-folder-open"></i>
+        </div>
+        <h3>BookofJarv</h3>
+        <p>My personal portfolio and IT journey documentation—homelabs, certifications, and technical explorations from helpdesk to network engineering.</p>
+        <div class="spotlight-tags">
+          <span class="tag">Portfolio</span>
+          <span class="tag green">IT Journey</span>
+          <span class="tag">Homelab</span>
+        </div>
+        <a href="#projects" class="spotlight-link">
+          View Work <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- KodeKouncil -->
+      <div class="spotlight-card kouncil reveal-right">
+        <div class="spotlight-icon">
+          <i class="fas fa-rocket"></i>
+        </div>
+        <h3>KodeKouncil</h3>
+        <p>A technical boutique specializing in cloud solutions, IT infrastructure, and custom software development for businesses ready to scale.</p>
+        <div class="spotlight-tags">
+          <span class="tag gold">Agency</span>
+          <span class="tag gold">Cloud Services</span>
+          <span class="tag gold">Consulting</span>
+        </div>
+        <a href="#" class="spotlight-link">
+          Learn More <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- JOURNEY TIMELINE                                               -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <section id="journey" class="section-wrap">
+    <div class="section-label"><i class="fas fa-compass"></i> Career Path</div>
+    <h2 class="section-title">IT Journey</h2>
+    <p class="section-sub">From technical support to infrastructure design—a progression of growth and skill acquisition.</p>
+    <div class="timeline-strip" id="timeline">
+      <div class="timeline-step active reveal">
+        <div class="timeline-dot">
+          <i class="fas fa-headset"></i>
+        </div>
+        <span>Helpdesk<br/>Support</span>
+      </div>
+      <div class="timeline-step reveal">
+        <div class="timeline-dot">
+          <i class="fas fa-server"></i>
+        </div>
+        <span>Systems<br/>Admin</span>
+      </div>
+      <div class="timeline-step reveal">
+        <div class="timeline-dot">
+          <i class="fas fa-network-wired"></i>
+        </div>
+        <span>Network<br/>Engineering</span>
+      </div>
+      <div class="timeline-step reveal">
+        <div class="timeline-dot">
+          <i class="fas fa-cloud"></i>
+        </div>
+        <span>Cloud<br/>Architect</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- PROJECTS SECTION                                               -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <section id="projects" class="section-wrap">
+    <div class="section-label"><i class="fas fa-star"></i> Best Work</div>
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-sub">A curated collection of my technical projects, homelabs, and infrastructure work.</p>
+
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="all">All Projects</button>
+      <button class="filter-tab" data-filter="homelab">Homelab</button>
+      <button class="filter-tab" data-filter="ops">Operations</button>
+      <button class="filter-tab" data-filter="learning">Learning</button>
+    </div>
+
+    <div class="projects-grid">
+      <!-- HarborTech Operations Playbook -->
+      <div class="project-card reveal" data-category="ops">
+        <div class="card-featured">Featured</div>
+        <div class="project-card-inner">
+          <div class="project-card-icon">
+            <i class="fas fa-clipboard-list"></i>
+          </div>
+          <h3>HarborTech Operations Playbook</h3>
+          <p class="project-card-desc">Cloud virtualization and scenario-based operations documentation. Comprehensive playbooks for infrastructure management and DevOps workflows.</p>
+          <span class="project-card-tag">Operations</span>
+        </div>
+        <div class="project-overlay">
+          <h4>HarborTech Operations Playbook</h4>
+          <p>A collection of cloud virtualization projects and scenario-based operations guides for managing enterprise infrastructure.</p>
+          <div class="project-overlay-links">
+            <a href="https://github.com/bookofjarv/HarborTech-Operations-Playbook" target="_blank" class="overlay-btn">
+              <i class="fab fa-github"></i> Repository
+            </a>
+            <a href="https://github.com/bookofjarv/HarborTech-Operations-Playbook#readme" target="_blank" class="overlay-btn ghost">
+              <i class="fas fa-book"></i> Docs
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- RESOURCES SECTION                                              -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <section id="resources" class="section-wrap">
+    <div class="section-label"><i class="fas fa-lightbulb"></i> Learning Hub</div>
+    <h2 class="section-title">Resources & Tools</h2>
+    <p class="section-sub">Curated resources for IT professionals interested in networking, cloud, and infrastructure.</p>
+
+    <div class="resources-grid">
+      <div class="resource-card reveal">
+        <i class="fas fa-book"></i>
+        <h4>Linux Basics</h4>
+        <p>Essential command-line skills and system administration fundamentals.</p>
+      </div>
+      <div class="resource-card reveal">
+        <i class="fas fa-network-wired"></i>
+        <h4>Networking</h4>
+        <p>Subnetting, routing protocols, and network design principles.</p>
+      </div>
+      <div class="resource-card reveal">
+        <i class="fas fa-cloud"></i>
+        <h4>Cloud Platforms</h4>
+        <p>AWS, Azure, and infrastructure-as-code deep dives.</p>
+      </div>
+      <div class="resource-card reveal">
+        <i class="fas fa-lock"></i>
+        <h4>Security</h4>
+        <p>Network security, access control, and hardening practices.</p>
+      </div>
+    </div>
+
+    <div class="cta-block">
+      <div class="cta-block-text">
+        <h3>Stay Updated</h3>
+        <p>Follow my latest projects and insights on GitHub and LinkedIn</p>
+      </div>
+      <a href="https://github.com/bookofjarv" target="_blank" class="btn-primary">
+        <i class="fab fa-github"></i> Visit GitHub
       </a>
     </div>
   </section>
 
-  <!-- ── Contact ──────────────────────────────────────────────────── -->
-  <section id="contact" aria-label="Contact and social links">
-    <div class="section-wrap">
-      <p class="section-label reveal"><i class="fa-solid fa-satellite-dish"></i> Get in Touch</p>
-      <h2 class="section-title reveal" style="transition-delay:0.1s">Connect with the Journey</h2>
-      <p class="section-sub reveal" style="transition-delay:0.2s">
-        Follow along on your preferred platform. Whether you want to collaborate, hire KodeKouncil, or just learn together — reach out.
-      </p>
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- CONTACT SECTION                                                -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <section id="contact" class="section-wrap">
+    <div class="section-label"><i class="fas fa-handshake"></i> Connect</div>
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="section-sub">Reach out via social media or explore my latest work on GitHub.</p>
 
-      <div class="social-grid reveal" style="transition-delay:0.3s">
-        <a href="https://www.linkedin.com/in/jarvis-anderson/" target="_blank" rel="noopener" class="social-card social-linkedin">
-          <i class="fa-brands fa-linkedin"></i>
-          LinkedIn
-          <small style="font-weight:400;font-size:0.78rem;opacity:0.85;">Jarvis Anderson</small>
-        </a>
-        <a href="https://www.youtube.com/@bookofjarv" target="_blank" rel="noopener" class="social-card social-youtube">
-          <i class="fa-brands fa-youtube"></i>
-          YouTube
-          <small style="font-weight:400;font-size:0.78rem;opacity:0.75;">@bookofjarv</small>
-        </a>
-        <a href="https://www.instagram.com/bookofjarv" target="_blank" rel="noopener" class="social-card social-instagram">
-          <i class="fa-brands fa-instagram"></i>
-          Instagram
-          <small style="font-weight:400;font-size:0.78rem;opacity:0.75;">@bookofjarv</small>
-        </a>
-        <a href="https://github.com/bookofjarv/dev.home" target="_blank" rel="noopener" class="social-card social-github">
-          <i class="fa-brands fa-github"></i>
-          GitHub
-          <small style="font-weight:400;font-size:0.78rem;opacity:0.75;">bookofjarv/dev.home</small>
-        </a>
-      </div>
+    <div class="social-grid">
+      <a href="https://linkedin.com/in/jarvis-anderson" target="_blank" class="social-card social-linkedin">
+        <i class="fab fa-linkedin"></i>
+        <span>LinkedIn</span>
+      </a>
+      <a href="https://github.com/bookofjarv" target="_blank" class="social-card social-github">
+        <i class="fab fa-github"></i>
+        <span>GitHub</span>
+      </a>
+      <a href="https://youtube.com/@bookofjarv" target="_blank" class="social-card social-youtube">
+        <i class="fab fa-youtube"></i>
+        <span>YouTube</span>
+      </a>
+      <a href="https://instagram.com/bookofjarv" target="_blank" class="social-card social-instagram">
+        <i class="fab fa-instagram"></i>
+        <span>Instagram</span>
+      </a>
     </div>
   </section>
 
-  <!-- ── Footer ──────────────────────────────────────────────────── -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- FOOTER                                                         -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
   <footer>
-    <p>© 2026 Jarvis Anderson · BookofJarv · KodeKouncil · Built with ❤️ &amp; determination</p>
+    <p>&copy; 2026 BookofJarv. All rights reserved. | Documenting the IT journey, one project at a time.</p>
   </footer>
 
-  <!-- ── JavaScript ──────────────────────────────────────────────── -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SCRIPTS                                                        -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
   <script>
-    /* ── Scroll-reveal ─────────────────────────────────────────── */
-    (function () {
-      const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            observer.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.12 });
-      els.forEach(el => observer.observe(el));
-    })();
-
-    /* ── Mobile hamburger ──────────────────────────────────────── */
-    (function () {
-      const btn   = document.getElementById('hamburger-btn');
-      const menu  = document.getElementById('mobile-menu');
-      btn.addEventListener('click', () => {
-        const open = menu.classList.toggle('open');
-        btn.classList.toggle('open', open);
-        btn.setAttribute('aria-expanded', String(open));
-      });
-      menu.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          menu.classList.remove('open');
-          btn.classList.remove('open');
-          btn.setAttribute('aria-expanded', 'false');
-        });
-      });
-    })();
-
-    /* ── Project filter tabs ───────────────────────────────────── */
-    (function () {
-      const tabs  = document.querySelectorAll('.filter-tab');
-      const cards = document.querySelectorAll('#projects-grid .project-card');
-
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
-          tab.classList.add('active');
-          tab.setAttribute('aria-selected', 'true');
-
-          const filter = tab.dataset.filter;
-          cards.forEach(card => {
-            const show = filter === 'all' || card.dataset.category === filter;
-            card.setAttribute('data-hidden', show ? 'false' : 'true');
-          });
-        });
-      });
-    })();
-
-    /* ── Carousel ──────────────────────────────────────────────── */
-    (function () {
-      const track     = document.getElementById('carousel-track');
-      const slides    = track.querySelectorAll('.carousel-slide');
-      const prevBtn   = document.getElementById('carousel-prev');
-      const nextBtn   = document.getElementById('carousel-next');
-      const dotsWrap  = document.getElementById('carousel-dots');
-
-      let current     = 0;
-      let slidesPerView = getSlidesPerView();
-
-      function getSlidesPerView() {
-        if (window.innerWidth < 769)  return 1;
-        if (window.innerWidth < 980)  return 2;
-        return 3;
-      }
-
-      function totalPositions() {
-        return Math.max(0, slides.length - slidesPerView);
-      }
-
-      function buildDots() {
-        dotsWrap.innerHTML = '';
-        const count = totalPositions() + 1;
-        for (let i = 0; i < count; i++) {
-          const d = document.createElement('button');
-          d.className = 'carousel-dot' + (i === current ? ' active' : '');
-          d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-          d.setAttribute('role', 'tab');
-          d.setAttribute('aria-selected', String(i === current));
-          d.addEventListener('click', () => goTo(i));
-          dotsWrap.appendChild(d);
-        }
-      }
-
-      function updateDots() {
-        dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
-          d.classList.toggle('active', i === current);
-          d.setAttribute('aria-selected', String(i === current));
-        });
-      }
-
-      function getSlideWidth() {
-        const firstSlide = slides[0];
-        const trackStyle = window.getComputedStyle(track);
-        const gap = parseFloat(trackStyle.gap) || 20;
-        return firstSlide.offsetWidth + gap;
-      }
-
-      function goTo(index) {
-        const max = totalPositions();
-        current = Math.max(0, Math.min(index, max));
-        track.style.transform = `translateX(-${current * getSlideWidth()}px)`;
-        prevBtn.disabled = current === 0;
-        nextBtn.disabled = current >= max;
-        updateDots();
-      }
-
-      prevBtn.addEventListener('click', () => goTo(current - 1));
-      nextBtn.addEventListener('click', () => goTo(current + 1));
-
-      // Keyboard navigation
-      document.addEventListener('keydown', (e) => {
-        const active = document.activeElement;
-        if (active && (active === prevBtn || active === nextBtn || dotsWrap.contains(active) || track.contains(active))) {
-          if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(current - 1); }
-          if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+    // Scroll Reveal Setup
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
       });
+    }, { threshold: 0.1 });
 
-      // Touch/swipe support
-      let touchStartX = 0;
-      track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-      track.addEventListener('touchend', e => {
-        const diff = touchStartX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
       });
+    });
 
-      // Resize handler
-      let resizeTimer;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-          const newSpv = getSlidesPerView();
-          if (newSpv !== slidesPerView) {
-            slidesPerView = newSpv;
-            current = Math.min(current, totalPositions());
-            buildDots();
-            goTo(current);
+    // Filter functionality for projects
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update active tab
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filter = tab.dataset.filter;
+        
+        projectCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.setAttribute('data-hidden', 'false');
+          } else {
+            card.setAttribute('data-hidden', 'true');
           }
-        }, 120);
+        });
       });
-
-      buildDots();
-      goTo(0);
-    })();
+    });
   </script>
 </body>
 </html>
