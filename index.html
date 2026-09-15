@@ -644,7 +644,7 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      overflow: hidden;
+      overflow: visible;
       cursor: pointer;
       transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
     }
@@ -653,6 +653,7 @@
       transform: translateY(-6px);
       box-shadow: 0 16px 48px rgba(0,0,0,0.4);
       border-color: var(--accent);
+      z-index: 10;
     }
 
     .project-card-inner {
@@ -693,14 +694,18 @@
 
     .project-overlay {
       position: absolute;
-      inset: 0;
+      inset: -0.75rem;
       background:
         radial-gradient(circle at 88% 14%, rgba(88,166,255,0.18) 0%, transparent 48%),
         linear-gradient(160deg, rgba(22,27,34,0.98) 0%, rgba(13,17,23,0.98) 100%);
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: 1.75rem;
+      justify-content: flex-start;
+      padding: 2rem;
+      min-height: calc(100% + 1.5rem);
+      border: 1px solid rgba(88,166,255,0.28);
+      border-radius: calc(var(--radius-lg) + 4px);
+      box-shadow: 0 24px 56px rgba(0,0,0,0.45);
       opacity: 0;
       transform: translateY(12px);
       transition: opacity 0.3s ease, transform 0.3s ease;
@@ -1215,6 +1220,31 @@
         </div>
       </div>
 
+      <div class="project-card" data-category="agency">
+        <div class="project-card-inner">
+          <div class="project-card-icon">
+            <i class="fas fa-book-open"></i>
+          </div>
+          <h3>HarborTech Operations Playbook</h3>
+          <p class="project-card-desc">Operational documentation and systems guidance organized into a dedicated repository playbook.</p>
+          <span class="project-card-tag">Agency</span>
+        </div>
+        <div class="project-overlay">
+          <h4>Operations Playbook</h4>
+          <p>Repository-first operating guidance for documenting repeatable workflows, delivery standards, and the practical structure behind HarborTech operations.</p>
+          <ul class="project-overlay-meta">
+            <li><strong>Role:</strong> Playbook author, documentation owner, and process organizer</li>
+            <li><strong>Stack:</strong> GitHub repository workflows, operating docs, structured SOP content</li>
+            <li><strong>Problem solved:</strong> Scattered process knowledge that slows handoffs and operational consistency</li>
+            <li><strong>Outcome:</strong> Clearer execution standards and a centralized reference point for operational work</li>
+          </ul>
+          <div class="project-overlay-links">
+            <a href="https://github.com/bookofjarv/HarborTech-Operations-Playbook" target="_blank" class="overlay-btn">View Playbook</a>
+            <a href="https://github.com/bookofjarv/HarborTech-Operations-Playbook" target="_blank" class="overlay-btn ghost">GitHub</a>
+          </div>
+        </div>
+      </div>
+ 
       <div class="project-card" data-category="agency">
         <div class="project-card-inner">
           <div class="project-card-icon">
