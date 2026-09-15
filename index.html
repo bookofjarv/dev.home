@@ -225,8 +225,10 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(88,166,255,0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(63,185,80,0.07) 0%, transparent 60%);
+        radial-gradient(ellipse 85% 62% at 50% 0%, rgba(88,166,255,0.18) 0%, rgba(88,166,255,0.04) 42%, transparent 75%),
+        radial-gradient(ellipse 65% 46% at 82% 84%, rgba(63,185,80,0.1) 0%, rgba(63,185,80,0.03) 38%, transparent 66%),
+        radial-gradient(ellipse 55% 38% at 14% 74%, rgba(227,179,65,0.08) 0%, rgba(227,179,65,0.02) 45%, transparent 72%),
+        linear-gradient(180deg, rgba(13,17,23,0.35) 0%, rgba(13,17,23,0.7) 70%, rgba(13,17,23,0.9) 100%);
       pointer-events: none;
     }
 
@@ -255,6 +257,7 @@
     .hero-image {
       width: 100%;
       max-width: 400px;
+      aspect-ratio: 7 / 10;
       border-radius: 16px;
       box-shadow: 0 20px 60px rgba(88, 166, 255, 0.2);
       object-fit: cover;
@@ -296,6 +299,12 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.85rem;
+    }
+
+    .hero-cta-note {
+      margin-top: 0.8rem;
+      color: var(--muted);
+      font-size: 0.85rem;
     }
 
     .btn-primary {
@@ -685,7 +694,9 @@
     .project-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(160deg, rgba(22,27,34,0.97) 0%, rgba(13,17,23,0.97) 100%);
+      background:
+        radial-gradient(circle at 88% 14%, rgba(88,166,255,0.18) 0%, transparent 48%),
+        linear-gradient(160deg, rgba(22,27,34,0.98) 0%, rgba(13,17,23,0.98) 100%);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -713,7 +724,24 @@
       font-size: 0.85rem;
       color: var(--muted);
       line-height: 1.6;
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .project-overlay-meta {
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+      margin: 0 0 1rem;
+    }
+
+    .project-overlay-meta li {
+      font-size: 0.8rem;
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    .project-overlay-meta strong {
+      color: var(--accent);
     }
 
     .project-overlay-links {
@@ -856,6 +884,18 @@
       .services-grid { grid-template-columns: 1fr; }
     }
 
+    @media (hover: none), (max-width: 768px) {
+      .project-overlay {
+        position: static;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        background: transparent;
+        border-top: 1px solid var(--border);
+        padding: 0 1.5rem 1.5rem;
+      }
+    }
+
     @media (max-width: 540px) {
       .hero-ctas { flex-direction: column; align-items: flex-start; }
       .projects-grid { grid-template-columns: 1fr; }
@@ -901,22 +941,23 @@
     <div class="hero-bg"></div>
     <div class="hero-container reveal">
       <div class="hero-content">
-        <div class="hero-eyebrow">🚀 Network Engineering & Technical Innovation</div>
-        <h1 class="hero-title">Hey, I'm <span>Jarvis</span></h1>
+        <div class="hero-eyebrow">🚀 Help Desk to Network Engineering</div>
+        <h1 class="hero-title">Building toward <span>Network Engineering Excellence</span>, one lab at a time</h1>
         <p class="hero-desc">
-          I am an aspiring network engineer documenting the full climb from Help Desk to infrastructure leadership. BookofJarv is where I share the labs, certifications, automation wins, and lessons shaping my mission to build reliable networks, stronger systems, and a legacy rooted in technical mastery, faith, and financial independence through <strong>KodeKouncil</strong>.
+          I’m Jarvis Anderson. BookofJarv documents my transition from Help Desk into network engineering through real labs, certification prep, automation projects, and practical systems work. The goal is simple: build dependable infrastructure skills and turn that growth into measurable value through <strong>KodeKouncil</strong>.
         </p>
         <div class="hero-ctas">
           <a href="#mission" class="btn-secondary">
-            <i class="fas fa-bullseye"></i> My Mission
+            <i class="fas fa-bullseye"></i> See the Mission
           </a>
           <a href="#projects" class="btn-primary">
-            <i class="fas fa-arrow-right"></i> Explore My Work
+            <i class="fas fa-arrow-right"></i> View Project Proof
           </a>
           <a href="https://github.com/bookofjarv" target="_blank" class="btn-secondary">
-            <i class="fab fa-github"></i> GitHub
+            <i class="fab fa-github"></i> Follow on GitHub
           </a>
         </div>
+        <p class="hero-cta-note">Start with featured projects, then explore the journey and service build-outs behind them.</p>
         <div class="hero-stats">
           <div class="stat-item">
             <h4>Help Desk</h4>
@@ -933,7 +974,7 @@
         </div>
       </div>
       <div class="hero-image-wrapper">
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23161b22' width='400' height='400'/%3E%3Ctext x='50%' y='50%' font-size='24' fill='%2358a6ff' text-anchor='middle' dominant-baseline='middle'%3EYour Professional Photo%3C/text%3E%3C/svg%3E" alt="Jarvis Anderson" class="hero-image" />
+        <img src="https://github.com/user-attachments/assets/8a58008e-5388-4cf5-9c1e-bcf1af5212a9" alt="Portrait of Jarvis Anderson, founder of BookofJarv and KodeKouncil" class="hero-image" />
       </div>
     </div>
   </section>
@@ -942,13 +983,13 @@
     <div class="section-label reveal">
       <i class="fas fa-bullseye"></i> Mission & Purpose
     </div>
-    <h2 class="section-title reveal">Building a network engineering future with intention</h2>
-    <p class="section-sub reveal">This platform exists to make the journey visible: every lab, every skill milestone, and every lesson learned while growing from frontline IT support into a network-focused builder and operator.</p>
+    <h2 class="section-title reveal">Building a network engineering career with intent</h2>
+    <p class="section-sub reveal">This platform keeps the journey visible: practical labs, skill milestones, and lessons from moving beyond frontline IT support into network-focused engineering work.</p>
 
     <div class="mission-grid reveal">
       <div class="mission-panel">
         <h3>Why BookofJarv exists</h3>
-        <p>BookofJarv is more than a portfolio. It is a living record of discipline, technical growth, and service. The goal is to show what it looks like to move with purpose toward network engineering while building practical skills that create value in real environments.</p>
+        <p>BookofJarv is more than a portfolio. It is a working record of discipline, technical growth, and service. I built it to show what consistent progress into network engineering looks like in real time.</p>
         <ul class="mission-points">
           <li><i class="fas fa-check-circle"></i><span>Document the transition from help desk work into networking, infrastructure, and automation.</span></li>
           <li><i class="fas fa-check-circle"></i><span>Share proof of work through labs, process design, technical documentation, and systems thinking.</span></li>
@@ -957,7 +998,7 @@
       </div>
       <div class="mission-panel">
         <h3>What I am working toward</h3>
-        <p>The long-term mission is to become a trusted network engineer who can design, support, and improve resilient environments. That means learning the fundamentals deeply, understanding how infrastructure serves people, and developing the leadership needed to guide technical change.</p>
+        <p>The long-term mission is to become a trusted network engineer who can design, support, and improve resilient environments. That means mastering fundamentals, understanding business impact, and building the leadership needed to guide technical change.</p>
         <ul class="mission-points">
           <li><i class="fas fa-signal"></i><span>Strengthen routing, switching, and Cisco platform knowledge through focused lab work.</span></li>
           <li><i class="fas fa-gears"></i><span>Use Python, PowerShell, and automation platforms to remove friction from operations.</span></li>
@@ -1012,7 +1053,7 @@
       <i class="fas fa-map"></i> My Technical Journey
     </div>
     <h2 class="section-title reveal">From Help Desk to Network Engineer</h2>
-    <p class="section-sub reveal">A progression through IT support, networking, infrastructure, automation, and leadership—built one skill, one lab, and one real-world problem at a time.</p>
+    <p class="section-sub reveal">A progression through support, networking, infrastructure, automation, and leadership—built one skill, one lab, and one solved problem at a time.</p>
 
     <div class="timeline-strip reveal">
       <div class="timeline-step active">
@@ -1050,19 +1091,19 @@
     <div class="journey-details reveal">
       <div class="journey-panel">
         <h3>Current chapter</h3>
-        <p>I am building from a help desk foundation into networking by sharpening troubleshooting habits, learning how systems connect end to end, and practicing the core disciplines that make infrastructure dependable. Every project is chosen to move me closer to network engineering readiness.</p>
+        <p>I am moving from a Help Desk foundation into networking by sharpening troubleshooting habits, studying end-to-end system behavior, and practicing the core disciplines that make infrastructure reliable.</p>
       </div>
       <div class="journey-panel">
         <h3>What the journey is teaching me</h3>
-        <p>Strong engineers do more than configure devices. They document clearly, communicate well, automate repetitive work, and understand how business outcomes depend on stable technology. That perspective shapes how I study, build, and serve.</p>
+        <p>Strong engineers do more than configure devices. They communicate clearly, document cleanly, automate repetitive work, and align technical decisions with business outcomes.</p>
       </div>
       <div class="journey-panel">
         <h3>Network engineer mission</h3>
-        <p>My mission is to become the kind of engineer who can support resilient routing and switching environments, improve operational workflows, and help teams trust the systems they rely on every day.</p>
+        <p>My mission is to become the kind of engineer who can support resilient routing and switching environments, improve operational workflows, and help teams trust the systems they rely on daily.</p>
       </div>
       <div class="journey-panel">
         <h3>Long-term vision</h3>
-        <p>The long-term vision is to combine network expertise, automation, and technical leadership into a body of work that opens doors, supports clients, and leaves a blueprint for others making the same climb.</p>
+        <p>My long-term vision is to combine network expertise, automation, and leadership into work that opens doors, supports clients, and leaves a blueprint for others making the same climb.</p>
       </div>
     </div>
   </section>
@@ -1135,7 +1176,13 @@
         </div>
         <div class="project-overlay">
           <h4>CCNA Certification Journey</h4>
-          <p>Comprehensive Cisco networking labs covering routing, switching, troubleshooting, and the hands-on repetition required to grow into a network engineering role.</p>
+          <p>Hands-on Cisco labs focused on routing, switching, and troubleshooting discipline needed for production-ready network engineering work.</p>
+          <ul class="project-overlay-meta">
+            <li><strong>Role:</strong> Lab builder, troubleshooter, and documentation owner</li>
+            <li><strong>Stack:</strong> Packet Tracer, Cisco IOS CLI, subnetting drills</li>
+            <li><strong>Problem solved:</strong> Turning theory-heavy study into repeatable, testable configurations</li>
+            <li><strong>Outcome:</strong> Stronger command-line confidence and clearer network troubleshooting workflows</li>
+          </ul>
           <div class="project-overlay-links">
             <a href="https://github.com/bookofjarv/Networking-Labs" target="_blank" class="overlay-btn">View Labs</a>
             <a href="https://github.com/bookofjarv/Networking-Labs" target="_blank" class="overlay-btn ghost">GitHub</a>
@@ -1154,7 +1201,13 @@
         </div>
         <div class="project-overlay">
           <h4>Workflow Automation</h4>
-          <p>Connecting systems with Zapier, Python, and custom workflows so operations become more scalable, traceable, and less dependent on manual handoffs.</p>
+          <p>Automation workflows designed to reduce manual handoffs and keep operations moving across marketing, sales, and service delivery.</p>
+          <ul class="project-overlay-meta">
+            <li><strong>Role:</strong> Workflow architect and process implementer</li>
+            <li><strong>Stack:</strong> Python scripts, Zapier automations, ops documentation</li>
+            <li><strong>Problem solved:</strong> Fragmented updates and repeated admin tasks between teams</li>
+            <li><strong>Outcome:</strong> Cleaner handoffs, faster follow-through, and more traceable execution</li>
+          </ul>
           <div class="project-overlay-links">
             <a href="#services" class="overlay-btn">Learn More</a>
             <a href="https://github.com/bookofjarv" target="_blank" class="overlay-btn ghost">Code</a>
@@ -1173,7 +1226,13 @@
         </div>
         <div class="project-overlay">
           <h4>Enterprise Solutions</h4>
-          <p>High-tier consulting on infrastructure, automation, documentation, and technical strategy built to align IT operations with business performance.</p>
+          <p>Service model for teams that need tighter operations, stronger documentation, and practical technical direction without adding complexity.</p>
+          <ul class="project-overlay-meta">
+            <li><strong>Role:</strong> Technical consultant and systems translator</li>
+            <li><strong>Stack:</strong> SOP architecture, automation planning, infrastructure advisory</li>
+            <li><strong>Problem solved:</strong> Disconnected operations with unclear ownership and process drift</li>
+            <li><strong>Outcome:</strong> Better operating cadence, clearer standards, and more dependable delivery</li>
+          </ul>
           <div class="project-overlay-links">
             <a href="#services" class="overlay-btn">Explore</a>
             <a href="#contact" class="overlay-btn ghost">Contact</a>
