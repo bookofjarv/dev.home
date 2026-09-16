@@ -16,6 +16,9 @@
       --surface2:  #1c2330;
       --border:    #30363d;
       --accent:    #58a6ff;
+      --accent-hover: #79b8ff;
+      --accent-soft: rgba(88,166,255,0.08);
+      --accent-border: rgba(88,166,255,0.28);
       --accent2:   #3fb950;
       --gold:      #e3b341;
       --linkedin:  #0a66c2;
@@ -26,6 +29,10 @@
       --muted:     #8b949e;
       --radius:    10px;
       --radius-lg: 16px;
+      --touch-target: 44px;
+      --page-gutter: clamp(1rem, 4vw, 1.5rem);
+      --section-space: clamp(3.75rem, 8vw, 5rem);
+      --card-space: clamp(1.1rem, 2.5vw, 1.5rem);
       --transition: 0.25s ease;
     }
 
@@ -65,7 +72,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 2rem;
+      padding: 0 clamp(1rem, 4vw, 2rem);
       height: 64px;
       background: rgba(13, 17, 23, 0.92);
       backdrop-filter: blur(12px);
@@ -96,8 +103,6 @@
       color: var(--muted);
       transition: color var(--transition), background var(--transition);
     }
-
-    .nav-links a:hover { color: var(--text); background: var(--surface); }
 
     .nav-linkedin {
       display: flex !important;
@@ -167,13 +172,14 @@
       font-size: 0.95rem;
       transition: color var(--transition), background var(--transition);
     }
+    .nav-links a:hover,
     .mobile-menu a:hover { color: var(--text); background: var(--surface); }
 
     /* ── Section base ───────────────────────────────────────────── */
     .section-wrap {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 5rem 1.5rem;
+      padding: var(--section-space) var(--page-gutter);
     }
 
     .section-label {
@@ -197,7 +203,7 @@
 
     .section-sub {
       color: var(--muted);
-      font-size: 1.05rem;
+      font-size: clamp(0.98rem, 2vw, 1.05rem);
       max-width: 640px;
       margin-bottom: 2.5rem;
     }
@@ -210,7 +216,7 @@
       justify-content: center;
       position: relative;
       overflow: hidden;
-      padding: 4rem 1.5rem;
+      padding: clamp(3.5rem, 8vw, 4.5rem) var(--page-gutter);
     }
 
     .hero-bg {
@@ -227,7 +233,7 @@
     .hero-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      gap: clamp(2rem, 5vw, 3rem);
       align-items: center;
       position: relative;
       z-index: 1;
@@ -281,10 +287,22 @@
 
     .hero-desc {
       color: var(--muted);
-      font-size: 1.1rem;
+      font-size: clamp(1rem, 2vw, 1.1rem);
       max-width: 500px;
       line-height: 1.7;
       margin-bottom: 2rem;
+    }
+
+    /* ── Shared interactive controls ─────────────────────────────── */
+    .nav-links a,
+    .mobile-menu a,
+    .btn-primary,
+    .btn-secondary,
+    .filter-tab,
+    .overlay-btn,
+    .social-card,
+    .hamburger {
+      min-height: var(--touch-target);
     }
 
     .hero-ctas {
@@ -299,41 +317,43 @@
       font-size: 0.85rem;
     }
 
-    .btn-primary {
+    .btn-primary,
+    .btn-secondary,
+    .overlay-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
+      border-radius: var(--radius);
+    }
+
+    .btn-primary {
       padding: 0.65rem 1.4rem;
       background: var(--accent);
       color: #0d1117;
-      border-radius: var(--radius);
       font-weight: 700;
       font-size: 0.95rem;
       transition: background var(--transition), transform 0.15s, box-shadow var(--transition);
       box-shadow: 0 0 20px rgba(88,166,255,0.3);
     }
     .btn-primary:hover {
-      background: #79b8ff;
+      background: var(--accent-hover);
       transform: translateY(-2px);
       box-shadow: 0 0 30px rgba(88,166,255,0.55);
     }
 
     .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
       padding: 0.65rem 1.4rem;
       background: transparent;
       color: var(--text);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
       font-weight: 600;
       font-size: 0.95rem;
       transition: border-color var(--transition), background var(--transition), transform 0.15s;
     }
     .btn-secondary:hover {
       border-color: var(--accent);
-      background: rgba(88,166,255,0.08);
+      background: var(--accent-soft);
       transform: translateY(-2px);
     }
 
@@ -625,6 +645,9 @@
     }
 
     .filter-tab {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       padding: 0.4rem 1rem;
       border-radius: 20px;
       border: 1px solid var(--border);
@@ -660,6 +683,11 @@
       isolation: isolate;
     }
 
+    .project-card:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
     .project-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 16px 48px rgba(0,0,0,0.4);
@@ -667,9 +695,7 @@
       z-index: 3;
     }
 
-    .project-card-inner {
-      padding: 1.5rem;
-    }
+    .project-card-inner { padding: var(--card-space); }
 
     .project-card-icon {
       font-size: 2rem;
@@ -716,7 +742,7 @@
       flex-direction: column;
       justify-content: flex-start;
       padding: 1.25rem;
-      border: 1px solid rgba(88,166,255,0.28);
+      border: 1px solid var(--accent-border);
       border-radius: 12px;
       box-shadow: 0 20px 42px rgba(0,0,0,0.45);
       opacity: 0;
@@ -772,18 +798,15 @@
     }
 
     .overlay-btn {
-      display: inline-flex;
-      align-items: center;
       gap: 0.4rem;
       padding: 0.4rem 0.85rem;
-      border-radius: var(--radius);
       font-size: 0.82rem;
       font-weight: 700;
       background: var(--accent);
       color: #0d1117;
-      transition: background var(--transition);
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
     }
-    .overlay-btn:hover { background: #79b8ff; }
+    .overlay-btn:hover { background: var(--accent-hover); }
     .overlay-btn.ghost {
       background: transparent;
       color: var(--text);
@@ -884,10 +907,24 @@
       border-top: 1px solid var(--border);
     }
 
-    /* ── Responsive ─────────────────────────────────────────────── */
+    /* ── Responsive refinements ──────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+      }
+
+      .social-grid {
+        gap: clamp(0.85rem, 2vw, 1rem);
+      }
+    }
+
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .hamburger { display: flex; }
+      .hamburger {
+        display: flex;
+        min-width: var(--touch-target);
+        justify-content: center;
+      }
 
       .hero-container {
         grid-template-columns: 1fr;
@@ -898,6 +935,10 @@
         grid-template-columns: 1fr;
       }
 
+      .section-wrap {
+        padding-block: clamp(3.25rem, 10vw, 4rem);
+      }
+
       .spotlight-grid,
       .mission-grid,
       .journey-details,
@@ -905,27 +946,78 @@
       .services-grid { grid-template-columns: 1fr; }
     }
 
-    @media (hover: none), (max-width: 768px) {
+    @media (hover: none), (pointer: coarse), (max-width: 768px) {
+      .project-card:hover {
+        transform: none;
+        box-shadow: none;
+        border-color: var(--border);
+      }
+
+      .project-card.mobile-expanded {
+        transform: translateY(-2px);
+        border-color: var(--accent);
+        box-shadow: 0 12px 30px rgba(88,166,255,0.12);
+      }
+
       .project-overlay {
         position: static;
+        left: auto;
+        top: auto;
+        width: 100%;
+        opacity: 0;
+        transform: translateY(-0.4rem);
+        pointer-events: none;
+        background: transparent;
+        border: 0;
+        border-top: 0 solid var(--border);
+        border-radius: 0;
+        box-shadow: none;
+        max-height: 0;
+        overflow: hidden;
+        margin-top: 0;
+        padding: 0 var(--card-space);
+        transition: opacity 0.25s ease, transform 0.25s ease, max-height 0.3s ease, padding 0.25s ease;
+      }
+
+      .project-card.mobile-expanded .project-overlay {
         opacity: 1;
         transform: none;
         pointer-events: auto;
-        background: transparent;
-        border-top: 1px solid var(--border);
-        border-radius: 0;
-        box-shadow: none;
-        max-height: none;
-        overflow: visible;
-        margin-top: 0;
-        padding: 0 1.5rem 1.5rem;
+        border-top-width: 1px;
+        max-height: 32rem;
+        padding: 0 var(--card-space) var(--card-space);
       }
     }
 
     @media (max-width: 540px) {
-      .hero-ctas { flex-direction: column; align-items: flex-start; }
+      .hero-title { font-size: clamp(1.8rem, 10vw, 2.25rem); }
+      .hero-desc,
+      .hero-cta-note,
+      .project-card-desc,
+      .project-overlay p { font-size: 0.95rem; }
+
+      .hero-ctas {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-ctas a,
+      .project-overlay-links a,
+      .filter-tabs button {
+        width: 100%;
+      }
+
+      .filter-tabs,
+      .project-overlay-links {
+        gap: 0.75rem;
+      }
+
       .projects-grid { grid-template-columns: 1fr; }
-      .social-card { min-width: 110px; padding: 1.1rem 1.25rem; }
+      .social-grid { gap: 0.75rem; }
+      .social-card {
+        min-width: calc(50% - 0.375rem);
+        padding: 1.1rem 1.25rem;
+      }
     }
   </style>
 </head>
@@ -945,7 +1037,7 @@
       <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
       <li><a href="https://linkedin.com/in/jarvis-anderson" target="_blank" class="nav-linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
     </ul>
-    <button class="hamburger" id="hamburger">
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
@@ -1190,7 +1282,7 @@
     </div>
 
     <div class="projects-grid reveal">
-      <div class="project-card" data-category="networking">
+      <div class="project-card" data-category="networking" tabindex="0" aria-expanded="false">
         <span class="card-featured">Featured</span>
         <div class="project-card-inner">
           <div class="project-card-icon">
@@ -1216,7 +1308,7 @@
         </div>
       </div>
 
-      <div class="project-card" data-category="automation">
+      <div class="project-card" data-category="automation" tabindex="0" aria-expanded="false">
         <div class="project-card-inner">
           <div class="project-card-icon">
             <i class="fas fa-robot"></i>
@@ -1241,7 +1333,7 @@
         </div>
       </div>
 
-      <div class="project-card" data-category="agency">
+      <div class="project-card" data-category="agency" tabindex="0" aria-expanded="false">
         <div class="project-card-inner">
           <div class="project-card-icon">
             <i class="fas fa-book-open"></i>
@@ -1266,7 +1358,7 @@
         </div>
       </div>
  
-      <div class="project-card" data-category="agency">
+      <div class="project-card" data-category="agency" tabindex="0" aria-expanded="false">
         <div class="project-card-inner">
           <div class="project-card-icon">
             <i class="fas fa-briefcase"></i>
@@ -1393,15 +1485,66 @@
     const mobileMenu = document.getElementById('mobile-menu');
 
     hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
+      const isOpen = hamburger.classList.toggle('open');
       mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', String(isOpen));
     });
 
     document.querySelectorAll('.mobile-menu a').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('open');
         mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
       });
+    });
+
+    // ─── Touch-friendly Project Cards ───
+    const projectCards = document.querySelectorAll('.project-card');
+    const mobileProjectMedia = window.matchMedia('(hover: none), (pointer: coarse), (max-width: 768px)');
+
+    const setProjectCardExpanded = (card, expanded) => {
+      card.classList.toggle('mobile-expanded', expanded);
+      card.setAttribute('aria-expanded', String(expanded));
+    };
+
+    const collapseProjectCards = (exceptCard = null) => {
+      projectCards.forEach(card => {
+        if (card !== exceptCard) {
+          setProjectCardExpanded(card, false);
+        }
+      });
+    };
+
+    const toggleProjectCard = (card) => {
+      if (!mobileProjectMedia.matches) return;
+      const shouldExpand = !card.classList.contains('mobile-expanded');
+      collapseProjectCards(card);
+      setProjectCardExpanded(card, shouldExpand);
+    };
+
+    projectCards.forEach(card => {
+      card.addEventListener('click', (event) => {
+        if (event.target.closest('a, button')) return;
+        toggleProjectCard(card);
+      });
+
+      card.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        if (!mobileProjectMedia.matches) return;
+        event.preventDefault();
+        toggleProjectCard(card);
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!mobileProjectMedia.matches || event.target.closest('.project-card')) return;
+      collapseProjectCards();
+    });
+
+    mobileProjectMedia.addEventListener('change', ({ matches }) => {
+      if (!matches) {
+        collapseProjectCards();
+      }
     });
 
     // ─── Project Filter ───
@@ -1418,6 +1561,8 @@
             card.style.display = 'none';
           }
         });
+
+        collapseProjectCards();
       });
     });
 
