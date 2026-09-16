@@ -705,8 +705,8 @@
 
     .project-overlay {
       position: absolute;
-      left: 0;
-      right: 0;
+      left: 50%;
+      width: min(420px, calc(100% + 2.5rem));
       top: 100%;
       margin-top: 0.4rem;
       background:
@@ -720,17 +720,17 @@
       border-radius: 12px;
       box-shadow: 0 20px 42px rgba(0,0,0,0.45);
       opacity: 0;
-      transform: translateY(8px);
+      transform: translate(-50%, 8px);
       transition: opacity 0.25s ease, transform 0.25s ease;
       pointer-events: none;
-      max-height: 320px;
-      overflow-y: auto;
+      max-height: none;
+      overflow-y: visible;
       z-index: 4;
     }
 
     .project-card:hover .project-overlay {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate(-50%, 0);
       pointer-events: auto;
     }
 
