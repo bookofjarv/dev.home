@@ -953,6 +953,12 @@
         border-color: var(--border);
       }
 
+      .project-card:hover .project-overlay {
+        opacity: 0;
+        transform: translateY(-0.4rem);
+        pointer-events: none;
+      }
+
       .project-card.mobile-expanded {
         transform: translateY(-2px);
         border-color: var(--accent);
@@ -979,7 +985,8 @@
         transition: opacity 0.25s ease, transform 0.25s ease, max-height 0.3s ease, padding 0.25s ease;
       }
 
-      .project-card.mobile-expanded .project-overlay {
+      .project-card.mobile-expanded .project-overlay,
+      .project-card.mobile-expanded:hover .project-overlay {
         opacity: 1;
         transform: none;
         pointer-events: auto;
@@ -1282,7 +1289,7 @@
     </div>
 
     <div class="projects-grid reveal">
-      <div class="project-card" data-category="networking" tabindex="0" aria-expanded="false">
+      <div class="project-card" data-category="networking" tabindex="0" role="button" aria-expanded="false" aria-controls="project-overlay-networking" aria-label="Toggle details for CCNA Networking Labs">
         <span class="card-featured">Featured</span>
         <div class="project-card-inner">
           <div class="project-card-icon">
@@ -1292,7 +1299,7 @@
           <p class="project-card-desc">Building Cisco-certified networking skills through hands-on labs and Packet Tracer simulations.</p>
           <span class="project-card-tag">Networking</span>
         </div>
-        <div class="project-overlay">
+        <div class="project-overlay" id="project-overlay-networking">
           <h4>CCNA Certification Journey</h4>
           <p>Hands-on Cisco labs focused on routing, switching, and troubleshooting discipline needed for production-ready network engineering work.</p>
           <ul class="project-overlay-meta">
@@ -1308,7 +1315,7 @@
         </div>
       </div>
 
-      <div class="project-card" data-category="automation" tabindex="0" aria-expanded="false">
+      <div class="project-card" data-category="automation" tabindex="0" role="button" aria-expanded="false" aria-controls="project-overlay-automation" aria-label="Toggle details for Workflow Automation Suite">
         <div class="project-card-inner">
           <div class="project-card-icon">
             <i class="fas fa-robot"></i>
@@ -1317,7 +1324,7 @@
           <p class="project-card-desc">Python & Zapier-based automation connecting marketing, sales, and operations.</p>
           <span class="project-card-tag">Automation</span>
         </div>
-        <div class="project-overlay">
+        <div class="project-overlay" id="project-overlay-automation">
           <h4>Workflow Automation</h4>
           <p>Automation workflows designed to reduce manual handoffs and keep operations moving across marketing, sales, and service delivery.</p>
           <ul class="project-overlay-meta">
@@ -1333,7 +1340,7 @@
         </div>
       </div>
 
-      <div class="project-card" data-category="agency" tabindex="0" aria-expanded="false">
+      <div class="project-card" data-category="agency" tabindex="0" role="button" aria-expanded="false" aria-controls="project-overlay-harbortech" aria-label="Toggle details for HarborTech Operations Playbook">
         <div class="project-card-inner">
           <div class="project-card-icon">
             <i class="fas fa-book-open"></i>
@@ -1342,7 +1349,7 @@
           <p class="project-card-desc">Operational documentation and systems guidance organized into a dedicated repository playbook.</p>
           <span class="project-card-tag">Agency</span>
         </div>
-        <div class="project-overlay">
+        <div class="project-overlay" id="project-overlay-harbortech">
           <h4>Operations Playbook</h4>
           <p>Repository-first operating guidance for documenting repeatable workflows, delivery standards, and the practical structure behind HarborTech operations.</p>
           <ul class="project-overlay-meta">
@@ -1358,7 +1365,7 @@
         </div>
       </div>
  
-      <div class="project-card" data-category="agency" tabindex="0" aria-expanded="false">
+      <div class="project-card" data-category="agency" tabindex="0" role="button" aria-expanded="false" aria-controls="project-overlay-kodekouncil" aria-label="Toggle details for KodeKouncil Services">
         <div class="project-card-inner">
           <div class="project-card-icon">
             <i class="fas fa-briefcase"></i>
@@ -1367,7 +1374,7 @@
           <p class="project-card-desc">Technical documentation, process automation, and infrastructure consulting for enterprises.</p>
           <span class="project-card-tag">Agency</span>
         </div>
-        <div class="project-overlay">
+        <div class="project-overlay" id="project-overlay-kodekouncil">
           <h4>Enterprise Solutions</h4>
           <p>Service model for teams that need tighter operations, stronger documentation, and practical technical direction without adding complexity.</p>
           <ul class="project-overlay-meta">
@@ -1541,10 +1548,8 @@
       collapseProjectCards();
     });
 
-    mobileProjectMedia.addEventListener('change', ({ matches }) => {
-      if (!matches) {
-        collapseProjectCards();
-      }
+    mobileProjectMedia.addEventListener('change', () => {
+      collapseProjectCards();
     });
 
     // ─── Project Filter ───
