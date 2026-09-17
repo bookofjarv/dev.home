@@ -357,45 +357,6 @@
       transform: translateY(-2px);
     }
 
-    /* ── Quick Stats ─────────────────────────────────────────────── */
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-top: 2.5rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .stat-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 0.85rem;
-    }
-
-    .stat-item h4 {
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.3rem;
-    }
-
-    .stat-item p {
-      color: var(--text);
-      font-size: 1.35rem;
-      font-weight: 800;
-      line-height: 1.2;
-    }
-
-    .stat-item small {
-      display: block;
-      margin-top: 0.25rem;
-      color: var(--muted);
-      font-size: 0.78rem;
-    }
-
     /* ── Spotlight cards (bookofjarv / kodekouncil) ─────────────── */
     .spotlight-grid {
       display: grid;
@@ -908,6 +869,31 @@
     }
 
     /* ── Responsive refinements ──────────────────────────────────── */
+    @media (min-width: 1200px) {
+      .section-wrap {
+        max-width: 1120px;
+      }
+
+      .hero-container {
+        grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1199px) {
+      .section-wrap {
+        max-width: 980px;
+      }
+
+      .hero-container {
+        grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+        gap: 2rem;
+      }
+
+      .hero-image {
+        max-width: 360px;
+      }
+    }
+
     @media (max-width: 1024px) {
       .projects-grid {
         grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
@@ -931,8 +917,12 @@
         gap: 2rem;
       }
 
-      .hero-stats {
-        grid-template-columns: 1fr;
+      .hero-image-wrapper {
+        order: -1;
+      }
+
+      .hero-image {
+        max-width: min(360px, 82vw);
       }
 
       .section-wrap {
@@ -1076,20 +1066,6 @@
           </a>
         </div>
         <p class="hero-cta-note">Start with featured projects, then explore the journey and service build-outs behind them.</p>
-        <div class="hero-stats">
-          <div class="stat-item">
-            <h4>Help Desk</h4>
-            <p>Foundation in support, troubleshooting, and user trust</p>
-          </div>
-          <div class="stat-item">
-            <h4>CCNA</h4>
-            <p>Current certification path driving deeper network expertise</p>
-          </div>
-          <div class="stat-item">
-            <h4>KodeKouncil</h4>
-            <p>Agency mission connecting IT infrastructure with business operations</p>
-          </div>
-        </div>
       </div>
       <div class="hero-image-wrapper">
         <img src="https://github.com/user-attachments/assets/8a58008e-5388-4cf5-9c1e-bcf1af5212a9" alt="Portrait of Jarvis Anderson, founder of BookofJarv and KodeKouncil" class="hero-image" />
