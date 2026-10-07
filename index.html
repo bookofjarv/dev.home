@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BookofJarv | Jarvis Anderson</title>
-  <meta name="description" content="BookofJarv — Jarvis Anderson's documented journey from help desk to network engineering, sharing labs, automation work, technical growth, and the mission behind KodeKouncil." />
+  <title>BookofJarv | Jarvis Anderson - Network Engineer & IT Mentor</title>
+  <meta name="description" content="Jarvis Anderson's journey from helpdesk to network engineering. Explore labs, automation projects, and technical insights from a passion for infrastructure and mentorship." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     /* ── Reset & Base ───────────────────────────────────────────── */
@@ -21,6 +21,9 @@
       --accent-border: rgba(88,166,255,0.28);
       --accent2:   #3fb950;
       --gold:      #e3b341;
+      --gradient-primary: linear-gradient(135deg, #58a6ff, #3fb950);
+      --gradient-secondary: linear-gradient(135deg, #e3b341, #f78166);
+      --gradient-accent: linear-gradient(180deg, rgba(88,166,255,0.15), rgba(63,185,80,0.1));
       --linkedin:  #0a66c2;
       --youtube:   #ff0000;
       --instagram: #e1306c;
@@ -49,21 +52,6 @@
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
 
-    /* ── Scroll-reveal ──────────────────────────────────────────── */
-    .reveal,
-    .reveal-left,
-    .reveal-right {
-      opacity: 1;
-      transform: none;
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.visible,
-    .reveal-left.visible,
-    .reveal-right.visible {
-      opacity: 1;
-      transform: none;
-    }
-
     /* ── Navigation ─────────────────────────────────────────────── */
     nav {
       position: sticky;
@@ -82,7 +70,10 @@
     .nav-brand {
       font-size: 1.2rem;
       font-weight: 700;
-      color: var(--accent);
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       letter-spacing: 0.03em;
     }
 
@@ -109,19 +100,17 @@
       align-items: center;
       gap: 0.45rem;
       padding: 0.5rem 1rem !important;
-      background: var(--linkedin) !important;
+      background: var(--gradient-primary) !important;
       color: #fff !important;
       border-radius: var(--radius) !important;
       font-weight: 600;
       font-size: 0.9rem !important;
-      box-shadow: 0 0 16px rgba(10, 102, 194, 0.5);
-      transition: background var(--transition), box-shadow var(--transition), transform 0.15s !important;
-      border: 2px solid rgba(255,255,255,0.15);
+      box-shadow: 0 0 16px rgba(88, 166, 255, 0.4);
+      transition: box-shadow var(--transition), transform 0.15s !important;
     }
 
     .nav-linkedin:hover {
-      background: #0958a8 !important;
-      box-shadow: 0 0 26px rgba(10, 102, 194, 0.8) !important;
+      box-shadow: 0 0 26px rgba(88, 166, 255, 0.7) !important;
       transform: translateY(-1px);
     }
 
@@ -190,7 +179,10 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-bottom: 0.75rem;
     }
 
@@ -199,6 +191,10 @@
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 1rem;
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .section-sub {
@@ -206,6 +202,7 @@
       font-size: clamp(0.98rem, 2vw, 1.05rem);
       max-width: 640px;
       margin-bottom: 2.5rem;
+      line-height: 1.7;
     }
 
     /* ── Hero with Image Layout ─────────────────────────────────── */
@@ -260,6 +257,7 @@
       box-shadow: 0 20px 60px rgba(88, 166, 255, 0.2);
       object-fit: cover;
       animation: float 3s ease-in-out infinite;
+      border: 2px solid rgba(88, 166, 255, 0.2);
     }
 
     @keyframes float {
@@ -272,7 +270,10 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-bottom: 0.5rem;
     }
 
@@ -282,8 +283,6 @@
       line-height: 1.15;
       margin-bottom: 1rem;
     }
-
-    .hero-title span { color: var(--accent); }
 
     .hero-desc {
       color: var(--muted);
@@ -329,15 +328,14 @@
 
     .btn-primary {
       padding: 0.65rem 1.4rem;
-      background: var(--accent);
+      background: var(--gradient-primary);
       color: #0d1117;
       font-weight: 700;
       font-size: 0.95rem;
-      transition: background var(--transition), transform 0.15s, box-shadow var(--transition);
+      transition: transform 0.15s, box-shadow var(--transition);
       box-shadow: 0 0 20px rgba(88,166,255,0.3);
     }
     .btn-primary:hover {
-      background: var(--accent-hover);
       transform: translateY(-2px);
       box-shadow: 0 0 30px rgba(88,166,255,0.55);
     }
@@ -368,10 +366,16 @@
     }
 
     .stat-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
+      background: rgba(22, 27, 34, 0.6);
+      border: 1px solid rgba(88,166,255,0.1);
       border-radius: var(--radius);
       padding: 0.85rem;
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .stat-item:hover {
+      border-color: rgba(88,166,255,0.3);
+      background: rgba(22, 27, 34, 0.9);
     }
 
     .stat-item h4 {
@@ -383,7 +387,10 @@
     }
 
     .stat-item p {
-      color: var(--text);
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       font-size: 1.35rem;
       font-weight: 800;
       line-height: 1.2;
@@ -396,7 +403,7 @@
       font-size: 0.78rem;
     }
 
-    /* ── Spotlight cards (bookofjarv / kodekouncil) ─────────────── */
+    /* ── Spotlight cards ────────────────────────────────────────── */
     .spotlight-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -418,11 +425,11 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 3px;
+      height: 4px;
     }
 
-    .spotlight-card.jarv::before  { background: linear-gradient(90deg, #58a6ff, #3fb950); }
-    .spotlight-card.kouncil::before { background: linear-gradient(90deg, #e3b341, #f78166); }
+    .spotlight-card.jarv::before  { background: var(--gradient-primary); }
+    .spotlight-card.kouncil::before { background: var(--gradient-secondary); }
 
     .spotlight-card:hover {
       border-color: var(--accent);
@@ -437,6 +444,16 @@
     .spotlight-icon {
       font-size: 2.2rem;
       margin-bottom: 1rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .spotlight-card.kouncil .spotlight-icon {
+      background: var(--gradient-secondary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .spotlight-card h3 {
@@ -507,10 +524,20 @@
     .journey-panel,
     .focus-card,
     .service-card {
-      background: var(--surface);
+      background: rgba(22, 27, 34, 0.5);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 1.75rem;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .mission-panel:hover,
+    .journey-panel:hover,
+    .focus-card:hover,
+    .service-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 32px rgba(88,166,255,0.12);
     }
 
     .mission-panel h3,
@@ -519,6 +546,7 @@
     .service-card h3 {
       font-size: 1.1rem;
       margin-bottom: 0.85rem;
+      color: var(--text);
     }
 
     .mission-panel p,
@@ -552,31 +580,21 @@
     .focus-list i,
     .service-list i,
     .proof-list i {
-      color: var(--accent);
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-top: 0.2rem;
     }
 
-    .focus-card,
-    .service-card {
-      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-    }
-
-    .focus-card:hover,
-    .service-card:hover,
-    .journey-panel:hover,
-    .mission-panel:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: 0 10px 32px rgba(88,166,255,0.12);
-    }
-
     .proof-list a {
-      color: var(--text);
+      color: var(--accent);
       font-weight: 600;
+      transition: color var(--transition);
     }
 
     .proof-list a:hover {
-      color: var(--accent);
+      color: var(--accent-hover);
     }
 
     /* ── Journey timeline strip ─────────────────────────────────── */
@@ -623,7 +641,7 @@
     }
 
     .timeline-step.active .timeline-dot {
-      background: var(--accent);
+      background: var(--gradient-primary);
       color: #0d1117;
       box-shadow: 0 0 16px rgba(88,166,255,0.5);
     }
@@ -660,7 +678,7 @@
     }
     .filter-tab:hover { border-color: var(--accent); color: var(--accent); }
     .filter-tab.active {
-      background: var(--accent);
+      background: var(--gradient-primary);
       border-color: var(--accent);
       color: #0d1117;
     }
@@ -674,7 +692,7 @@
 
     .project-card {
       position: relative;
-      background: var(--surface);
+      background: rgba(22, 27, 34, 0.6);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       overflow: hidden;
@@ -690,7 +708,7 @@
 
     .project-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+      box-shadow: 0 16px 48px rgba(88,166,255,0.15);
       border-color: var(--accent);
       z-index: 3;
     }
@@ -802,22 +820,30 @@
       padding: 0.4rem 0.85rem;
       font-size: 0.82rem;
       font-weight: 700;
-      background: var(--accent);
+      background: var(--gradient-primary);
       color: #0d1117;
-      transition: background var(--transition), border-color var(--transition), color var(--transition);
+      transition: transform 0.15s, box-shadow var(--transition);
+      box-shadow: 0 0 12px rgba(88,166,255,0.2);
     }
-    .overlay-btn:hover { background: var(--accent-hover); }
+    .overlay-btn:hover { 
+      transform: translateY(-1px);
+      box-shadow: 0 0 18px rgba(88,166,255,0.4);
+    }
     .overlay-btn.ghost {
       background: transparent;
       color: var(--text);
       border: 1px solid var(--border);
+      box-shadow: none;
     }
-    .overlay-btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .overlay-btn.ghost:hover { 
+      border-color: var(--accent); 
+      color: var(--accent);
+    }
 
     .card-featured {
       position: absolute;
       top: 1rem; right: 1rem;
-      background: var(--gold);
+      background: var(--gradient-secondary);
       color: #0d1117;
       font-size: 0.68rem;
       font-weight: 800;
@@ -867,12 +893,12 @@
     .social-card:hover i { transform: scale(1.12); }
 
     .social-linkedin {
-      background: linear-gradient(135deg, #0a66c2, #0958a8);
+      background: var(--gradient-primary);
       color: #fff;
       border-color: rgba(255,255,255,0.2);
-      box-shadow: 0 4px 24px rgba(10,102,194,0.4);
+      box-shadow: 0 4px 24px rgba(88,166,255,0.3);
     }
-    .social-linkedin:hover { box-shadow: 0 8px 36px rgba(10,102,194,0.7); }
+    .social-linkedin:hover { box-shadow: 0 8px 36px rgba(88,166,255,0.6); }
 
     .social-youtube {
       background: var(--surface);
@@ -998,581 +1024,357 @@
 
       .hero-ctas {
         flex-direction: column;
-        align-items: stretch;
-      }
-
-      .hero-ctas a,
-      .project-overlay-links a,
-      .filter-tabs button {
-        width: 100%;
-      }
-
-      .filter-tabs,
-      .project-overlay-links {
-        gap: 0.75rem;
-      }
-
-      .projects-grid { grid-template-columns: 1fr; }
-      .social-grid { gap: 0.75rem; }
-      .social-card {
-        min-width: calc(50% - 0.375rem);
-        padding: 1.1rem 1.25rem;
       }
     }
   </style>
 </head>
-<body>
 
-  <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- NAVIGATION                                                     -->
-  <!-- ══════════════════════════════════════════════════════════════ -->
+<body>
+  <!-- ── Navigation ─────────────────────────────────────────────── -->
   <nav>
-    <div class="nav-brand">
-      <i class="fas fa-book"></i> BookofJarv
-    </div>
+    <div class="nav-brand">BookofJarv</div>
     <ul class="nav-links">
-      <li><a href="#mission"><i class="fas fa-bullseye"></i> Mission</a></li>
-      <li><a href="#projects"><i class="fas fa-briefcase"></i> Projects</a></li>
+      <li><a href="#mission"><i class="fas fa-flag"></i> Mission</a></li>
       <li><a href="#journey"><i class="fas fa-road"></i> Journey</a></li>
-      <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-      <li><a href="https://linkedin.com/in/jarvis-anderson" target="_blank" class="nav-linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+      <li><a href="#projects"><i class="fas fa-code"></i> Projects</a></li>
+      <li><a href="#contact"><i class="fas fa-envelope"></i> Connect</a></li>
+      <li><a href="https://linkedin.com/in/jarvis-anderson" target="_blank" class="nav-linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <button class="hamburger" aria-label="Toggle navigation">
       <span></span>
       <span></span>
       <span></span>
     </button>
   </nav>
 
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="#mission"><i class="fas fa-bullseye"></i> Mission</a>
-    <a href="#projects"><i class="fas fa-briefcase"></i> Projects</a>
+  <div class="mobile-menu">
+    <a href="#mission"><i class="fas fa-flag"></i> Mission</a>
     <a href="#journey"><i class="fas fa-road"></i> Journey</a>
-    <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
-    <a href="https://linkedin.com/in/jarvis-anderson" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a href="#projects"><i class="fas fa-code"></i> Projects</a>
+    <a href="#contact"><i class="fas fa-envelope"></i> Connect</a>
+    <a href="https://linkedin.com/in/jarvis-anderson" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
   </div>
 
-  <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- HERO SECTION WITH IMAGE                                        -->
-  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- ── Hero Section ─────────────────────────────────────────── -->
   <section id="hero">
     <div class="hero-bg"></div>
-    <div class="hero-container reveal">
+    <div class="hero-container">
       <div class="hero-content">
-        <div class="hero-eyebrow">🚀 Help Desk to Network Engineering</div>
-        <h1 class="hero-title">Building toward <span>Network Engineering Excellence</span>, one lab at a time</h1>
+        <div class="hero-eyebrow">Welcome to my IT Journey</div>
+        <h1 class="hero-title">From Helpdesk to <span>Network Engineering</span></h1>
         <p class="hero-desc">
-          I’m Jarvis Anderson. BookofJarv documents my transition from Help Desk into network engineering through real labs, certification prep, automation projects, and practical systems work. The goal is simple: build dependable infrastructure skills and turn that growth into measurable value through <strong>KodeKouncil</strong>.
+          I'm Jarvis Anderson—a network engineer passionate about infrastructure, automation, and mentoring the next generation of IT professionals. Here's my documented journey: labs, projects, lessons learned, and the mission that drives me forward.
         </p>
         <div class="hero-ctas">
-          <a href="#mission" class="btn-secondary">
-            <i class="fas fa-bullseye"></i> See the Mission
-          </a>
-          <a href="#projects" class="btn-primary">
-            <i class="fas fa-arrow-right"></i> View Project Proof
-          </a>
-          <a href="https://github.com/bookofjarv" target="_blank" class="btn-secondary">
-            <i class="fab fa-github"></i> Follow on GitHub
-          </a>
+          <a href="#journey" class="btn-primary"><i class="fas fa-arrow-down"></i> My Story</a>
+          <a href="#projects" class="btn-secondary"><i class="fas fa-folder-open"></i> View Projects</a>
         </div>
-        <p class="hero-cta-note">Start with featured projects, then explore the journey and service build-outs behind them.</p>
-        <div class="hero-stats">
-          <div class="stat-item">
-            <h4>Help Desk</h4>
-            <p>Foundation in support, troubleshooting, and user trust</p>
-          </div>
-          <div class="stat-item">
-            <h4>CCNA</h4>
-            <p>Current certification path driving deeper network expertise</p>
-          </div>
-          <div class="stat-item">
-            <h4>KodeKouncil</h4>
-            <p>Agency mission connecting IT infrastructure with business operations</p>
-          </div>
-        </div>
+        <p class="hero-cta-note">Explore labs, automation work, and technical insights from someone who's been in your shoes.</p>
       </div>
       <div class="hero-image-wrapper">
-        <img src="https://github.com/user-attachments/assets/8a58008e-5388-4cf5-9c1e-bcf1af5212a9" alt="Portrait of Jarvis Anderson, founder of BookofJarv and KodeKouncil" class="hero-image" />
+        <img src="https://via.placeholder.com/400x500" alt="Jarvis Anderson" class="hero-image" />
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <h4>Years in IT</h4>
+        <p>7+</p>
+        <small>Helpdesk to Network Engineering</small>
+      </div>
+      <div class="stat-item">
+        <h4>Active Projects</h4>
+        <p>12+</p>
+        <small>Labs, tools, and automation</small>
+      </div>
+      <div class="stat-item">
+        <h4>Community</h4>
+        <p>1000+</p>
+        <small>Followers & mentees</small>
       </div>
     </div>
   </section>
 
-  <section id="mission" class="section-wrap">
-    <div class="section-label reveal">
-      <i class="fas fa-bullseye"></i> Mission & Purpose
-    </div>
-    <h2 class="section-title reveal">Building a network engineering career with intent</h2>
-    <p class="section-sub reveal">This platform keeps the journey visible: practical labs, skill milestones, and lessons from moving beyond frontline IT support into network-focused engineering work.</p>
+  <!-- ── Mission & Values ──────────────────────────────────────── -->
+  <section id="mission">
+    <div class="section-wrap">
+      <div class="section-label"><i class="fas fa-target"></i> Why I Do This</div>
+      <h2 class="section-title">My Mission</h2>
+      <p class="section-sub">
+        I believe everyone deserves access to quality IT education and hands-on experience. My mission is to document my journey, share practical knowledge, and build a community where learning never stops.
+      </p>
 
-    <div class="mission-grid reveal">
-      <div class="mission-panel">
-        <h3>Why BookofJarv exists</h3>
-        <p>BookofJarv is more than a portfolio. It is a working record of discipline, technical growth, and service. I built it to show what consistent progress into network engineering looks like in real time.</p>
-        <ul class="mission-points">
-          <li><i class="fas fa-check-circle"></i><span>Document the transition from help desk work into networking, infrastructure, and automation.</span></li>
-          <li><i class="fas fa-check-circle"></i><span>Share proof of work through labs, process design, technical documentation, and systems thinking.</span></li>
-          <li><i class="fas fa-check-circle"></i><span>Create a legacy centered on technical mastery, faith, consistency, and ownership.</span></li>
-        </ul>
-      </div>
-      <div class="mission-panel">
-        <h3>What I am working toward</h3>
-        <p>The long-term mission is to become a trusted network engineer who can design, support, and improve resilient environments. That means mastering fundamentals, understanding business impact, and building the leadership needed to guide technical change.</p>
-        <ul class="mission-points">
-          <li><i class="fas fa-signal"></i><span>Strengthen routing, switching, and Cisco platform knowledge through focused lab work.</span></li>
-          <li><i class="fas fa-gears"></i><span>Use Python, PowerShell, and automation platforms to remove friction from operations.</span></li>
-          <li><i class="fas fa-people-arrows"></i><span>Bridge business needs with dependable IT systems through KodeKouncil solutions.</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- SPOTLIGHT SECTION                                              -->
-  <!-- ══════════════════════════════════════════════════════════════ -->
-  <section class="section-wrap">
-    <div class="spotlight-grid reveal-left">
-      <!-- BookofJarv -->
-      <div class="spotlight-card jarv">
-        <div class="spotlight-icon">
-          <i class="fas fa-folder-open"></i>
-        </div>
-        <h3>BookofJarv</h3>
-        <p>My documented IT journey: networking labs, homelabs, automation experiments, cloud foundations, and technical deep dives that track the path toward becoming a strong network engineer.</p>
-        <div class="spotlight-tags">
-          <span class="tag">Networking</span>
-          <span class="tag">Automation</span>
-          <span class="tag green">Homelab</span>
-        </div>
-        <a href="https://github.com/bookofjarv/Networking-Labs" target="_blank" class="spotlight-link">Explore Labs <i class="fas fa-arrow-right"></i></a>
-      </div>
-
-      <!-- KodeKouncil -->
-      <div class="spotlight-card kouncil">
-        <div class="spotlight-icon">
-          <i class="fas fa-rocket"></i>
-        </div>
-        <h3>KodeKouncil</h3>
-        <p>A technical solutions agency bridging IT infrastructure and business operations by transforming chaotic workflows into automated, high-performance systems with better documentation, stronger processes, and clearer technical direction.</p>
-        <div class="spotlight-tags">
-          <span class="tag gold">Agency</span>
-          <span class="tag gold">Automation</span>
-          <span class="tag gold">Consulting</span>
-        </div>
-        <a href="#services" class="spotlight-link">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- JOURNEY SECTION                                                -->
-  <!-- ══════════════════════════════════════════════════════════════ -->
-  <section id="journey" class="section-wrap">
-    <div class="section-label reveal">
-      <i class="fas fa-map"></i> My Technical Journey
-    </div>
-    <h2 class="section-title reveal">From Help Desk to Network Engineer</h2>
-    <p class="section-sub reveal">A progression through support, networking, infrastructure, automation, and leadership—built one skill, one lab, and one solved problem at a time.</p>
-
-    <div class="timeline-strip reveal">
-      <div class="timeline-step active">
-        <div class="timeline-dot">
-          <i class="fas fa-phone-headset"></i>
-        </div>
-        <span>Help Desk</span>
-      </div>
-      <div class="timeline-step">
-        <div class="timeline-dot">
-          <i class="fas fa-network-wired"></i>
-        </div>
-        <span>Junior Network</span>
-      </div>
-      <div class="timeline-step">
-        <div class="timeline-dot">
-          <i class="fas fa-server"></i>
-        </div>
-        <span>Infrastructure</span>
-      </div>
-      <div class="timeline-step">
-        <div class="timeline-dot">
-          <i class="fas fa-cogs"></i>
-        </div>
-        <span>Automation</span>
-      </div>
-      <div class="timeline-step">
-        <div class="timeline-dot">
-          <i class="fas fa-brain"></i>
-        </div>
-        <span>Leadership</span>
-      </div>
-    </div>
-
-    <div class="journey-details reveal">
-      <div class="journey-panel">
-        <h3>Current chapter</h3>
-        <p>I am moving from a Help Desk foundation into networking by sharpening troubleshooting habits, studying end-to-end system behavior, and practicing the core disciplines that make infrastructure reliable.</p>
-      </div>
-      <div class="journey-panel">
-        <h3>What the journey is teaching me</h3>
-        <p>Strong engineers do more than configure devices. They communicate clearly, document cleanly, automate repetitive work, and align technical decisions with business outcomes.</p>
-      </div>
-      <div class="journey-panel">
-        <h3>Network engineer mission</h3>
-        <p>My mission is to become the kind of engineer who can support resilient routing and switching environments, improve operational workflows, and help teams trust the systems they rely on daily.</p>
-      </div>
-      <div class="journey-panel">
-        <h3>Long-term vision</h3>
-        <p>My long-term vision is to combine network expertise, automation, and leadership into work that opens doors, supports clients, and leaves a blueprint for others making the same climb.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-wrap">
-    <div class="section-label reveal">
-      <i class="fas fa-layer-group"></i> Technical Focus
-    </div>
-    <h2 class="section-title reveal">Skills I am building in public</h2>
-    <p class="section-sub reveal">The README foundation now lives here too: the focus areas, tools, and operational strengths guiding the transition into networking and infrastructure work.</p>
-
-    <div class="focus-grid reveal">
-      <div class="focus-card">
-        <h3>Networking</h3>
-        <ul class="focus-list">
-          <li><i class="fas fa-network-wired"></i><span>CCNA and Network+ studies anchored in routing, switching, and Cisco IOS fundamentals.</span></li>
-          <li><i class="fas fa-laptop-code"></i><span>Packet Tracer practice that turns theory into repeatable, hands-on lab experience.</span></li>
-        </ul>
-      </div>
-      <div class="focus-card">
-        <h3>Automation</h3>
-        <ul class="focus-list">
-          <li><i class="fas fa-robot"></i><span>Python, PowerShell, and Zapier for workflow automation and operations support.</span></li>
-          <li><i class="fas fa-terminal"></i><span>Prompt engineering and technical system design to reduce manual work and improve consistency.</span></li>
-        </ul>
-      </div>
-      <div class="focus-card">
-        <h3>Cloud & Operations</h3>
-        <ul class="focus-list">
-          <li><i class="fas fa-cloud"></i><span>AWS, Google Cloud, Microsoft Azure, and Google Workspace foundations that broaden infrastructure perspective.</span></li>
-          <li><i class="fas fa-screwdriver-wrench"></i><span>Operational thinking built around support, administration, and practical systems stewardship.</span></li>
-        </ul>
-      </div>
-      <div class="focus-card">
-        <h3>Documentation & Leadership</h3>
-        <ul class="focus-list">
-          <li><i class="fas fa-book-open"></i><span>README overhauls, SOP architecture, and technical documentation that make teams move faster.</span></li>
-          <li><i class="fas fa-diagram-project"></i><span>Project management habits that connect technical execution with business clarity.</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- PROJECTS SECTION                                               -->
-  <!-- ══════════════════════════════════════════════════════════════ -->
-  <section id="projects" class="section-wrap">
-    <div class="section-label reveal">
-      <i class="fas fa-star"></i> Featured Work
-    </div>
-    <h2 class="section-title reveal">Selected Projects & Case Studies</h2>
-
-    <div class="filter-tabs reveal">
-      <button class="filter-tab active" data-filter="all">All Projects</button>
-      <button class="filter-tab" data-filter="networking">Networking</button>
-      <button class="filter-tab" data-filter="automation">Automation</button>
-      <button class="filter-tab" data-filter="agency">Agency</button>
-    </div>
-
-    <div class="projects-grid reveal">
-      <div class="project-card" data-category="networking" tabindex="0" aria-expanded="false">
-        <span class="card-featured">Featured</span>
-        <div class="project-card-inner">
-          <div class="project-card-icon">
-            <i class="fas fa-network-wired"></i>
-          </div>
-          <h3>CCNA Networking Labs</h3>
-          <p class="project-card-desc">Building Cisco-certified networking skills through hands-on labs and Packet Tracer simulations.</p>
-          <span class="project-card-tag">Networking</span>
-        </div>
-        <div class="project-overlay">
-          <h4>CCNA Certification Journey</h4>
-          <p>Hands-on Cisco labs focused on routing, switching, and troubleshooting discipline needed for production-ready network engineering work.</p>
-          <ul class="project-overlay-meta">
-            <li><strong>Role:</strong> Lab builder, troubleshooter, and documentation owner</li>
-            <li><strong>Stack:</strong> Packet Tracer, Cisco IOS CLI, subnetting drills</li>
-            <li><strong>Problem solved:</strong> Turning theory-heavy study into repeatable, testable configurations</li>
-            <li><strong>Outcome:</strong> Stronger command-line confidence and clearer network troubleshooting workflows</li>
+      <div class="mission-grid">
+        <div class="mission-panel">
+          <h3><i class="fas fa-graduation-cap"></i> Demystify the Path</h3>
+          <p>There's no secret formula. I show exactly how I went from first-line support to designing networks—with all the struggles, wins, and lessons along the way.</p>
+          <ul class="mission-points">
+            <li><i class="fas fa-check"></i> Real-world troubleshooting techniques</li>
+            <li><i class="fas fa-check"></i> Honest career progression insights</li>
+            <li><i class="fas fa-check"></i> Resources and certifications that matter</li>
           </ul>
-          <div class="project-overlay-links">
-            <a href="https://github.com/bookofjarv/Networking-Labs" target="_blank" class="overlay-btn">View Labs</a>
-            <a href="https://github.com/bookofjarv/Networking-Labs" target="_blank" class="overlay-btn ghost">GitHub</a>
-          </div>
         </div>
-      </div>
 
-      <div class="project-card" data-category="automation" tabindex="0" aria-expanded="false">
-        <div class="project-card-inner">
-          <div class="project-card-icon">
-            <i class="fas fa-robot"></i>
-          </div>
-          <h3>Workflow Automation Suite</h3>
-          <p class="project-card-desc">Python & Zapier-based automation connecting marketing, sales, and operations.</p>
-          <span class="project-card-tag">Automation</span>
-        </div>
-        <div class="project-overlay">
-          <h4>Workflow Automation</h4>
-          <p>Automation workflows designed to reduce manual handoffs and keep operations moving across marketing, sales, and service delivery.</p>
-          <ul class="project-overlay-meta">
-            <li><strong>Role:</strong> Workflow architect and process implementer</li>
-            <li><strong>Stack:</strong> Python scripts, Zapier automations, ops documentation</li>
-            <li><strong>Problem solved:</strong> Fragmented updates and repeated admin tasks between teams</li>
-            <li><strong>Outcome:</strong> Cleaner handoffs, faster follow-through, and more traceable execution</li>
+        <div class="mission-panel">
+          <h3><i class="fas fa-code-branch"></i> Build & Automate</h3>
+          <p>Infrastructure is code. I create labs, scripts, and tools to solve real problems and share them openly so you can learn, adapt, and build on them.</p>
+          <ul class="mission-points">
+            <li><i class="fas fa-check"></i> Open-source infrastructure projects</li>
+            <li><i class="fas fa-check"></i> Automation scripts you can use today</li>
+            <li><i class="fas fa-check"></i> Step-by-step lab walkthroughs</li>
           </ul>
-          <div class="project-overlay-links">
-            <a href="#services" class="overlay-btn">Learn More</a>
-            <a href="https://github.com/bookofjarv" target="_blank" class="overlay-btn ghost">Code</a>
-          </div>
         </div>
-      </div>
 
-      <div class="project-card" data-category="agency" tabindex="0" aria-expanded="false">
-        <div class="project-card-inner">
-          <div class="project-card-icon">
-            <i class="fas fa-book-open"></i>
-          </div>
-          <h3>HarborTech Operations Playbook</h3>
-          <p class="project-card-desc">Operational documentation and systems guidance organized into a dedicated repository playbook.</p>
-          <span class="project-card-tag">Agency</span>
-        </div>
-        <div class="project-overlay">
-          <h4>Operations Playbook</h4>
-          <p>Repository-first operating guidance for documenting repeatable workflows, delivery standards, and the practical structure behind HarborTech operations.</p>
-          <ul class="project-overlay-meta">
-            <li><strong>Role:</strong> Playbook author, documentation owner, and process organizer</li>
-            <li><strong>Stack:</strong> GitHub repository workflows, operating docs, structured SOP content</li>
-            <li><strong>Problem solved:</strong> Scattered process knowledge that slows handoffs and operational consistency</li>
-            <li><strong>Outcome:</strong> Clearer execution standards and a centralized reference point for operational work</li>
+        <div class="mission-panel">
+          <h3><i class="fas fa-handshake"></i> Mentor & Inspire</h3>
+          <p>Success means nothing if you're climbing alone. I'm committed to lifting others up and creating an inclusive tech community.</p>
+          <ul class="mission-points">
+            <li><i class="fas fa-check"></i> 1-on-1 guidance and advice</li>
+            <li><i class="fas fa-check"></i> Community-driven learning groups</li>
+            <li><i class="fas fa-check"></i> Amplifying underrepresented voices</li>
           </ul>
-          <div class="project-overlay-links">
-            <a href="https://github.com/bookofjarv/HarborTech-Operations-Playbook" target="_blank" class="overlay-btn">View Playbook</a>
-            <a href="https://github.com/bookofjarv/HarborTech-Operations-Playbook" target="_blank" class="overlay-btn ghost">GitHub</a>
-          </div>
         </div>
-      </div>
- 
-      <div class="project-card" data-category="agency" tabindex="0" aria-expanded="false">
-        <div class="project-card-inner">
-          <div class="project-card-icon">
-            <i class="fas fa-briefcase"></i>
-          </div>
-          <h3>KodeKouncil Services</h3>
-          <p class="project-card-desc">Technical documentation, process automation, and infrastructure consulting for enterprises.</p>
-          <span class="project-card-tag">Agency</span>
-        </div>
-        <div class="project-overlay">
-          <h4>Enterprise Solutions</h4>
-          <p>Service model for teams that need tighter operations, stronger documentation, and practical technical direction without adding complexity.</p>
-          <ul class="project-overlay-meta">
-            <li><strong>Role:</strong> Technical consultant and systems translator</li>
-            <li><strong>Stack:</strong> SOP architecture, automation planning, infrastructure advisory</li>
-            <li><strong>Problem solved:</strong> Disconnected operations with unclear ownership and process drift</li>
-            <li><strong>Outcome:</strong> Better operating cadence, clearer standards, and more dependable delivery</li>
+
+        <div class="mission-panel">
+          <h3><i class="fas fa-network-wired"></i> Stay Curious</h3>
+          <p>Technology evolves fast. I'm always learning—testing new tools, exploring emerging tech, and sharing what I discover along the way.</p>
+          <ul class="mission-points">
+            <li><i class="fas fa-check"></i> Regular deep-dives into emerging tech</li>
+            <li><i class="fas fa-check"></i> Lab experiments and proof-of-concepts</li>
+            <li><i class="fas fa-check"></i> Transparent documentation of my learning</li>
           </ul>
-          <div class="project-overlay-links">
-            <a href="#services" class="overlay-btn">Explore</a>
-            <a href="#contact" class="overlay-btn ghost">Contact</a>
-          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="services" class="section-wrap">
-    <div class="section-label reveal">
-      <i class="fas fa-briefcase"></i> KodeKouncil Services
-    </div>
-    <h2 class="section-title reveal">How I turn technical growth into practical value</h2>
-    <p class="section-sub reveal">KodeKouncil is the business expression of the mission: helping teams move from fragmented operations to cleaner systems, better documentation, and more dependable execution.</p>
+  <!-- ── Spotlight: BookofJarv & KodeKouncil ────────────────────── -->
+  <section id="projects" style="padding-top: var(--section-space);">
+    <div class="section-wrap">
+      <div class="section-label"><i class="fas fa-star"></i> Flagship Projects</div>
+      <h2 class="section-title">What I'm Building</h2>
+      <p class="section-sub">
+        Two passion projects that define my work: BookofJarv is my personal journey and knowledge base. KodeKouncil is a community initiative to make IT education accessible to everyone.
+      </p>
 
-    <div class="services-grid reveal">
-      <div class="service-card">
-        <h3>Operations & Documentation</h3>
-        <ul class="service-list">
-          <li><i class="fas fa-envelope-open-text"></i><span>Email and calendar management that keeps communication organized and actionable.</span></li>
-          <li><i class="fas fa-file-lines"></i><span>Documentation architecture for GitHub READMEs, internal wikis, and SOP libraries.</span></li>
-        </ul>
+      <div class="spotlight-grid">
+        <!-- BookofJarv -->
+        <div class="spotlight-card jarv">
+          <div class="spotlight-icon"><i class="fas fa-book"></i></div>
+          <h3>BookofJarv</h3>
+          <p>
+            My personal technical journal and resource hub. Every project, lab, lesson, and breakthrough documented in one place. From networking fundamentals to advanced automation, this is where I share everything I learn.
+          </p>
+          <div class="spotlight-tags">
+            <span class="tag">Network Engineering</span>
+            <span class="tag green">Automation</span>
+            <span class="tag">Cloud Infrastructure</span>
+          </div>
+          <a href="https://bookofjarv.dev" class="spotlight-link" target="_blank">
+            Explore <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- KodeKouncil -->
+        <div class="spotlight-card kouncil">
+          <div class="spotlight-icon"><i class="fas fa-users"></i></div>
+          <h3>KodeKouncil</h3>
+          <p>
+            A collaborative learning community built on the belief that everyone deserves quality IT education. We host workshops, code reviews, study groups, and real project work. It's where passion meets purpose.
+          </p>
+          <div class="spotlight-tags">
+            <span class="tag gold">Community</span>
+            <span class="tag gold">Mentorship</span>
+            <span class="tag gold">Learning</span>
+          </div>
+          <a href="https://kodekouncil.dev" class="spotlight-link" target="_blank">
+            Join Us <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
-      <div class="service-card">
-        <h3>Automation & Systems</h3>
-        <ul class="service-list">
-          <li><i class="fas fa-arrows-spin"></i><span>Process automation linking marketing, sales, and operations with Zapier, Python, and structured workflows.</span></li>
-          <li><i class="fas fa-folder-tree"></i><span>File organization, backup recovery, and systems cleanup for more stable day-to-day operations.</span></li>
-        </ul>
+    </div>
+  </section>
+
+  <!-- ── My Journey Timeline ──────────────────────────────────── -->
+  <section id="journey">
+    <div class="section-wrap">
+      <div class="section-label"><i class="fas fa-timeline"></i> My Progression</div>
+      <h2 class="section-title">The Journey</h2>
+      <p class="section-sub">
+        From answering password reset tickets to designing enterprise networks. Here's how I got here—and where I'm headed next.
+      </p>
+
+      <div class="timeline-strip">
+        <div class="timeline-step active">
+          <div class="timeline-dot"><i class="fas fa-headset"></i></div>
+          <span>Helpdesk</span>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot"><i class="fas fa-desktop"></i></div>
+          <span>Desktop Support</span>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot"><i class="fas fa-layer-group"></i></div>
+          <span>Systems Admin</span>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot"><i class="fas fa-network-wired"></i></div>
+          <span>Network Engineer</span>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot"><i class="fas fa-cloud"></i></div>
+          <span>Cloud Infrastructure</span>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot"><i class="fas fa-rocket"></i></div>
+          <span>The Future</span>
+        </div>
       </div>
-      <div class="service-card">
-        <h3>Brand & Technical Presence</h3>
-        <ul class="service-list">
-          <li><i class="fas fa-globe"></i><span>Technical portfolios, web design, and digital presentation that make proof of work easy to trust.</span></li>
-          <li><i class="fas fa-key"></i><span>Password architecture and structured admin support for stronger operational discipline.</span></li>
-        </ul>
-      </div>
-      <div class="service-card">
-        <h3>Proof of Work</h3>
-        <ul class="proof-list">
-          <li><i class="fas fa-link"></i><span><a href="https://bookofjarv.github.io/theandersonportfolio2026/" target="_blank">Live Portfolio</a> — a central hub for projects, lifestyle content, and services.</span></li>
-          <li><i class="fas fa-link"></i><span><a href="https://github.com/bookofjarv/Networking-Labs" target="_blank">CCNA Networking Labs</a> — documented labs, topologies, and networking study in action.</span></li>
-        </ul>
+
+      <div class="journey-details" style="margin-top: 2.5rem;">
+        <div class="journey-panel">
+          <h3>📌 Where I Started</h3>
+          <p>
+            Like many in IT, I started with the basics: resetting passwords, imaging computers, and learning that turning it off and on again actually works 90% of the time. But in that helpdesk chaos, I found my passion for solving problems and helping people.
+          </p>
+        </div>
+
+        <div class="journey-panel">
+          <h3>🚀 The Breakthrough</h3>
+          <p>
+            The leap from support to engineering came from curiosity and continuous learning. I pursued certifications, built labs in my spare time, and volunteered for every infrastructure project I could find. Each challenge taught me something new.
+          </p>
+        </div>
+
+        <div class="journey-panel">
+          <h3>💡 What Drives Me Now</h3>
+          <p>
+            Today, I focus on building scalable, secure, and efficient infrastructure. But more importantly, I'm driven by the opportunity to help others find their path—just like mentors did for me.
+          </p>
+        </div>
+
+        <div class="journey-panel">
+          <h3>🎯 Looking Ahead</h3>
+          <p>
+            The next chapter is about innovation and leadership. I want to design systems that don't just work—they inspire. And I want to build a world where anyone, regardless of background, can have a thriving IT career.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- CONTACT SECTION                                                -->
-  <!-- ══════════════════════════════════════════════════════════════ -->
-  <section id="contact" class="section-wrap">
-    <div class="section-label reveal">
-      <i class="fas fa-handshake"></i> Let's Connect
-    </div>
-    <h2 class="section-title reveal">Get in Touch</h2>
-    <p class="section-sub reveal">Open to opportunities, collaborations, networking conversations, and technical discussions with people building meaningful systems and careers.</p>
+  <!-- ── Focus Areas ──────────────────────────────────────────── -->
+  <section>
+    <div class="section-wrap">
+      <div class="section-label"><i class="fas fa-lightbulb"></i> Specialization</div>
+      <h2 class="section-title">What I Focus On</h2>
+      <p class="section-sub">
+        My expertise spans multiple domains, but these are the areas where I spend most of my time and energy.
+      </p>
 
-    <div class="social-grid reveal">
-      <a href="https://linkedin.com/in/jarvis-anderson" target="_blank" class="social-card social-linkedin">
-        <i class="fab fa-linkedin"></i>
-        <span>LinkedIn</span>
-      </a>
-      <a href="https://youtube.com/@bookofjarv" target="_blank" class="social-card social-youtube">
-        <i class="fab fa-youtube"></i>
-        <span>YouTube</span>
-      </a>
-      <a href="https://instagram.com/bookofjarv" target="_blank" class="social-card social-instagram">
-        <i class="fab fa-instagram"></i>
-        <span>Instagram</span>
-      </a>
-      <a href="https://github.com/bookofjarv" target="_blank" class="social-card social-github">
-        <i class="fab fa-github"></i>
-        <span>GitHub</span>
-      </a>
+      <div class="focus-grid">
+        <div class="focus-card">
+          <h3><i class="fas fa-network-wired"></i> Network Architecture</h3>
+          <p>Designing and implementing robust, scalable network solutions. From small business LANs to enterprise WAN deployments.</p>
+          <ul class="focus-list">
+            <li><i class="fas fa-check"></i> Routing & Switching</li>
+            <li><i class="fas fa-check"></i> Network Security (Firewalls, IDS/IPS)</li>
+            <li><i class="fas fa-check"></i> VoIP & Unified Communications</li>
+          </ul>
+        </div>
+
+        <div class="focus-card">
+          <h3><i class="fas fa-gears"></i> Infrastructure Automation</h3>
+          <p>Writing code to eliminate repetitive tasks and scale operations. Infrastructure as Code, CI/CD, and DevOps practices.</p>
+          <ul class="focus-list">
+            <li><i class="fas fa-check"></i> Python & Bash Scripting</li>
+            <li><i class="fas fa-check"></i> Terraform & Ansible</li>
+            <li><i class="fas fa-check"></i> Git & Version Control</li>
+          </ul>
+        </div>
+
+        <div class="focus-card">
+          <h3><i class="fas fa-cloud"></i> Cloud Infrastructure</h3>
+          <p>Building and managing cloud-native solutions. AWS, Azure, and Kubernetes are part of my daily toolkit.</p>
+          <ul class="focus-list">
+            <li><i class="fas fa-check"></i> AWS (EC2, VPC, RDS, S3)</li>
+            <li><i class="fas fa-check"></i> Containerization & Kubernetes</li>
+            <li><i class="fas fa-check"></i> Monitoring & Observability</li>
+          </ul>
+        </div>
+
+        <div class="focus-card">
+          <h3><i class="fas fa-chalkboard-user"></i> Knowledge Sharing</h3>
+          <p>Breaking down complex concepts and making them accessible. Content creation, mentorship, and community building.</p>
+          <ul class="focus-list">
+            <li><i class="fas fa-check"></i> Technical Writing</li>
+            <li><i class="fas fa-check"></i> Video Tutorials</li>
+            <li><i class="fas fa-check"></i> Live Lab Demonstrations</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- FOOTER                                                         -->
-  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- ── Contact Section ──────────────────────────────────────── -->
+  <section id="contact">
+    <div class="section-wrap">
+      <div class="section-label"><i class="fas fa-envelope"></i> Get In Touch</div>
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="section-sub">
+        Whether you want to collaborate, ask questions, or just chat about tech—I'd love to hear from you. Find me on your favorite platform.
+      </p>
+
+      <div class="social-grid">
+        <a href="https://linkedin.com/in/jarvis-anderson" target="_blank" class="social-card social-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://youtube.com/@bookofjarv" target="_blank" class="social-card social-youtube">
+          <i class="fab fa-youtube"></i>
+          <span>YouTube</span>
+        </a>
+        <a href="https://instagram.com/bookofjarv" target="_blank" class="social-card social-instagram">
+          <i class="fab fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+        <a href="https://github.com/bookofjarv" target="_blank" class="social-card social-github">
+          <i class="fab fa-github"></i>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ──────────────────────────────────────────────── -->
   <footer>
-    <p>&copy; 2026 BookofJarv | Jarvis Anderson. All rights reserved. | <a href="https://github.com/bookofjarv/dev.home" target="_blank">Source Code</a></p>
+    <p>&copy; 2024 Jarvis Anderson. Building networks, sharing knowledge, lifting others up.</p>
   </footer>
 
   <script>
-    // ─── Scroll Reveal Animation ───
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
-      observer.observe(el);
-    });
-
-    // ─── Mobile Menu Toggle ───
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
 
     hamburger.addEventListener('click', () => {
-      const isOpen = hamburger.classList.toggle('open');
+      hamburger.classList.toggle('open');
       mobileMenu.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', String(isOpen));
     });
 
+    // Close mobile menu on link click
     document.querySelectorAll('.mobile-menu a').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('open');
         mobileMenu.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
       });
     });
 
-    // ─── Touch-friendly Project Cards ───
-    const projectCards = document.querySelectorAll('.project-card');
-    const mobileProjectMedia = window.matchMedia('(hover: none), (pointer: coarse), (max-width: 768px)');
-
-    const setProjectCardExpanded = (card, expanded) => {
-      card.classList.toggle('mobile-expanded', expanded);
-      card.setAttribute('aria-expanded', String(expanded));
-    };
-
-    const collapseProjectCards = (exceptCard = null) => {
-      projectCards.forEach(card => {
-        if (card !== exceptCard) {
-          setProjectCardExpanded(card, false);
-        }
-      });
-    };
-
-    const toggleProjectCard = (card) => {
-      if (!mobileProjectMedia.matches) return;
-      const shouldExpand = !card.classList.contains('mobile-expanded');
-      collapseProjectCards(card);
-      setProjectCardExpanded(card, shouldExpand);
-    };
-
-    projectCards.forEach(card => {
-      card.addEventListener('click', (event) => {
-        if (event.target.closest('a, button')) return;
-        toggleProjectCard(card);
-      });
-
-      card.addEventListener('keydown', (event) => {
-        if (event.key !== 'Enter' && event.key !== ' ') return;
-        if (!mobileProjectMedia.matches) return;
-        event.preventDefault();
-        toggleProjectCard(card);
-      });
-    });
-
-    document.addEventListener('click', (event) => {
-      if (!mobileProjectMedia.matches || event.target.closest('.project-card')) return;
-      collapseProjectCards();
-    });
-
-    mobileProjectMedia.addEventListener('change', ({ matches }) => {
-      if (!matches) {
-        collapseProjectCards();
-      }
-    });
-
-    // ─── Project Filter ───
-    document.querySelectorAll('.filter-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-
-        const filter = tab.getAttribute('data-filter');
-        document.querySelectorAll('.project-card').forEach(card => {
-          if (filter === 'all' || card.getAttribute('data-category') === filter) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-
-        collapseProjectCards();
-      });
-    });
-
-    // ─── Smooth Navigation ───
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        const target = document.querySelector(link.getAttribute('href'));
-        if (target) {
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && document.querySelector(href)) {
           e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
         }
       });
     });
