@@ -171,6 +171,8 @@
       padding: var(--section-space) var(--page-gutter);
     }
 
+    section[id] { scroll-margin-top: 5rem; }
+
     .section-label {
       display: inline-flex;
       align-items: center;
@@ -209,6 +211,7 @@
     #hero {
       min-height: 90vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       position: relative;
@@ -235,6 +238,7 @@
       position: relative;
       z-index: 1;
       max-width: 1200px;
+      width: 100%;
     }
 
     .hero-content {
@@ -360,6 +364,8 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
+      width: 100%;
+      max-width: 1200px;
       margin-top: 2.5rem;
       padding-top: 2.5rem;
       border-top: 1px solid var(--border);
@@ -958,7 +964,7 @@
       }
 
       .hero-stats {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .section-wrap {
@@ -1040,14 +1046,14 @@
       <li><a href="#contact"><i class="fas fa-envelope"></i> Connect</a></li>
       <li><a href="https://linkedin.com/in/jarvis-anderson" target="_blank" class="nav-linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
     </ul>
-    <button class="hamburger" aria-label="Toggle navigation">
+    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
       <span></span>
       <span></span>
       <span></span>
     </button>
   </nav>
 
-  <div class="mobile-menu">
+  <div class="mobile-menu" id="mobile-menu">
     <a href="#mission"><i class="fas fa-flag"></i> Mission</a>
     <a href="#journey"><i class="fas fa-road"></i> Journey</a>
     <a href="#projects"><i class="fas fa-code"></i> Projects</a>
@@ -1356,8 +1362,10 @@
     const mobileMenu = document.querySelector('.mobile-menu');
 
     hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
+      const isOpen = hamburger.getAttribute('aria-expanded') !== 'true';
+      hamburger.setAttribute('aria-expanded', isOpen);
+      hamburger.classList.toggle('open', isOpen);
+      mobileMenu.classList.toggle('open', isOpen);
     });
 
     // Close mobile menu on link click
@@ -1365,7 +1373,16 @@
       link.addEventListener('click', () => {
         hamburger.classList.remove('open');
         mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
       });
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
     });
 
     // Smooth scroll for navigation links
